@@ -1,0 +1,185 @@
+/*
+
+CSS Social Icons
+By: Nick La (@nickla)
+http://webdesignerwall.com/tutorials/css-social-buttons
+
+Version: 1.0
+
+Updated and Customizated by Abdulkadir Atasoglu (Firewalljck)
+
+/************************************************************************************
+SOCIAL BUTTON LINK a.sb
+*************************************************************************************/
+
+.social{
+	display:inline-block;
+	margin-top:8px;
+}
+
+/************************************************************************************
+CSS BUTTON LINK a.sb
+*************************************************************************************/
+a.sb,
+.sb a {
+	width: 48px;
+	height: 48px;
+	background-repeat: no-repeat;
+	background-position: center center;
+	background-size: 59%;
+	font-size: 12px;
+	text-decoration: none;
+	line-height: 100%;
+	white-space: nowrap;
+	display: inline-block;
+	position: relative;
+	margin: 0 2px 5px 0;
+	
+	/* default button color */
+	background-color: #ececec;
+	border: solid 1px #b8b8b9;
+	/* default box shadow */
+	-webkit-box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 1px 0 rgba(0,0,0,.1);
+	-moz-box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 1px 0 rgba(0,0,0,.1);
+	box-shadow: inset 0 1px 0 rgba(255,255,255,.3), 0 1px 0 rgba(0,0,0,.1);
+	/* default border radius */
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+	
+}
+
+/* for IE */
+*:first-child+html a.sb,
+*:first-child+html .sb a {
+	text-indent: 0;
+	line-height: 0;
+	font-size: 0;
+	overflow: hidden;
+}
+
+
+/* SB LIST
+================================================ */
+.sb {
+	margin: 0;
+	padding: 0;
+}
+.sb li {
+	margin: 0;
+	padding: 0;
+	display: inline;
+}
+
+
+/* SIZES
+================================================ */
+/* small */
+a.sb.small,
+.sb.small a {
+	width: 26px;
+	height: 26px;
+	font-size: 90%;
+}
+
+
+/* GRADIENTS
+================================================ */
+
+/* default gradient */
+a.sb.gradient,
+.sb.gradient a {
+	background-color: transparent !important;
+}
+a.sb.gradient:after,
+.sb.gradient a:after {
+	padding: 1px;
+	content: "";
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: -1px;
+	left: -1px;
+	z-index: -1;
+	
+	-webkit-box-shadow: inset 0 2px 0 rgba(255,255,255,.3);
+	-moz-box-shadow: inset 0 2px 0 rgba(255,255,255,.3);
+	box-shadow: inset 0 2px 0 rgba(255,255,255,.3);
+
+	/* default gradient */
+	background: -moz-linear-gradient(top, #eeeeee 0%, #d2d2d2 100%);
+	background: -webkit-linear-gradient(top, #eeeeee 0%, #d2d2d2 100%);
+	background: linear-gradient(top, #eeeeee 0%, #d2d2d2 100%);
+}
+
+
+/* COLORS
+================================================ */
+
+/* default hover */
+a.sb:hover:after,
+.sb a:hover:after {
+	background-image: none;
+}
+a.sb:hover,
+.sb a:hover,
+a.sb:hover:after,
+.sb a:hover:after {
+	background-color: #f3f3f3;
+}
+
+
+/* STYLES
+================================================ */
+
+/* min style */
+a.sb.min,
+.sb.min a {
+	background-color: transparent;
+	border: none;
+	
+	-webkit-box-shadow: none;
+	-moz-box-shadow: none;
+	box-shadow: none;
+}
+
+/* circle style */
+a.sb.circle,
+.sb.circle a,
+a.sb.circle:before,
+.sb.circle a:before,
+a.sb.circle:after,
+.sb.circle a:after {
+	-webkit-border-radius: 10em;
+	-moz-border-radius: 10em;
+	border-radius: 10em;
+}
+
+/* round style */
+a.sb,
+.sb a,
+a.sb:before,
+.sb a:before,
+a.sb:after,
+.sb a:after {
+	-webkit-border-radius: 5px;
+	-moz-border-radius: 5px;
+	border-radius: 5px;
+}
+
+/* reset bottom border-radius for round and circle */
+a.sb.circle:before,
+.sb.circle a:before,
+a.sb:before,
+.sb a:before {
+	border-bottom-right-radius: 0;
+	border-bottom-left-radius: 0;
+	-moz-border-radius-bottomright: 0;
+	-moz-border-radius-bottomleft: 0;
+	-webkit-border-bottom-right-radius: 0;
+	-webkit-border-bottom-left-radius: 0;
+}
+
+a.sb.twitter,.sb a.twitter {background-image: url(../images/icons/twitter_bird.png);}
+a.sb.facebook,.sb a.facebook{background-image:url(../images/icons/facebook.png)}
+a.sb.phone,.sb a.phone{background-image: url(../images/icons/Phone.png)}

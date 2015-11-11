@@ -1,0 +1,13 @@
+/*----------------------------------------------
+MAIN CONTAINER ROTATION CONFIG
+------------------------------------------------*/
+@media screen and (orientation:landscape){
+	.container {display: none;}
+	.container-landscape {display: block;}
+	}
+	
+@media screen and (orientation:portrait){
+	.container {display: block;}
+	.container-landscape {display: none;}
+	}
+

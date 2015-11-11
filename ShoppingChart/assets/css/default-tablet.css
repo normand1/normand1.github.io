@@ -1,0 +1,30 @@
+@charset "utf-8";
+
+/* 
+Leon Mobile Theme
+CSS Document
+*/
+/* iPads (portrait) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+{
+.content{width:746px;}
+.tab-menu {width: 746px;}
+.toggle-wrapper {width:746px;}	
+.portfolio-wrapper{ width:620px; margin-left:auto; margin-right:auto;}
+.pimage:nth-child(n+1){padding-left: 8px;}
+.pagenavi{ width: 746px;}
+}
+
+/* Desktops and laptops ----------- */
+@media only screen 
+and (min-width : 1224px) {
+
+}
+
+/* Large screens ----------- */
+@media only screen 
+and (min-width : 1824px) {
+/* Styles */
+}

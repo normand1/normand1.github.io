@@ -1,0 +1,458 @@
+@charset "utf-8"; 
+
+/* 
+Leon Mobile Theme v1
+CSS Document
+*/
+ 
+/* ----------------------- SUMMARY -----------------------
+
+- GOOGLE WEB FONT
+
+- RESET SETTINGS
+
+- GENERAL LAYOUT
+  - CLEAR FLOATED ELEMENTS
+  - MAIN LINK PROPERTIES
+  
+- LIST STYLES
+  - NUMBERED LIST
+  - START LIST
+  - CHECK LIST
+  - BULLET LIST
+
+- BUTTONS
+- TEXT AREA
+- HIGHLIGHT STYLES
+- IMAGES ALIGNMENT & STYLING
+- CUSTOM MESSAGE STYLING
+
+- SLIDER CONFIGURATION ( Into the assets>css>flexyslider.css )
+
+- TAB MENU
+
+- TOGGLE MENU
+
+- MAIN CONTAINER & CONTENT
+
+- HEADER
+- LOGO
+- HEXAGON MENU
+  - ICON CONFIGURATION
+  
+- GALLERY PAGE
+
+- PORTFOLIO PAGE
+
+- BLOG PAGE
+  - BLOG POST CONTENT
+  - BLOG POST INFO
+  - BLOG PAGINATION 
+  - BLOG COMMENT 
+  
+- CONTACT PAGE
+  - CONTACT INFORMATIONS & CONTAINER
+  - CONTACT FORM ELEMENTS
+- FOOTER
+  
+*/
+
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,600,800);
+@import url("reset.css"); 
+
+/*--------------------------------------------------
+GENERAL LAYOUT
+---------------------------------------------------*/
+*{margin:0;}
+body{background-image:url(../images/backgrounds/leon.png); background-repeat:repeat; font-size:12px; font-family:'Open Sans',sans-serif; line-height:20px; font-smooth:always;}
+
+/* If you want to change font please change code below to font name */
+a{font-family:'Open Sans',sans-serif; font-size:12px; font-smooth:always;}
+p{font-size:12px; font-family:'Open Sans',sans-serif; padding-bottom:11px; font-smooth:always;}
+h1, h2, h3, h4, h5, h6{font-family:'Open Sans',sans-serif; margin-bottom:5px; font-smooth:always;}
+li{font-family:'Open Sans',sans-serif; line-height:18px; font-smooth:always;}
+/* Font change end */
+
+h1{font-size:26px; line-height:32px; font-smooth:always;}
+h2{font-size:22px; line-height:26px; font-smooth:always;}
+h3{font-size:18px; font-smooth:always;}
+h4{font-size:14px; line-height:16px; font-smooth:always;}
+h5{font-size:12px; margin-bottom:5px; font-smooth:always;}
+h6{font-size:10px; padding:0px; font-smooth:always;}
+
+	/*--------------------------------------------------
+	CLEAR FLOATED ELEMENTS
+	---------------------------------------------------*/
+	/* http://sonspring.com/journal/clearing-floats */
+	.clear{clear:both; display:block; overflow:hidden; visibility:hidden; width:0; height:0}
+	/* http://perishablepress.com/press/2008/02/05/lessons-learned-concerning-the-clearfix-css-hack */
+	.clearfix:after{clear:both; content:' '; display:block; font-size:0; line-height:0; visibility:hidden; width:0; height:0}
+	/* Hides from IE-mac */
+	* html .clearfix { height: 1%;}
+	.clearfix {display: block;}
+	/* End hide from IE-mac */
+	.hr{background-image:url(../images/hr.png); height:2px; background-repeat:repeat-x; margin-bottom:12px; margin-left:12px; margin-right:12px}
+	.hr-full{background-image:url(../images/hr.png); height:2px; background-repeat:repeat-x; padding-bottom:12px}
+	.hr-full-nopad{background-image:url(../images/hr.png); height:2px; background-repeat:repeat-x;}
+
+
+	/*--------------------------------------------------
+	MAIN LINK PROPERTIES
+	---------------------------------------------------*/
+	a, a:link, a:visited{color:#333; text-decoration:none}
+	a:hover{ color:#666;  text-decoration:none}
+	a img, img{ border:none}
+	
+/*--------------------------------------------------
+LIST STYLES
+---------------------------------------------------*/
+	/*--------------------------------------------------
+	NUMBERED LIST
+	---------------------------------------------------*/
+	ol{ margin:20px 0 20px 25px;  list-style-type:decimal}
+	ol li{ font-size:12px;  margin:2px 0;  padding-bottom:3px}
+	
+	/*--------------------------------------------------
+	STAR LIST
+	---------------------------------------------------*/
+	.starlist{  margin-bottom:10px}
+	.starlist li{  margin:3px 0;   padding-bottom:3px;   padding-left:22px;    background:url(../images/star.png) 0 2px no-repeat;  border-bottom:1px solid #dfdfdf}
+	/*--------------------------------------------------
+	CHECK LIST
+	---------------------------------------------------*/
+	.checklist{  margin-bottom:10px}
+	.checklist li{  margin:3px 0;   padding-bottom:3px;   padding-left:22px;    background:url(../images/tick.png) 0 4px no-repeat;  border-bottom:1px solid #dfdfdf}
+	/*--------------------------------------------------
+	BULLET LIST
+	---------------------------------------------------*/
+	.bulletlist{  margin-bottom:10px}
+	.bulletlist  li{  margin:3px 0;   padding-bottom:3px;   padding-left:22px;   /* background:url(../images/bullet.png) 0 5px no-repeat;*/  border-bottom:1px solid #dfdfdf}
+	
+/*--------------------------------------------------
+BUTTONS
+---------------------------------------------------*/
+.leon, .leon:visited, .leon:link {
+	background: #222 url(../images/alert-overlay.png) repeat-x; display: inline-block; padding: 5px 10px 6px; color: #fff; text-decoration: none; -moz-border-radius: 5px; -webkit-border-radius: 5px; -moz-box-shadow: 0 1px 3px rgba(0,0,0,0.5); -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.5); text-shadow: 0 -1px 1px rgba(0,0,0,0.25); border-bottom: 1px solid rgba(0,0,0,0.25); position: relative;	cursor: pointer;
+}
+.leon:hover { background-color: #111; color: #fff; }
+.leon:active { top: 1px; color: #fff; }
+
+/* Sizes */
+.small.leon, .small.leon:visited { font-size: 11px; padding: ; }
+.leon, .leon:visited,
+.medium.leon, .medium.leon:visited { font-size: 13px; font-weight: bold; line-height: 1; text-shadow: 0 -1px 1px rgba(0,0,0,0.25); }
+.large.leon, .large.leon:visited { font-size: 14px; padding: 8px 14px 9px; }
+
+/* Text Alignments */
+.right.leon, .right.leon:visited { text-align:right; }
+
+/* Colors */
+.green.leon, .green.leon:visited { background-color: #91bd09; }
+.green.leon:hover { background-color: #749a02; }
+.blue.leon, .blue.leon:visited { background-color: #2daebf; }
+.blue.leon:hover { background-color: #007d9a; }
+.red.leon, .red.leon:visited { background-color: #e33100; }
+.red.leon:hover { background-color: #872300; }
+.magenta.leon, .magenta.leon:visited { background-color: #a9014b; }
+.magenta.leon:hover { background-color: #630030; }
+.orange.leon, .orange.leon:visited { background-color: #ff5c00; }
+.orange.leon:hover { background-color: #d45500; }
+.yellow.leon, .yellow.leon:visited { background-color: #ffb515; }
+.yellow.leon:hover { background-color: #fc9200; }
+
+/*--------------------------------------------------
+TEXT AREA
+---------------------------------------------------*/
+.text-title{font-size: 14px; font-weight: bold; color: #333; background-color: #FFF; padding: 10px;
+}
+.text-info{padding:10px; background-color: #FFF;}
+.text-info a img{width:98%; height:auto}
+
+/*--------------------------------------------------
+HIGHLIGHT STYLES
+---------------------------------------------------*/
+.highlight-yellow{padding:1px 4px; background-color:yellow; color:#111}
+.highlight-dark{padding:1px 4px; background-color:#6a6a6a; color:#fff}
+.highlight-red{padding:1px 4px; background-color:#DE2D2D; color:#fff}
+.highlight-green{padding:1px 4px; background-color:#A3CC29; color:#111}
+
+/*--------------------------------------------------
+IMAGES ALIGNMENT & STYLING
+---------------------------------------------------*/
+.align-left{ float:left;  margin:5px 15px 0 0}
+.align-right{ float:right;  margin:5px 0 5px 15px}
+.align-center{ margin-left:auto;  margin-right:auto;  margin-bottom:15px;  display:block}
+.imgbox{ padding:2px;  background:#fff;  border:1px solid #ededed}
+
+/*--------------------------------------------------
+CUSTOM MESSAGE STYLING
+---------------------------------------------------*/
+.info{  margin:15px 0;   font-size:14px;   color:#246EA7;   padding:15px 12px 15px 47px;   background:#DFECF7 url(../images/info.png) .5em .4em no-repeat;   border:1px solid #A7CEEC;   -webkit-border-radius:4px;   -moz-border-radius:4px;   border-radius:4px;   -moz-box-shadow:0 0 6px #aaa;   -webkit-box-shadow:0 0 6px #aaa}
+
+.error{  margin:15px 0;   font-size:14px;   color:#C92036;    padding:15px 12px 15px 47px;   background:#FAE1E1 url(../images/error.png) .5em .4em no-repeat;   border:1px solid #EDA8A8;   -webkit-border-radius:4px;   -moz-border-radius:4px;   border-radius:4px;   -moz-box-shadow:0 0 6px #aaa;   box-shadow:0 0 6px #aaa;   -webkit-box-shadow:0 0 6px #aaa}
+
+.warning{  margin:15px 0;   font-size:14px;   color:#E08820;    padding:15px 12px 15px 47px;   background:#FDF4D7 url(../images/warning.png) .5em .4em no-repeat;   border:1px solid #E8C779;   -webkit-border-radius:4px;   -moz-border-radius:4px;   border-radius:4px;   -moz-box-shadow:0 0 6px #aaa;   box-shadow:0 0 6px #aaa;   -webkit-box-shadow:0 0 6px #aaa}
+
+.success, 
+.success-message{  margin:15px 0;   font-size:14px;   color:#84AF22;    padding:15px 12px 15px 47px;   background:#E6F2D2 url(../images/ok.png) .5em .4em no-repeat;  border:1px solid #96C24A;  -webkit-border-radius:4px;  -moz-border-radius:4px;  border-radius:4px;  -moz-box-shadow:0 0 6px #aaa;  box-shadow:0 0 6px #aaa;  -webkit-box-shadow:0 0 6px #aaa}
+
+/*--------------------------------------------------
+TAB MENU
+---------------------------------------------------*/
+.tab-menu{color:#111; margin-top:12px; margin-right:auto; margin-bottom:12px; margin-left:auto; padding-right:12px; padding-left:12px; padding-bottom:10px; border-right-width:1px; border-bottom-width:1px; border-left-width:1px; border-right-color:#C8C8C8; border-bottom-color:#C8C8C8; border-left-color:#C8C8C8; width:297px}
+.tab-menu-ul li{list-style:none; float:left}
+.tab-menu-ul a{display:block; padding:6px 10px; text-decoration:none!important; margin:1px; margin-left:0; color:#000; background-color:#D3D3D3; font-size:12px; font-weight:600}
+.tab-menu-ul a:hover{ background:#ffffff}
+.tab-menu-ul a.selected{ margin-bottom:0;  color:#000;  background:#ffffff;  border-bottom:1px solid #E9E9E9;  cursor:default}
+.tab-menu .tab-content{ padding:10px 10px 8px 10px;  *padding-top:3px;  *margin-top:-15px;  clear:left;  background:#fff}
+.tab-menu div a{color:#000; font-weight:bold}
+
+/*--------------------------------------------------
+TOGGLE MENU
+---------------------------------------------------*/
+.toggle-wrapper{  margin-bottom:15px;   margin-left:auto;   margin-right:auto;   margin-top:20px;   padding-left:12px;   padding-right:12px;   width:294px}
+.toggle{position:relative; margin-bottom:5px; color:#333; background-color:#fff}
+.toggle_title{margin:0; font-size:18px; line-height:18px; border-bottom:1px solid #d5d5d5; padding-top:10px; padding-right:0; padding-bottom:10px; box-shadow:0 1px 4px rgba(0,0,0,.2); -webkit-box-shadow:0 1px 4px rgba(0,0,0,.2); -moz-box-shadow:0 1px 4px rgba(0,0,0,.2); -o-box-shadow:0 1px 4px rgba(0,0,0,.2); background-color:transparent; background-image:url(../images/plus_round.png); background-repeat:no-repeat; background-position:100%}
+.toggle_title h5{  margin-bottom:0;   padding-left:10px}
+.toggle_active{background-color:transparent; background-image:url(../images/minus_round.png); background-repeat:no-repeat}
+.toggle_content{padding:10px; margin:-3px 0px 10px 0px; display:none;  background-color:#fff}
+.toggle_content a img{width:98%; height:auto}
+
+/*--------------------------------------------------
+MAIN CONTAINER & CONTENT
+	Container Landscape and Portrait setup will be found on rotation.css
+---------------------------------------------------*/
+
+.container{ width:100%;  margin:0 auto;}
+.container-landscape{width:100%; margin:0 auto; padding-top:70px; text-align:center}
+.content{padding-top:15px; padding-bottom: 15px; padding-right:5px; padding-left:5px; margin-left:auto; margin-right:auto; width:300px;}
+
+/*--------------------------------------------------
+HEADER
+---------------------------------------------------*/
+.header{background:#fff; position:relative;  box-shadow:0 1px 4px rgba(0,0,0,.2); -webkit-box-shadow:0 1px 4px rgba(0,0,0,.2); -moz-box-shadow:0 1px 4px rgba(0,0,0,.2); -o-box-shadow:0 1px 4px rgba(0,0,0,.2); zoom:0}
+.header-fade{margin-top:5px; margin-right:12px; margin-bottom:0px; margin-left:12px}
+.header-top{padding-top:5px; padding-left:12px; padding-right:12px}
+.header-bc{padding-left:12px; padding-right:12px}
+.navigate-icon{background-image:url(../images/buttons/button-small.png); background-repeat:no-repeat; height:35px; width:40px}
+.close-icon{background-image:url(../images/buttons/button-small-close.png); background-repeat:no-repeat; height:35px; width:40px; display:inline-block}
+/* For Retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 2.0),
+       only screen and (min--moz-device-pixel-ratio: 2.0),
+       only screen and (-o-min-device-pixel-ratio: 200/100),
+       only screen and (min-device-pixel-ratio: 2.0) {		
+	   .close-icon{background-image:url(../images/buttons/button-small-close2x.png); background-repeat:no-repeat; height:35px; width:40px; display:inline-block; background-size:contain;}
+	   .navigate-icon{background-image:url(../images/buttons/button-small2x.png); background-repeat:no-repeat; height:35px; width:40px;  background-size:contain;}
+
+	   }
+#navigation-fade{display:none; position:absolute; height:200%; width:100%; top:0; left:0; z-index:1; background-color:#FFF; background-image:url(../images/backgrounds/leon.png); background-repeat:repeat}
+
+/*--------------------------------------------------
+LOGO
+---------------------------------------------------*/
+.logo{width:115px; height:50px; margin-left:-8px; display:inline-block}
+/* For Retina */
+@media only screen and (-webkit-min-device-pixel-ratio: 2.0),
+       only screen and (min--moz-device-pixel-ratio: 2.0),
+       only screen and (-o-min-device-pixel-ratio: 200/100),
+       only screen and (min-device-pixel-ratio: 2.0) {	
+	   .logo{width:115px; height:50px; margin-left:-8px; display:inline-block}
+
+	   }
+/*--------------------------------------------------
+HEXAGON MENU
+---------------------------------------------------*/
+#hex1{background-image:url(../images/buttons/button.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:84px; margin-top:0px}
+#hex2{background-image:url(../images/buttons/button.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:168px; margin-top:-44px}
+#hex3{background-image:url(../images/buttons/button.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:168px; margin-top:3px}
+#hex4{background-image:url(../images/buttons/button.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:84px; margin-top:-45px}
+#hex5{background-image:url(../images/buttons/button.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:0px; margin-top:-140px}
+#hex6{background-image:url(../images/buttons/button.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:0px; margin-top:-186px}
+#hex7{background-image:url(../images/buttons/button.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:84px; margin-top:92px; position:absolute; display:block; top:72px;}
+#hex8{background-image:url(../images/buttons/button.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:84px; margin-top:-45px; position:absolute; display:block}
+#hex8 img, #hex7 img{width:50%; height:auto}
+#hexmain{height:282px; width:273px; left:24px; top:101px; margin-right:auto; margin-left:auto}
+#touch-button{margin-top:15px; margin-left:28px}
+#touch-button-hide{margin-top:15px; margin-left:28px}
+
+	/*--------------------------------------------------
+	ICON CONFIGURATION
+	---------------------------------------------------*/
+	.icon{width:66px; height:66px; margin-top:12px; margin-left:20px; position:absolute; padding-top: 7px;}
+	.icon img{width:55%; margin-right:auto; margin-left:auto; margin-bottom:5px; display:block}
+	.icon a{font-weight:600; text-align:center; display:block; font-size:10px; margin-left:auto; margin-right:auto;}
+	
+	   /* For Retina Icons */
+	   @media only screen and (-webkit-min-device-pixel-ratio: 2.0),
+       only screen and (min--moz-device-pixel-ratio: 2.0),
+       only screen and (-o-min-device-pixel-ratio: 200/100),
+       only screen and (min-device-pixel-ratio: 2.0) {
+		#hex1{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:84px; margin-top:0px; background-size:contain;}
+		#hex2{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:168px; margin-top:-44px; background-size:contain;}
+		#hex3{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:168px; margin-top:3px; background-size:contain;}
+		#hex4{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:84px; margin-top:-45px; background-size:contain;}
+		#hex5{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:0px; margin-top:-140px; background-size:contain;}
+		#hex6{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:0px; margin-top:-186px; background-size:contain;}
+		#hex7{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:84px; margin-top:92px; position:absolute; display:block; top:72px;; background-size:contain;}
+		#hex8{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:92px; width:105px; margin-left:84px; margin-top:-45px; position:absolute; display:block; background-size:contain;}
+   		
+		/*--------------------------------------------------
+		ICON CONFIGURATION
+		---------------------------------------------------*/
+		.icon{width:66px; height:66px; margin-top:12px; margin-left:20px; position:absolute; padding-top: 7px;}
+		.icon img{width:55%; margin-right:auto; margin-left:auto; margin-bottom:5px; display:block;}
+		.icon a{font-weight:600; text-align:center; display:block; font-size:10px; margin-left:auto; margin-right:auto;}
+	   }
+
+		/* For Tablets */
+		@media only screen 
+		and (min-device-width : 768px) 
+		and (max-device-width : 1024px) {
+		/* Styles */
+		#hex1{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:184px; width:210px; margin-left:171px; margin-top:0px; background-size:contain;}
+		#hex2{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:184px; width:210px; margin-left:340px; margin-top:-88px; background-size:contain;}
+		#hex3{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:184px; width:210px; margin-left:340px; margin-top:6px; background-size:contain;}
+		#hex4{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:184px; width:210px; margin-left:172px; margin-top:-90px; background-size:contain;}
+		#hex5{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:184px; width:210px; margin-left:3px; margin-top:-277px; background-size:contain;}
+		#hex6{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:184px; width:210px; margin-left:3px; margin-top:-374px; background-size:contain;}
+		#hex7{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:184px; width:210px; margin-left:171px; margin-top:182px; position:absolute; display:block; top:72px;; background-size:contain;}
+		#hex8{background-image:url(../images/buttons/button2x.png); background-repeat:no-repeat; background-position:center center; height:184px; width:210px; margin-left:171px; margin-top:-90px; position:absolute; display:block; background-size:contain;}
+		#hex8 img, #hex7 img{width:50%; height:auto}
+		#hexmain{height:564px; width:546px; left:24px; top:101px; margin-right:auto; margin-left:auto}
+		#touch-button{margin-top:25px; margin-left:56px}
+		#touch-button-hide{margin-top:25px; margin-left:56px}
+	
+		/*--------------------------------------------------
+		ICON CONFIGURATION
+		---------------------------------------------------*/
+		.icon{width:132px; height:132px; margin-top:30px; margin-left:40px; position:absolute; padding-top: 14px;}
+		.icon img{width:50%; margin-right:auto; margin-left:auto; margin-bottom:5px; display:block;}
+		.icon a{font-weight:600; text-align:center; display:block; font-size:14px; margin-left:auto; margin-right:auto;}
+
+		}
+
+/*--------------------------------------------------
+GALLERY PAGE
+---------------------------------------------------*/
+.gallery{list-style:none; padding:0; margin:0}
+.gallery:after{clear:both; content:"."; display:block; height:0; visibility:hidden}
+.gallery li{float:left; width:33.33333333%}
+.gallery li a{display:block; margin:5px; border:1px solid #3c3c3c}
+.gallery li img{display:block; width:100%; height:auto}
+
+/*--------------------------------------------------
+PORTFOLIO PAGE
+---------------------------------------------------*/
+.portfolio-wrapper{margin-top:20px; margin-left:auto; margin-right:auto; width:310px}
+.pimage img{ width:145px;  height:109px}
+.pimage:nth-child(even){padding-left:12px}
+.pimage{float:left; display:block; margin-bottom:12px; width:145px;  height:109px}
+.back-link{position:absolute; right:0; top:75px; padding:5px 20px 5px 10px; color:#333; background-color:#CCC}
+
+/*--------------------------------------------------
+BLOG PAGE
+---------------------------------------------------*/
+.blogarea{background-color:#FFF}
+	/*--------------------------------------------------
+	BLOG POST
+	---------------------------------------------------*/
+	.post{border-bottom:1px solid #eee; margin:0 0 20px 0; padding:0 0 20px 0; overflow:hidden}
+	.post:last-child{border-bottom:none; margin:0; padding:0}
+	.post h3.title{font-size:14px; line-height:21px; font-weight:700; text-transform:uppercase; display:block; padding:0 0 5px 0; margin:0 0 5px 0}
+	/*--------------------------------------------------
+	BLOG POST CONTENT
+	---------------------------------------------------*/
+	.post-content{width:100%; float:left; margin-top:10px}
+	.post-info{position:relative}
+	.post-title, .post-meta{width:100%; float:left}
+	
+	.post-media, .post-title, .post-meta{display:block}
+	.post-title h2.title{margin:0}
+	.post-title h2.title, .post-title h2.title a{color:#676767; font-size:14px; line-height:21px; font-weight:700; text-transform:uppercase}
+	.post-title h2.title a:hover{}
+	.post h3.title{margin-bottom:0; line-height:21px}
+	.post-media{ padding-bottom:12px}
+	.post-media a img{width:98%; height:auto}
+	.post-meta ul{margin:10px 0 10px 0; padding:0; list-style:none; font-size:11px; text-transform:uppercase}
+	.post-meta li{margin:0; display:inline}
+	.post-meta span{color:#aaa}
+	.post-meta a{ color:#676767;  display:inline-block;  font-weight:bold}
+	.post-meta a:hover{color:#f96e5b}
+	/*--------------------------------------------------
+	BLOG POST INFO
+	---------------------------------------------------*/
+	.post-info{width:100%; padding-left:3px}
+	.post-info div{width:auto; float:left}
+	.post-info div.date{padding:6px; background-color:#efefef}
+	.post-info div.date span{display:inline; margin:0 2px}
+	.post-info div.date span.year, .post-info div.date span.day, .post-info div.date span.month, .post-info div.comments a span{font-size:11px; line-height:11px; font-weight:700}
+	.post-info div.comments{height:26px; width:auto; background-color:#E0E0E0; vertical-align:middle; padding-top:6px}
+	.post-info div.comments a{font-size:11px; font-weight:700; padding-right:6px; padding-bottom:6px; padding-left:6px}
+	.post-info div.comments a span{display:inline; margin:0 2px}
+	
+	/*--------------------------------------------------
+	BLOG PAGINATION 
+	---------------------------------------------------*/
+	.pagenaviarea{width:100%; background-color:#FFF; margin-top:10px; margin-bottom:10px; padding-bottom: 5px }
+	.pagenavi{ width: 294px; padding-top:5px; padding-bottom:5px; margin-right:auto; margin-left:auto}
+	.pagenavi span.pages{ margin: 7px 30px 0 0;  padding:0; background-color:transparent}
+	.pagenavi a, .pagenavi a:link, .pagenavi span{background-color:#f8f8f8;  display:inline-block;  float:left; color:#676767; font-size:11px; text-decoration:none; font-weight:bold;  margin:0 0 0 4px;  padding:7px 12px;  text-transform:uppercase}
+	.pagenavi a:hover{color:#CCC; background-color:#444}
+	.pagenavi span.current{color:#C5C5C5}
+	
+	/*--------------------------------------------------
+	BLOG COMMENTS
+	---------------------------------------------------*/
+	.comment-list{overflow:hidden; margin:0; padding:15px 0 0 0}
+	.comment{list-style-type:none;  margin:15px 0 0 0}
+	.comment:first-child{ border-top:none;  margin-top:0}
+	.comment div{margin:0; overflow:hidden; background-color:#f8f8f8; padding:25px; position:relative}
+	.comment .comment-wrap, .comment .comment-meta{ width:90%; padding:0}
+	.comment .comment-meta{font-size:11px; text-transform:uppercase}
+	.comment .comment-meta .reply{font-size:9px; line-height:16px; font-weight:bold; padding:2px 4px; -moz-border-radius:2px; -webkit-border-radius:2px; border-radius:2px; background-color:#444; color:#ccc}
+	.comment .comment-meta .reply:hover{color:#fff}
+	.comment .author, .comment .author a{color:#676767; margin:0; font-weight:bold}
+	.comment .date{ color:#aaa;  margin:0 0 5px 0}
+	.comment .comment-wrap{ margin-top:5px}
+	.comment div{margin:0; overflow:hidden; background-color:#f8f8f8; padding:25px}
+	
+	@media only screen and (min-width:320px) and (max-width:479px){#inner-content,#sidebar{width:300px}
+	#inner-content{border-bottom:1px solid #eee; margin:0 0 40px 0; padding:0 0 40px 0}
+	.comment .comment-wrap, .comment .comment-meta{width:100%}
+	}
+
+/*--------------------------------------------------
+CONTACT PAGE
+---------------------------------------------------*/
+.contactarea{ background-color:#FFF;}
+.subcontainer{width:96%; margin-right:auto; margin-left:auto; padding-right:2%; padding-left:2%}
+
+	/*--------------------------------------------------
+	CONTACT INFORMATIONS & CONTAINER
+	---------------------------------------------------*/
+	.map-container{margin-right:auto; margin-left:auto; background-color:#FFF}
+	.contact-header{padding:10px; background-color:#666; line-height:12px; color:#FFF; display:block; font-size:14px; font-weight:bold; margin-top:10px; margin-right:auto; margin-bottom:0px; margin-left:auto}
+	.contact-sub{float:left; width:100%; padding-top:10px; padding-bottom:10px}
+	.contact-sub .csubtitle{width:30%; color:#600; float:left}
+	.contact-sub .csubinfo{width:70%; float:left; color:#333; display:block}
+	
+	/*--------------------------------------------------
+	CONTACT FORM ELEMENTS
+	---------------------------------------------------*/
+	#contact_form{  padding-top:10px; padding-bottom:10px}
+	#contact_form div{margin-left:auto; margin-right:auto; width:100%}
+	.input-area, 
+	.textarea{width:92%; padding-left:4%; padding-right:4%; padding-top:10px; padding-bottom:10px; color:#600; background-color:#FFF; font:11px Arial; -webkit-box-shadow:inset 0 0 6px #141212,1px 1px #CCC; -moz-box-shadow:inset 0 0 6px #141212,1px 1px #CCC; -ms-box-shadow:inset 0 0 6px #141212,1px 1px #CCC; -o-box-shadow:inset 0 0 6px #141212,1px 1px #CCC; box-shadow:inset 0 0 6px #141212,1px 1px #CCC; margin:10px 0}
+	.textarea{height:100px; resize:none; margin-bottom:10px}
+	.formsub{width:100%; color:#600; float:left}
+	#loader{display:block; margin-left:auto; margin-right:auto;}
+	.cmessage{ font-weight:bold; text-align:center;}
+	.left{ float: left}
+	.desc { float: right; width: 150px;}
+/*--------------------------------------------------
+FOOTER
+---------------------------------------------------*/
+
+#footer{height:50px; padding-top:5px; width:100%; left:0px; bottom: 0px;}
+#footer p{padding:16px; margin:0 auto; text-align:center}
+.footer-content{background:#fff; box-shadow:0 1px 4px rgba(0,0,0,.2); -webkit-box-shadow:0 1px 4px rgba(0,0,0,.2); -moz-box-shadow:0 1px 4px rgba(0,0,0,.2); -o-box-shadow:0 1px 4px rgba(0,0,0,.2); zoom:0; width:100%}

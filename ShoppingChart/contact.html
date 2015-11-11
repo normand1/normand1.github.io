@@ -1,0 +1,186 @@
+<!doctype html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>My Shopping Chart</title> 
+
+<meta name="description" content="">
+<meta name="keyword" content="">     
+  
+<!-- Mobil Tags -->
+	<meta name="HandheldFriendly" content="True">
+    <meta name="MobileOptimized" content="320">
+    <meta http-equiv="cleartype" content="on">
+    <!-- This tag adds homes screen icon. (iOS only)-->
+    <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
+    <!-- This tag adds is used to add a launch screen before your app is fully loaded. (iOS only) -->
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/images/apple-touch-icon.png" />
+    <!-- This meta tag makes your web app fullscreen when you have saved it to your home screen (iOS only)-->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <!-- This just makes the status bar a different color. I have it set to black here. (iOS only)-->
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <!-- This disabled pinch/zoom (works in all devices)-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <link rel="shortcut icon" href="assets/images/apple-touch-icon.png">
+<!-- / Mobil Tags -->
+
+<!-- Styles -->
+<link href="assets/css/default.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" media="only screen and (min-device-width : 768px)" href="assets/css/default-tablet.css"><!--For iPad and Tablet Devices--> 
+<link href="assets/css/rotation.css" rel="stylesheet" type="text/css"> <!-- if you have an error on Android just delete this on this page. -->
+<!--<link href="assets/css/rotation-android.css" rel="stylesheet" type="text/css">  if you have an error on Android just use this on this page. -->
+<!-- / Styles -->
+
+<!-- Javascripts -->
+<script src="assets/js/jquery.1.7.1.min.js"></script>
+<script src="assets/js/modernizr.js"></script>
+<script src="assets/js/jquery.tabs.js"></script>
+<script src="assets/js/custom.js"></script>
+<!-- / Javascripts -->
+</head>
+
+<body>
+<!-- Landscpae Mode Container -->
+<div class="container-landscape">Please turn your mobile device to portrait mode for best view this web site.</div>
+<!-- / Landscape Mode Container -->
+
+
+<!-- Main Container -->
+<div class="container">
+
+	<!-- Header -->
+	<div class="header">
+   		<!-- Header Top -->
+  		<div class="header-top">
+    	<div class="logo"><a href="index.html"><img src="assets/images/ourImages/ShoppingChartLogo.png" width="144" height="25"  style="margin-top: 5px;" alt=""></a></div>
+        <div id="navigate" class="navigate-icon align-right"></div>
+        </div>
+        <!-- / Header Top -->
+        
+        <div class="hr-full"></div>
+        
+        <!-- Header Breadcrumb -->
+        <div class="header-bc">
+        <h4>Shopping Cart</h4>
+        <p>This is your shopping cart</p>
+        </div>
+        <!-- / Header Breadcrumb -->
+    </div> 
+    <!-- / Header -->   
+    
+    
+		<!-- Container -->   
+    	<div class="content contactarea">
+        
+        <!-- Contact Information -->
+        	<!-- Map -->   
+            <!--
+            <div class="map-container">
+                <iframe style="width:100%; height: 255px;" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?f=q&source=s_q&hl=tr&geocode=&q=Cumhuriyet+Bulvar%C4%B1%2c+Izmir%2c+T%C3%BCrkiye&aq=0&oq=izmir+cumhuriyet+&sll=38.429026%2c27.134374&sspn=0.004648%2c0.010568&vpsrc=0&ie=UTF8&hq=&hnear=Cumhuriyet+Blv%2c+Konak%2c+T%C3%BCrkiye&t=m&z=14&iwloc=A&amp;output=embed"></iframe>
+            </div>
+            -->
+            <!-- / Map --> 
+            
+            <!-- Info -->  
+            
+        	<!-- Info Header -->  
+        	<div class= id='Product'> 
+        	<div id='productName' class="contact-header">Product Name<img src="assets/images/icons/Trash3.png" width="18" height="23" align= 'right' alt="" style="margin-top: -5px"></div>	
+        	<!--div class="logo"><a href="index.html"><img src="assets/images/logo2x.png" width="115" height="42" alt=""></a></div>
+
+            <!-- / Info Header -->  
+            
+       		<div class="clearfix"></div>
+            
+            <div class="subcontainer">
+            
+            <div class="contact-sub">
+                <div class="csubtitle">Price</div>
+                <a class="csubinfo">$3</a>
+            </div>
+            
+            <div class="contact-sub">
+                <div class="csubtitle">Quantity</div>
+                <div class="csubinfo">1</div>
+            </div>
+                
+            </div>
+            
+            </div>
+            <!-- / Info -->
+            
+            <div class="clear"></div>
+            
+            
+            
+             <a href="contact2.html" style="margin-left: 190px" class="large leon">Check Out!</a>
+            
+            
+            <!-- Form -->
+   		
+            <!-- Form Header -->
+            <!--div class="contact-header">CONTACT US</div>
+            <!-- /Form Header -->
+           
+            <!--div class="clearfix"></div>
+          
+            <!-- Contact Form -->
+            <!--
+            <div class="subcontainer">
+                <form method="post" action="assets/php/process.php" id="contact_form">
+                    <div>
+                    <label for="name" class="formsub">Your Name:</label>
+                    <input type="text" class="input-area" name="name" id="name" value="" />
+                    </div>
+                    <div>
+                    <label for="email" class="formsub">Your Email:</label>
+                    <input type="text" class="input-area" name="email" id="email" value="" />
+                    </div>
+                    <div>
+                    <label for="message" class="formsub">Message:</label>
+                    <textarea cols="40" class="textarea" rows="8" name="message" id="message"></textarea>
+                    </div>
+                    <div id="loader">
+                    <button class="large leon">SEND</button>
+                    </div>
+                </form>
+            </div>
+           -->
+            <!-- / Contact Form -->
+            
+            <!-- / Form -->
+            
+        </div>
+        <!-- / Container -->
+    
+    <div class="clear"></div>
+    
+    <!-- Footer -->
+    <div id="footer">
+        <div class="footer-content">
+       		<p> Copyright ShoppingChart 2012. All rights Reserved.</p>
+        </div>
+    </div>
+    <!-- / Footer -->
+    
+</div>
+<!-- / Main Container -->
+
+<!-- Fade Navigation -->
+<div id="navigation-fade"></div>
+<!-- / Fade Navigation -->
+
+<!-- Touch hide JS -->
+<script src="assets/js/touch-actions.js"></script>
+<!-- / Touch hide JS -->
+ 
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+<script>
+	var _gaq=[["_setAccount","UA-XXXXX-X"],["_trackPageview"]];
+	(function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];g.async=1;
+	g.src=("https:"==location.protocol?"//ssl":"//www")+".google-analytics.com/ga.js";
+	s.parentNode.insertBefore(g,s)}(document,"script"));
+</script>
+
+</body>
+</html>
