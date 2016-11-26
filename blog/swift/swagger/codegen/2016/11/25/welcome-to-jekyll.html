@@ -82,7 +82,7 @@
 
 <p>If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) <a href="https://github.com/swagger-api/swagger-ui">Swagger UI</a> documentation.</p>
 
-<p><img class="wp-image-177 aligncenter" src="http://eviltechiescum.com/wp-content/uploads/2016/11/Screen-Shot-2016-11-23-at-7.01.48-PM-300x153.png" width="647" height="330" /></p>
+<p><img src="/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png" alt="My helpful screenshot" /></p>
 
 <p>Swagger’s UI tool makes it easy to learn about the features of a backend service you’d like to interact with without needing to dig through interminable and abstruse documentation. Swagger’s documentation is easy to read, understand and allows you to test calls directly from your browser!</p>
 
@@ -108,37 +108,38 @@ description: </span><span class="s2">"Dwarf Tracker endpoints"</span>
 <span class="ss">schemes:
 </span><span class="o">-</span> <span class="s2">"http"</span>
 <span class="ss">produces:
-</span><span class="o">-</span> <span class="s2">"application/json"</span><span class="o">&lt;</span><span class="sr">/pre&gt;
-The above block of code is laying down some baseline information about our API. It's specifying the version of the Open API specification we're using (currently the latest 2.0) as well as some other basic information about our API like a description and title. The &lt;span style="color: #0000ff;"&gt;&lt;strong&gt;host&lt;/s</span><span class="n">trong</span><span class="o">&gt;</span><span class="err"> </span><span class="o">&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"color: #000000;"</span><span class="o">&gt;</span><span class="n">is</span> <span class="n">very</span> <span class="n">important</span> <span class="n">information</span> <span class="n">here</span><span class="p">,</span> <span class="n">because</span> <span class="n">it</span> <span class="n">specifies</span> <span class="n">the</span> <span class="n">hostname</span> <span class="n">and</span> <span class="n">port</span> <span class="n">we</span><span class="s1">'ll be making network requests against (we'</span><span class="n">re</span> <span class="n">using</span> <span class="n">localhost</span> <span class="k">for</span> <span class="n">this</span> <span class="n">demo</span><span class="p">,</span> <span class="no">I</span><span class="s1">'ll cover how to set that up later).&lt;/span&gt;&lt;/span&gt;
+</span><span class="o">-</span> <span class="s2">"application/json"</span></code></pre></figure>
 
-Next we'</span><span class="n">ll</span> <span class="n">set</span> <span class="n">up</span> <span class="n">the</span> <span class="n">different</span><span class="err"> </span><span class="o">&lt;</span><span class="n">strong</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"color: #0000ff;"</span><span class="o">&gt;</span><span class="n">paths</span><span class="err"> </span><span class="o">&lt;</span><span class="sr">/span&gt;&lt;/s</span><span class="n">trong</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"color: #0000ff;"</span><span class="o">&gt;&lt;</span><span class="n">span</span> <span class="n">style</span><span class="o">=</span><span class="s2">"color: #000000;"</span><span class="o">&gt;</span><span class="k">for</span> <span class="n">our</span> <span class="no">API</span><span class="o">.</span> <span class="no">Paste</span> <span class="n">the</span> <span class="k">next</span> <span class="n">block</span> <span class="n">of</span> <span class="n">code</span> <span class="n">directly</span> <span class="n">beneath</span> <span class="n">the</span> <span class="n">previous</span> <span class="n">block</span> <span class="n">to</span> <span class="n">continue</span> <span class="n">creating</span> <span class="n">our</span><span class="err"> </span><span class="no">Swagger</span> <span class="no">API</span> <span class="n">specification</span><span class="p">.</span><span class="nf">&lt;</span><span class="o">/</span><span class="n">span</span><span class="o">&gt;&lt;</span><span class="sr">/span&gt;
-&lt;pre class="lang:yaml decode:true" title="swagger.yml"&gt;paths:
-/</span><span class="ss">dwarf:
+<p>The above block of code is laying down some baseline information about our API. It’s specifying the version of the Open API specification we’re using (currently the latest 2.0) as well as some other basic information about our API like a description and title. The <code class="highlighter-rouge">host</code> is very important information here, because it specifies the hostname and port we’ll be making network requests against (we’re using localhost for this demo, I’ll cover how to set that up later).</p>
+
+<p>Next we’ll set up the different <code class="highlighter-rouge">paths</code> for our API. Paste the next block of code directly beneath the previous block to continue creating our Swagger API specification.</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">/dwarf:
 post:
-summary: </span><span class="s2">"Post a new Dwarf"</span>
-<span class="ss">description: </span><span class="s2">"endpoint for posting a newly created dwarf to the server"</span>
-<span class="ss">operationId: </span><span class="s2">"postDwarf"</span>
-<span class="ss">parameters:
-</span><span class="o">-</span> <span class="ss">name: </span><span class="n">payload</span>
-<span class="ss">in: </span><span class="n">body</span>
-<span class="ss">required: </span><span class="kp">true</span>
-<span class="ss">description: </span><span class="no">A</span> <span class="n">single</span> <span class="no">JSON</span> <span class="n">object</span> <span class="n">containing</span> <span class="n">the</span> <span class="n">dwarf</span> <span class="n">definition</span>
-<span class="ss">schema:
-</span><span class="vg">$ref</span><span class="p">:</span> <span class="s1">'#/definitions/Dwarf'</span>
-<span class="ss">responses: 
-</span><span class="mi">200</span><span class="p">:</span>
-<span class="ss">description: </span><span class="n">indicates</span> <span class="n">a</span> <span class="n">successful</span> <span class="n">update</span>
-<span class="ss">get:
-summary: </span><span class="s2">"All dwarves"</span>
-<span class="ss">description: </span><span class="s2">"Gets all dwarves"</span>
-<span class="ss">operationId: </span><span class="n">getDwarves</span>
-<span class="ss">responses:
-</span><span class="mi">200</span><span class="p">:</span>
-<span class="ss">description: </span><span class="s2">"An array of dwarf objects"</span>
-<span class="ss">schema:
-type: </span><span class="n">array</span>
-<span class="ss">items:
-</span><span class="vg">$ref</span><span class="p">:</span> <span class="s1">'#/definitions/Dwarf'</span></code></pre></figure>
+summary: "Post a new Dwarf"
+description: "endpoint for posting a newly created dwarf to the server"
+operationId: "postDwarf"
+parameters:
+- name: payload
+in: body
+required: true
+description: A single JSON object containing the dwarf definition
+schema:
+$ref: '#/</span><span class="n">definitions</span><span class="o">/</span><span class="no">Dwarf</span><span class="s1">'
+responses: 
+200:
+description: indicates a successful update
+get:
+summary: "All dwarves"
+description: "Gets all dwarves"
+operationId: getDwarves
+responses:
+200:
+description: "An array of dwarf objects"
+schema:
+type: array
+items:
+$ref: '</span><span class="c1">#/definitions/Dwarf'</span></code></pre></figure>
 
 <p>Now our API has a single route: /dwarf
 When we call this endpoint we would use the url: http://localhost:3000/dwarf</p>
@@ -196,7 +197,7 @@ Since you may need to run the next script often (anytime the swagger spec chang
 
 <p>Assuming everything worked as expected you should see a number of new files in your SwaggerClient folder.</p>
 
-<p><img class="wp-image-181 aligncenter" src="http://eviltechiescum.com/wp-content/uploads/2016/11/Screen-Shot-2016-11-24-at-12.05.49-AM-300x226.png" alt="screen-shot-2016-11-24-at-12-05-49-am" width="693" height="522" /></p>
+<p><img src="/blog/assets/Screen Shot 2016-11-24 at 12.05.49 AM.png" alt="My helpful screenshot" /></p>
 
 <p>If you’re SwaggerClient Folder looks like the one above you’re in good shape.</p>
 
@@ -208,7 +209,7 @@ Since you may need to run the next script often (anytime the swagger spec chang
 
 <p>Make sure the script has the executable permission, and run the script.</p>
 
-<p><img class=" wp-image-184 aligncenter" src="http://eviltechiescum.com/wp-content/uploads/2016/11/Screen-Shot-2016-11-24-at-12.34.46-AM-300x230.png" alt="screen-shot-2016-11-24-at-12-34-46-am" width="539" height="413" /></p>
+<p><img src="/blog/assets/Screen Shot 2016-11-24 at 12.34.46 AM.png" alt="My helpful screenshot" /></p>
 
 <p>You should now have files in your SwaggerServer folder that resemble the files above.
 ##Starting and Running the Server</p>
@@ -228,13 +229,13 @@ Swagger-ui is available on http://localhost:3000/docs</code></p>
 
 <p>Open <code class="highlighter-rouge">http://localhost:3000/docs</code> in your browser do view the documentation for our API.</p>
 
-<p><img class=" wp-image-185 aligncenter" src="http://eviltechiescum.com/wp-content/uploads/2016/11/Screen-Shot-2016-11-24-at-12.45.40-AM-300x71.png" alt="screen-shot-2016-11-24-at-12-45-40-am" width="710" height="168" /></p>
+<p><img src="/blog/assets/Screen Shot 2016-11-24 at 12.45.40 AM.png" alt="My helpful screenshot" /></p>
 
 <p>At this you can send POST and GET requests to the API. You will get hardcoded responses, but that’s good enough for now!</p>
 
 <p>Sending a GET request to http://localhost:3000/dwarf via SwaggerUI will result in this response:</p>
 
-<p><img class=" wp-image-186 aligncenter" src="http://eviltechiescum.com/wp-content/uploads/2016/11/Screen-Shot-2016-11-24-at-12.53.06-AM-300x135.png" alt="screen-shot-2016-11-24-at-12-53-06-am" width="825" height="371" /></p>
+<p><img src="/blog/assets/Screen Shot 2016-11-24 at 12.53.06 AM.png" alt="My helpful screenshot" /></p>
 
 <p>We are receiving a response with an array of Dwarf objects, just as we’d defined earlier in our swagger.yml file.</p>
 
@@ -244,11 +245,11 @@ Swagger-ui is available on http://localhost:3000/docs</code></p>
 
 <p>Open Xcode and create a new Xcode project. Create a “Single View Application” and make sure you save the project inside the same folder you’ve saved your SwaggerClient folder in. My folder structure looks like this after inserting my Xcode Project files.</p>
 
-<p><img class=" wp-image-190 aligncenter" src="http://eviltechiescum.com/wp-content/uploads/2016/11/Screen-Shot-2016-11-24-at-9.37.32-PM-300x216.png" alt="screen-shot-2016-11-24-at-9-37-32-pm" width="365" height="263" /></p>
+<p><img src="/blog/assets/Screen Shot 2016-11-24 at 9.37.32 PM.png" alt="My helpful screenshot" /></p>
 
 <p>Once you’ve created the Xcode project it’s time to drag the Swagger Client code into the project and make sure you de-select “copy items if needed”so we don’t create a second copy of the directory.</p>
 
-<p><img class=" wp-image-192 aligncenter" src="http://eviltechiescum.com/wp-content/uploads/2016/11/Screen_Shot_2016-11-24_at_9_26_56_PM-300x83.png" alt="screen_shot_2016-11-24_at_9_26_56_pm" width="893" height="247" /></p>
+<p><img src="/blog/assets/Screen Shot 2016-11-24 at 9.26.56 PM.png" alt="My helpful screenshot" /></p>
 
 <p>The code we generated from Swagger uses the AlamoFire library to make the network requests we’ll need to communicate with the server, so we’ll need to install that next. For further installation instructions follow the examples on the <a href="https://github.com/Alamofire/Alamofire#installation">AlamoFire Github page</a>.</p>
 
