@@ -1,19 +1,5 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2016-11-26T12:40:50-08:00</updated><id>/blog//</id><title type="html">Dave’s Code Blog</title><subtitle>My blog for all things I'm coding. I'll post tutorials about things I'm working on and things I'm interested in. That will mostly include Swift, NodeJS, AWS and Unity VR development.
-</subtitle><entry><title type="html">Automating Swift Middleware With Swagger Codegen</title><link href="/blog/swift/swagger/codegen/2016/11/25/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Automating Swift Middleware With Swagger Codegen" /><published>2016-11-25T21:43:59-08:00</published><updated>2016-11-25T21:43:59-08:00</updated><id>/blog/swift/swagger/codegen/2016/11/25/welcome-to-jekyll</id><content type="html" xml:base="/blog/swift/swagger/codegen/2016/11/25/welcome-to-jekyll.html">&lt;p&gt;You’ll find this post in your &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run &lt;code class=&quot;highlighter-rouge&quot;&gt;jekyll serve&lt;/code&gt;, which launches a web server and auto-regenerates your site when a file is updated.&lt;/p&gt;
-
-&lt;p&gt;To add new posts, simply add a file in the &lt;code class=&quot;highlighter-rouge&quot;&gt;_posts&lt;/code&gt; directory that follows the convention &lt;code class=&quot;highlighter-rouge&quot;&gt;YYYY-MM-DD-name-of-post.ext&lt;/code&gt; and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.&lt;/p&gt;
-
-&lt;p&gt;Jekyll also offers powerful support for code snippets:&lt;/p&gt;
-
-&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-ruby&quot; data-lang=&quot;ruby&quot;&gt;&lt;span class=&quot;k&quot;&gt;def&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-  &lt;span class=&quot;nb&quot;&gt;puts&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Hi, &lt;/span&gt;&lt;span class=&quot;si&quot;&gt;#{&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;si&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;
-&lt;span class=&quot;k&quot;&gt;end&lt;/span&gt;
-&lt;span class=&quot;n&quot;&gt;print_hi&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Tom'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt;
-&lt;span class=&quot;c1&quot;&gt;#=&amp;gt; prints 'Hi, Tom' to STDOUT.&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-
-&lt;p&gt;Check out the &lt;a href=&quot;http://jekyllrb.com/docs/home&quot;&gt;Jekyll docs&lt;/a&gt; for more info on how to get the most out of Jekyll. File all bugs/feature requests at &lt;a href=&quot;https://github.com/jekyll/jekyll&quot;&gt;Jekyll’s GitHub repo&lt;/a&gt;. If you have questions, you can ask them on &lt;a href=&quot;https://talk.jekyllrb.com/&quot;&gt;Jekyll Talk&lt;/a&gt;.&lt;/p&gt;
-
-&lt;p&gt;If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) &lt;a href=&quot;https://github.com/swagger-api/swagger-ui&quot;&gt;Swagger UI&lt;/a&gt; documentation.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2016-11-26T17:40:36-08:00</updated><id>/blog//</id><title type="html">Dave’s Code Blog</title><subtitle>My blog for all things I'm coding. I'll post tutorials about things I'm working on and things I'm interested in. That will mostly include Swift, NodeJS, AWS and Unity VR development.
+</subtitle><entry><title type="html">Automating Swift Middleware With Swagger Codegen</title><link href="/blog/swift/swagger/codegen/2016/11/25/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Automating Swift Middleware With Swagger Codegen" /><published>2016-11-25T21:43:59-08:00</published><updated>2016-11-25T21:43:59-08:00</updated><id>/blog/swift/swagger/codegen/2016/11/25/welcome-to-jekyll</id><content type="html" xml:base="/blog/swift/swagger/codegen/2016/11/25/welcome-to-jekyll.html">&lt;p&gt;If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) &lt;a href=&quot;https://github.com/swagger-api/swagger-ui&quot;&gt;Swagger UI&lt;/a&gt; documentation.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
@@ -97,24 +83,36 @@ type: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;
 &lt;span class=&quot;ss&quot;&gt;id:
 type: &lt;/span&gt;&lt;span class=&quot;n&quot;&gt;string&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;##Prerequisites
-Now that we have the swagger specification that defines our interaction between our server-side code and our client-side code we’re ready to start generating them both! But first we’ll need to download a few tools to help us out, so make sure you have these installed before you proceed any farther:&lt;/p&gt;
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+&lt;p&gt;Now that we have the swagger specification that defines our interaction between our server-side code and our client-side code we’re ready to start generating them both! But first we’ll need to download a few tools to help us out, so make sure you have these installed before you proceed any farther:&lt;/p&gt;
 
 &lt;ul&gt;
   &lt;li&gt;Xcode 8.*&lt;/li&gt;
   &lt;li&gt;NodeJS v 0.12.*&lt;/li&gt;
+  &lt;li&gt;Apache Maven 3.*&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;Next you want to install Swagger Codegen. The easiest way to install Swagger Codegen on a mac is:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;$ brew install swagger-codegen&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Next you want to install Swagger Codegen. The easiest way to install Swagger Codegen on a mac is via Homebrew… HOWEVER, we cannot use this method for installation when creating generating code for Swift3.
+The .jar file that homebrew will install is built from the latest release branch of Swagger which at the time this tutorial was written does not support Swift3.&lt;/p&gt;
 
-&lt;p&gt;If you need further install instructions check here: https://github.com/swagger-api/swagger-codegen#prerequisites
-##Client-side Code Generation
-Since you may need to run the next script often (anytime the swagger spec changes) you’re going to want to put the following script in it’s own shell script file. The following command will generate your front end swift code when run, but right now we’re just going to save it for easy future execution.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;$ echo &quot;swagger-codegen generate -i swagger.yml -l swift -o SwaggerClient&quot; &amp;gt; client_build.sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;First we need to clone the git repository with the branch that supports Swift3 so clone this repo to a new directory (a different directory than your DwarfTracker project directory).&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git clone https://github.com/hexelon/swagger-codegen.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the repo has been cloned, checkout the swift-3 branch and build the .jar file.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git checkout swift-3&lt;/code&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ mvn clean install&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we’ve built the .jar file we’ll need to generate Swift3 code. You’ll find the .jar file we need at this path: &lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar&lt;/code&gt;
+Copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen-cli.jar&lt;/code&gt; file and paste into into your top level DwarfTracker project folder.&lt;/p&gt;
+
+&lt;h2 id=&quot;client-side-code-generation&quot;&gt;Client-side Code Generation&lt;/h2&gt;
+&lt;p&gt;Since you may need to run the next script often (anytime the swagger spec changes) you’re going to want to put the following script in it’s own shell script file. The following command will generate your front end swift code when run, but right now we’re just going to save it for easy future execution.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ echo &quot;java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swift -o SwaggerClient&quot; &amp;gt; client_build.sh&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Open the client_build.sh file in your favorite text editor and you should see this:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen generate -i swagger.yml -l swift -o SwaggerClient&lt;/code&gt;&lt;/p&gt;
+&lt;code class=&quot;highlighter-rouge&quot;&gt;java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swift -o SwaggerClient&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;As you can see the above command will reference the .yml API specification we build a minute ago and it will out put an SDK based on whatever language we specify with the -l parameter (in this case swift). Finally -o specifies an output directory we haven’t yet created… so create an output directory.&lt;/p&gt;
 
@@ -134,18 +132,18 @@ Since you may need to run the next script often (anytime the swagger spec chang
 
 &lt;p&gt;If you’re SwaggerClient Folder looks like the one above you’re in good shape.&lt;/p&gt;
 
-&lt;p&gt;##Server-side Code Generation&lt;/p&gt;
+&lt;h2 id=&quot;server-side-code-generation&quot;&gt;Server-side Code Generation&lt;/h2&gt;
 
 &lt;p&gt;Follow the same steps again, but for the server-side code this time. Create a new folder for the swagger server code named &lt;code class=&quot;highlighter-rouge&quot;&gt;SwaggerServer&lt;/code&gt; and replace &lt;code class=&quot;highlighter-rouge&quot;&gt;swift&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;nodejs-server&lt;/code&gt; in the build script as so.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ echo &quot;swagger-codegen generate -i swagger.yml -l nodejs-server -o SwaggerServer&quot; &amp;gt; server_build.sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ echo &quot;java -jar swagger-codegen-cli.jar generate -i swagger.yml -l nodejs-server -o SwaggerServer&quot; &amp;gt; server_build.sh&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Make sure the script has the executable permission, and run the script.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-24 at 12.34.46 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;You should now have files in your SwaggerServer folder that resemble the files above.
-##Starting and Running the Server&lt;/p&gt;
+&lt;p&gt;You should now have files in your SwaggerServer folder that resemble the files above.&lt;/p&gt;
+&lt;h2 id=&quot;starting-and-running-the-server&quot;&gt;Starting and Running the Server&lt;/h2&gt;
 
 &lt;p&gt;First we need to install the any packages our Swagger Server needs to run.&lt;/p&gt;
 
@@ -160,7 +158,7 @@ Since you may need to run the next script often (anytime the swagger spec chang
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Your server is listening on port 3000 (http://localhost:3000)
 Swagger-ui is available on http://localhost:3000/docs&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000/docs&lt;/code&gt; in your browser do view the documentation for our API.&lt;/p&gt;
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000/docs&lt;/code&gt; in your browser to view the documentation for our API.&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-24 at 12.45.40 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
@@ -172,18 +170,170 @@ Swagger-ui is available on http://localhost:3000/docs&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;We are receiving a response with an array of Dwarf objects, just as we’d defined earlier in our swagger.yml file.&lt;/p&gt;
 
-&lt;p&gt;##Running the iOS App&lt;/p&gt;
+&lt;h2 id=&quot;structuring-the-ios-app&quot;&gt;Structuring the iOS App&lt;/h2&gt;
 
 &lt;p&gt;Now that the server is running and accepting requests, we’re ready to start building the rest of the iOS app. So far we’ve auto-generated the middleware and networking code that we’ll be using to communicate with the our backend service, but we still need to create a new Xcode project and pull the networking code we generated earlier into the final app.&lt;/p&gt;
 
 &lt;p&gt;Open Xcode and create a new Xcode project. Create a “Single View Application” and make sure you save the project inside the same folder you’ve saved your SwaggerClient folder in. My folder structure looks like this after inserting my Xcode Project files.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-24 at 9.37.32 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-26 at 1.40.40 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;Once you’ve created the Xcode project it’s time to drag the Swagger Client code into the project and make sure you de-select “copy items if needed”so we don’t create a second copy of the directory.&lt;/p&gt;
+&lt;p&gt;Once you’ve created the Xcode project it’s time to drag the Swagger Client code into the project and make sure you de-select “copy items if needed”so we don’t create a second copy of the directory. Also, make sure you have ‘Create groups’ selected.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-24 at 9.26.56 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-26 at 1.45.51 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;
+&lt;img src=&quot;/blog/assets/Screen_Shot_2016-11-26_at_1_46_55_PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;alamofire-instalation&quot;&gt;Alamofire Instalation&lt;/h2&gt;
 
 &lt;p&gt;The code we generated from Swagger uses the AlamoFire library to make the network requests we’ll need to communicate with the server, so we’ll need to install that next. For further installation instructions follow the examples on the &lt;a href=&quot;https://github.com/Alamofire/Alamofire#installation&quot;&gt;AlamoFire Github page&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/image1.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;</content><summary type="html">You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run jekyll serve, which launches a web server and auto-regenerates your site when a file is updated.</summary></entry></feed>
+&lt;p&gt;If you used cocoapods to install cocoapods ensure that you’ve opened the .xcworkspace instead of the .xcodeproj after cocoapod installation.&lt;/p&gt;
+
+&lt;p&gt;Now we’re ready to use some of the code we’ve generated. In Xcode open the &lt;code class=&quot;highlighter-rouge&quot;&gt;AppDelegate.swift&lt;/code&gt; file and find the &lt;code class=&quot;highlighter-rouge&quot;&gt;didFinishLaunchingWithOptions&lt;/code&gt; method at the top of the file.
+We’re going to print out the array of Dwarves currently being returned by the backend service just to make sure everything is currently setup correctly.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UIApplication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;didFinishLaunchingWithOptions&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;launchOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;UIApplicationLaunchOptionsKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]?)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Bool&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Override point for customization after application launch.&lt;/span&gt;
+        
+       &lt;span class=&quot;kt&quot;&gt;DefaultAPI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getDwarves&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dwarves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;dwarves&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dwarves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dwarves&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;encodeToJSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Run the app and watch the log for results. You should see a similar print out to what you observed in swagger UI.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;age&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So there we are! Pretty cool. We didn’t have to parse any json, we got an actual Swift object back from the server and we didn’t even have to write a network call!
+So now in order to make Our DwarfTracker do something more than return data we’re going to need to do a bit more work, but we’ve come a long way already and the app is working pretty well already.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-server-controllers&quot;&gt;Setting Up Server Controllers&lt;/h2&gt;
+
+&lt;p&gt;So we haven’t actually posted any Dwarves to our service yet so how are we receiving that first Dwarf named “aeiou”? 
+Swagger code is great at generating code on the front end to do just about everything we need, but on the backend a bit more work is involved.
+If you look at the &lt;code class=&quot;highlighter-rouge&quot;&gt;DefaultService.js&lt;/code&gt; file you’ll see that our controller is currently returning a hardcoded example for our getDwarves route.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;s1&quot;&gt;'use strict'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDwarves&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/**
+   * parameters expected in the args:
+  **/&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;examples&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;examples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'application/json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;age&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;examples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Content-Type'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application/json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;examples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;examples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;It’s time to update that code to actually return a Dwarf from our Database and for our Post Route to actually save a Dwarf to our DB.&lt;/p&gt;
+
+&lt;p&gt;If you don’t have MongoDB installed already here is a great tutorial for installing MongoDB from Treehouse: http://treehouse.github.io/installation-guides/mac/mongo-mac.html&lt;/p&gt;
+
+&lt;p&gt;Once you’ve installed MongoDB start the Daemon by running:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ mongod&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We’re also going to install mongoose which will give a really simple and elegant way to interact with our Mongo database.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm install mongoose --save&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that Mongoose is installed, create a &lt;code class=&quot;highlighter-rouge&quot;&gt;models&lt;/code&gt; folder and create a new file inside named &lt;code class=&quot;highlighter-rouge&quot;&gt;DwarfModel.js&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Paste this code inside &lt;code class=&quot;highlighter-rouge&quot;&gt;DwarfModel.js&lt;/code&gt; to define our DwarfModel to match the one we defined in our swagger spec. (Yes it would be nice to generate this via swagger and if you’ve done this let me know in the comments!)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mongoose'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dwarfschema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dwarf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'dwarf'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dwarfschema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dwarf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now heading back to our &lt;code class=&quot;highlighter-rouge&quot;&gt;DefaultController.js&lt;/code&gt; we can replace the entire file with the code below to make our backend dynamically create and read our dwarfs!&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;s1&quot;&gt;'use strict'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mongoose&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dwarf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'../models/DwarfModel'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDwarves&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/**
+   * parameters expected in the args:
+  **/&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Content-Type'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application/json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;Dwarf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;postDwarf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/**
+   * parameters expected in the args:
+  * payload (Dwarf)
+  **/&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// no response value expected for this operation&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Content-Type'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application/json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;Dwarf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;Heading back to our top level index.js file we’ll now import mongoose and connect to our DB. Paste this code directlybelow the last import statement at the top of the file (which should be &lt;code class=&quot;highlighter-rouge&quot;&gt;var serverPort = 3000;&lt;/code&gt;)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mongoose'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mongodb://localhost:27017/DwarfGenerator'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+&lt;p&gt;}&lt;/p&gt;
+
+&lt;p&gt;Now we can restart the server by running&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm run start&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now when we open the documentation at &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000/docs&lt;/code&gt; we should be able to &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;POST&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/dwarf&lt;/code&gt; endpoint as expected.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;code class=&quot;highlighter-rouge&quot;&gt;POST /dwarf&lt;/code&gt; documentation go ahead and post a new Dwarf to your server. In the payload box paste:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Gimli&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;age&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;100&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Hit the “Try it out!” button and your new Dwarf should be posted to the server!&lt;/p&gt;
+
+&lt;p&gt;That’s it! Now we have a working backend that can both save dwarves we post to it and return a list of all of our dwarves!&lt;/p&gt;
+
+&lt;h2 id=&quot;finishing-up&quot;&gt;Finishing Up&lt;/h2&gt;
+
+&lt;p&gt;Now it’s pretty simple to finish up the app from here. There are plenty of tutorials that show you how to display things in a UITableView so I won’t go into detail here.&lt;/p&gt;
+
+&lt;p&gt;But here is an example of the (extremely simple!) finished app:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-26 at 5.24.10 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Also, you can download a finished project with the full source code here: https://github.com/normand1/DwarfTracker&lt;/p&gt;</content><summary type="html">If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) Swagger UI documentation.</summary></entry></feed>

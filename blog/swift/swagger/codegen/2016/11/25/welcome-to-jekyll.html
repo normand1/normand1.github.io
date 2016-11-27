@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Automating Swift Middleware With Swagger Codegen</title>
-  <meta name="description" content="You’ll find this post in your _posts directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different wa...">
+  <meta name="description" content="If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) Swagger UI documentation.">
 
   <link rel="stylesheet" href="/blog/assets/main.css">
   <link rel="canonical" href="/blog/swift/swagger/codegen/2016/11/25/welcome-to-jekyll.html">
@@ -66,21 +66,7 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>You’ll find this post in your <code class="highlighter-rouge">_posts</code> directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run <code class="highlighter-rouge">jekyll serve</code>, which launches a web server and auto-regenerates your site when a file is updated.</p>
-
-<p>To add new posts, simply add a file in the <code class="highlighter-rouge">_posts</code> directory that follows the convention <code class="highlighter-rouge">YYYY-MM-DD-name-of-post.ext</code> and includes the necessary front matter. Take a look at the source for this post to get an idea about how it works.</p>
-
-<p>Jekyll also offers powerful support for code snippets:</p>
-
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="k">def</span> <span class="nf">print_hi</span><span class="p">(</span><span class="nb">name</span><span class="p">)</span>
-  <span class="nb">puts</span> <span class="s2">"Hi, </span><span class="si">#{</span><span class="nb">name</span><span class="si">}</span><span class="s2">"</span>
-<span class="k">end</span>
-<span class="n">print_hi</span><span class="p">(</span><span class="s1">'Tom'</span><span class="p">)</span>
-<span class="c1">#=&gt; prints 'Hi, Tom' to STDOUT.</span></code></pre></figure>
-
-<p>Check out the <a href="http://jekyllrb.com/docs/home">Jekyll docs</a> for more info on how to get the most out of Jekyll. File all bugs/feature requests at <a href="https://github.com/jekyll/jekyll">Jekyll’s GitHub repo</a>. If you have questions, you can ask them on <a href="https://talk.jekyllrb.com/">Jekyll Talk</a>.</p>
-
-<p>If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) <a href="https://github.com/swagger-api/swagger-ui">Swagger UI</a> documentation.</p>
+    <p>If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) <a href="https://github.com/swagger-api/swagger-ui">Swagger UI</a> documentation.</p>
 
 <p><img src="/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png" alt="My helpful screenshot" /></p>
 
@@ -164,24 +150,36 @@ type: </span><span class="n">string</span>
 <span class="ss">id:
 type: </span><span class="n">string</span></code></pre></figure>
 
-<p>##Prerequisites
-Now that we have the swagger specification that defines our interaction between our server-side code and our client-side code we’re ready to start generating them both! But first we’ll need to download a few tools to help us out, so make sure you have these installed before you proceed any farther:</p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Now that we have the swagger specification that defines our interaction between our server-side code and our client-side code we’re ready to start generating them both! But first we’ll need to download a few tools to help us out, so make sure you have these installed before you proceed any farther:</p>
 
 <ul>
   <li>Xcode 8.*</li>
   <li>NodeJS v 0.12.*</li>
+  <li>Apache Maven 3.*</li>
 </ul>
 
-<p>Next you want to install Swagger Codegen. The easiest way to install Swagger Codegen on a mac is:
-<code class="highlighter-rouge">$ brew install swagger-codegen</code></p>
+<p>Next you want to install Swagger Codegen. The easiest way to install Swagger Codegen on a mac is via Homebrew… HOWEVER, we cannot use this method for installation when creating generating code for Swift3.
+The .jar file that homebrew will install is built from the latest release branch of Swagger which at the time this tutorial was written does not support Swift3.</p>
 
-<p>If you need further install instructions check here: https://github.com/swagger-api/swagger-codegen#prerequisites
-##Client-side Code Generation
-Since you may need to run the next script often (anytime the swagger spec changes) you’re going to want to put the following script in it’s own shell script file. The following command will generate your front end swift code when run, but right now we’re just going to save it for easy future execution.
-<code class="highlighter-rouge">$ echo "swagger-codegen generate -i swagger.yml -l swift -o SwaggerClient" &gt; client_build.sh</code></p>
+<p>First we need to clone the git repository with the branch that supports Swift3 so clone this repo to a new directory (a different directory than your DwarfTracker project directory).</p>
+
+<p><code class="highlighter-rouge">$ git clone https://github.com/hexelon/swagger-codegen.git</code></p>
+
+<p>Once the repo has been cloned, checkout the swift-3 branch and build the .jar file.</p>
+
+<p><code class="highlighter-rouge">$ git checkout swift-3</code>
+<code class="highlighter-rouge">$ mvn clean install</code></p>
+
+<p>Now we’ve built the .jar file we’ll need to generate Swift3 code. You’ll find the .jar file we need at this path: <code class="highlighter-rouge">swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar</code>
+Copy the <code class="highlighter-rouge">swagger-codegen-cli.jar</code> file and paste into into your top level DwarfTracker project folder.</p>
+
+<h2 id="client-side-code-generation">Client-side Code Generation</h2>
+<p>Since you may need to run the next script often (anytime the swagger spec changes) you’re going to want to put the following script in it’s own shell script file. The following command will generate your front end swift code when run, but right now we’re just going to save it for easy future execution.
+<code class="highlighter-rouge">$ echo "java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swift -o SwaggerClient" &gt; client_build.sh</code></p>
 
 <p>Open the client_build.sh file in your favorite text editor and you should see this:
-<code class="highlighter-rouge">swagger-codegen generate -i swagger.yml -l swift -o SwaggerClient</code></p>
+<code class="highlighter-rouge">java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swift -o SwaggerClient</code></p>
 
 <p>As you can see the above command will reference the .yml API specification we build a minute ago and it will out put an SDK based on whatever language we specify with the -l parameter (in this case swift). Finally -o specifies an output directory we haven’t yet created… so create an output directory.</p>
 
@@ -201,18 +199,18 @@ Since you may need to run the next script often (anytime the swagger spec chang
 
 <p>If you’re SwaggerClient Folder looks like the one above you’re in good shape.</p>
 
-<p>##Server-side Code Generation</p>
+<h2 id="server-side-code-generation">Server-side Code Generation</h2>
 
 <p>Follow the same steps again, but for the server-side code this time. Create a new folder for the swagger server code named <code class="highlighter-rouge">SwaggerServer</code> and replace <code class="highlighter-rouge">swift</code> with <code class="highlighter-rouge">nodejs-server</code> in the build script as so.</p>
 
-<p><code class="highlighter-rouge">$ echo "swagger-codegen generate -i swagger.yml -l nodejs-server -o SwaggerServer" &gt; server_build.sh</code></p>
+<p><code class="highlighter-rouge">$ echo "java -jar swagger-codegen-cli.jar generate -i swagger.yml -l nodejs-server -o SwaggerServer" &gt; server_build.sh</code></p>
 
 <p>Make sure the script has the executable permission, and run the script.</p>
 
 <p><img src="/blog/assets/Screen Shot 2016-11-24 at 12.34.46 AM.png" alt="My helpful screenshot" /></p>
 
-<p>You should now have files in your SwaggerServer folder that resemble the files above.
-##Starting and Running the Server</p>
+<p>You should now have files in your SwaggerServer folder that resemble the files above.</p>
+<h2 id="starting-and-running-the-server">Starting and Running the Server</h2>
 
 <p>First we need to install the any packages our Swagger Server needs to run.</p>
 
@@ -227,7 +225,7 @@ Since you may need to run the next script often (anytime the swagger spec chang
 <p><code class="highlighter-rouge">Your server is listening on port 3000 (http://localhost:3000)
 Swagger-ui is available on http://localhost:3000/docs</code></p>
 
-<p>Open <code class="highlighter-rouge">http://localhost:3000/docs</code> in your browser do view the documentation for our API.</p>
+<p>Open <code class="highlighter-rouge">http://localhost:3000/docs</code> in your browser to view the documentation for our API.</p>
 
 <p><img src="/blog/assets/Screen Shot 2016-11-24 at 12.45.40 AM.png" alt="My helpful screenshot" /></p>
 
@@ -239,21 +237,173 @@ Swagger-ui is available on http://localhost:3000/docs</code></p>
 
 <p>We are receiving a response with an array of Dwarf objects, just as we’d defined earlier in our swagger.yml file.</p>
 
-<p>##Running the iOS App</p>
+<h2 id="structuring-the-ios-app">Structuring the iOS App</h2>
 
 <p>Now that the server is running and accepting requests, we’re ready to start building the rest of the iOS app. So far we’ve auto-generated the middleware and networking code that we’ll be using to communicate with the our backend service, but we still need to create a new Xcode project and pull the networking code we generated earlier into the final app.</p>
 
 <p>Open Xcode and create a new Xcode project. Create a “Single View Application” and make sure you save the project inside the same folder you’ve saved your SwaggerClient folder in. My folder structure looks like this after inserting my Xcode Project files.</p>
 
-<p><img src="/blog/assets/Screen Shot 2016-11-24 at 9.37.32 PM.png" alt="My helpful screenshot" /></p>
+<p><img src="/blog/assets/Screen Shot 2016-11-26 at 1.40.40 PM.png" alt="My helpful screenshot" /></p>
 
-<p>Once you’ve created the Xcode project it’s time to drag the Swagger Client code into the project and make sure you de-select “copy items if needed”so we don’t create a second copy of the directory.</p>
+<p>Once you’ve created the Xcode project it’s time to drag the Swagger Client code into the project and make sure you de-select “copy items if needed”so we don’t create a second copy of the directory. Also, make sure you have ‘Create groups’ selected.</p>
 
-<p><img src="/blog/assets/Screen Shot 2016-11-24 at 9.26.56 PM.png" alt="My helpful screenshot" /></p>
+<p><img src="/blog/assets/Screen Shot 2016-11-26 at 1.45.51 PM.png" alt="My helpful screenshot" />
+<img src="/blog/assets/Screen_Shot_2016-11-26_at_1_46_55_PM.png" alt="My helpful screenshot" /></p>
+
+<h2 id="alamofire-instalation">Alamofire Instalation</h2>
 
 <p>The code we generated from Swagger uses the AlamoFire library to make the network requests we’ll need to communicate with the server, so we’ll need to install that next. For further installation instructions follow the examples on the <a href="https://github.com/Alamofire/Alamofire#installation">AlamoFire Github page</a>.</p>
 
-<p><img src="/blog/assets/image1.png" alt="My helpful screenshot" /></p>
+<p>If you used cocoapods to install cocoapods ensure that you’ve opened the .xcworkspace instead of the .xcodeproj after cocoapod installation.</p>
+
+<p>Now we’re ready to use some of the code we’ve generated. In Xcode open the <code class="highlighter-rouge">AppDelegate.swift</code> file and find the <code class="highlighter-rouge">didFinishLaunchingWithOptions</code> method at the top of the file.
+We’re going to print out the array of Dwarves currently being returned by the backend service just to make sure everything is currently setup correctly.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift">    <span class="kd">func</span> <span class="nf">application</span><span class="p">(</span><span class="n">_</span> <span class="nv">application</span><span class="p">:</span> <span class="kt">UIApplication</span><span class="p">,</span> <span class="n">didFinishLaunchingWithOptions</span> <span class="nv">launchOptions</span><span class="p">:</span> <span class="p">[</span><span class="kt">UIApplicationLaunchOptionsKey</span><span class="p">:</span> <span class="kt">Any</span><span class="p">]?)</span> <span class="o">-&gt;</span> <span class="kt">Bool</span> <span class="p">{</span>
+        <span class="c1">// Override point for customization after application launch.</span>
+        
+       <span class="kt">DefaultAPI</span><span class="o">.</span><span class="n">getDwarves</span> <span class="p">{</span> <span class="p">(</span><span class="n">dwarves</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span> <span class="k">in</span>
+            <span class="k">if</span> <span class="k">let</span> <span class="nv">dwarves</span> <span class="o">=</span> <span class="n">dwarves</span><span class="p">{</span>
+                <span class="nf">print</span><span class="p">(</span><span class="n">dwarves</span><span class="o">.</span><span class="n">first</span><span class="o">!.</span><span class="nf">encodeToJSON</span><span class="p">())</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+        
+        <span class="k">return</span> <span class="kc">true</span>
+    <span class="p">}</span></code></pre></figure>
+
+<p>Run the app and watch the log for results. You should see a similar print out to what you observed in swagger UI.</p>
+
+<figure class="highlight"><pre><code class="language-swift" data-lang="swift"><span class="p">[</span><span class="s">"id"</span><span class="p">:</span> <span class="s">"aeiou"</span><span class="p">,</span> <span class="s">"name"</span><span class="p">:</span> <span class="s">"aeiou"</span><span class="p">,</span> <span class="s">"age"</span><span class="p">:</span> <span class="s">"aeiou"</span><span class="p">]</span></code></pre></figure>
+
+<p>So there we are! Pretty cool. We didn’t have to parse any json, we got an actual Swift object back from the server and we didn’t even have to write a network call!
+So now in order to make Our DwarfTracker do something more than return data we’re going to need to do a bit more work, but we’ve come a long way already and the app is working pretty well already.</p>
+
+<h2 id="setting-up-server-controllers">Setting Up Server Controllers</h2>
+
+<p>So we haven’t actually posted any Dwarves to our service yet so how are we receiving that first Dwarf named “aeiou”? 
+Swagger code is great at generating code on the front end to do just about everything we need, but on the backend a bit more work is involved.
+If you look at the <code class="highlighter-rouge">DefaultService.js</code> file you’ll see that our controller is currently returning a hardcoded example for our getDwarves route.</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s1">'use strict'</span><span class="p">;</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">getDwarves</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/**
+   * parameters expected in the args:
+  **/</span>
+    <span class="kd">var</span> <span class="nx">examples</span> <span class="o">=</span> <span class="p">{};</span>
+  <span class="nx">examples</span><span class="p">[</span><span class="s1">'application/json'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span> <span class="p">{</span>
+  <span class="s2">"name"</span> <span class="p">:</span> <span class="s2">"aeiou"</span><span class="p">,</span>
+  <span class="s2">"id"</span> <span class="p">:</span> <span class="s2">"aeiou"</span><span class="p">,</span>
+  <span class="s2">"age"</span> <span class="p">:</span> <span class="s2">"aeiou"</span>
+<span class="p">}</span> <span class="p">];</span>
+  <span class="k">if</span><span class="p">(</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">examples</span><span class="p">).</span><span class="nx">length</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">examples</span><span class="p">[</span><span class="nb">Object</span><span class="p">.</span><span class="nx">keys</span><span class="p">(</span><span class="nx">examples</span><span class="p">)[</span><span class="mi">0</span><span class="p">]]</span> <span class="o">||</span> <span class="p">{},</span> <span class="kc">null</span><span class="p">,</span> <span class="mi">2</span><span class="p">));</span>
+  <span class="p">}</span>
+  <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">();</span>
+  <span class="p">}</span>
+
+<span class="p">...</span></code></pre></figure>
+
+<p>It’s time to update that code to actually return a Dwarf from our Database and for our Post Route to actually save a Dwarf to our DB.</p>
+
+<p>If you don’t have MongoDB installed already here is a great tutorial for installing MongoDB from Treehouse: http://treehouse.github.io/installation-guides/mac/mongo-mac.html</p>
+
+<p>Once you’ve installed MongoDB start the Daemon by running:</p>
+
+<p><code class="highlighter-rouge">$ mongod</code></p>
+
+<p>We’re also going to install mongoose which will give a really simple and elegant way to interact with our Mongo database.</p>
+
+<p><code class="highlighter-rouge">$ npm install mongoose --save</code></p>
+
+<p>Now that Mongoose is installed, create a <code class="highlighter-rouge">models</code> folder and create a new file inside named <code class="highlighter-rouge">DwarfModel.js</code>.</p>
+
+<p>Paste this code inside <code class="highlighter-rouge">DwarfModel.js</code> to define our DwarfModel to match the one we defined in our swagger spec. (Yes it would be nice to generate this via swagger and if you’ve done this let me know in the comments!)</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'mongoose'</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">Schema</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">Schema</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">dwarfschema</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Schema</span><span class="p">({</span>
+    <span class="na">name</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="na">age</span><span class="p">:</span> <span class="nb">String</span><span class="p">,</span>
+    <span class="na">id</span><span class="p">:</span> <span class="nb">String</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">Dwarf</span> <span class="o">=</span> <span class="nx">mongoose</span><span class="p">.</span><span class="nx">model</span><span class="p">(</span><span class="s1">'dwarf'</span><span class="p">,</span> <span class="nx">dwarfschema</span><span class="p">);</span>
+
+<span class="nx">module</span><span class="p">.</span><span class="nx">exports</span> <span class="o">=</span> <span class="nx">Dwarf</span><span class="p">;</span></code></pre></figure>
+
+<p>Now heading back to our <code class="highlighter-rouge">DefaultController.js</code> we can replace the entire file with the code below to make our backend dynamically create and read our dwarfs!</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="s1">'use strict'</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s2">"mongoose"</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">Dwarf</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'../models/DwarfModel'</span><span class="p">);</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">getDwarves</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/**
+   * parameters expected in the args:
+  **/</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
+      <span class="nx">Dwarf</span><span class="p">.</span><span class="nx">find</span><span class="p">({},</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">docs</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">docs</span><span class="p">));</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="nx">exports</span><span class="p">.</span><span class="nx">postDwarf</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">args</span><span class="p">,</span> <span class="nx">res</span><span class="p">,</span> <span class="nx">next</span><span class="p">)</span> <span class="p">{</span>
+  <span class="cm">/**
+   * parameters expected in the args:
+  * payload (Dwarf)
+  **/</span>
+  <span class="c1">// no response value expected for this operation</span>
+
+  <span class="nx">res</span><span class="p">.</span><span class="nx">setHeader</span><span class="p">(</span><span class="s1">'Content-Type'</span><span class="p">,</span> <span class="s1">'application/json'</span><span class="p">);</span>
+  <span class="nx">Dwarf</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">args</span><span class="p">.</span><span class="nx">payload</span><span class="p">.</span><span class="nx">value</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">err</span><span class="p">,</span> <span class="nx">results</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">err</span><span class="p">)</span> <span class="k">throw</span> <span class="nx">err</span><span class="p">;</span>
+        <span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">results</span><span class="p">));</span>
+    <span class="p">})</span>
+<span class="p">}</span></code></pre></figure>
+<p>}</p>
+
+<p>Heading back to our top level index.js file we’ll now import mongoose and connect to our DB. Paste this code directlybelow the last import statement at the top of the file (which should be <code class="highlighter-rouge">var serverPort = 3000;</code>)</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="kd">var</span> <span class="nx">mongoose</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">'mongoose'</span><span class="p">);</span>
+
+<span class="nx">mongoose</span><span class="p">.</span><span class="nx">connect</span><span class="p">(</span><span class="s1">'mongodb://localhost:27017/DwarfGenerator'</span><span class="p">);</span></code></pre></figure>
+<p>}</p>
+
+<p>Now we can restart the server by running</p>
+
+<p><code class="highlighter-rouge">$ npm run start</code></p>
+
+<p>Now when we open the documentation at <code class="highlighter-rouge">http://localhost:3000/docs</code> we should be able to <code class="highlighter-rouge">GET</code> and <code class="highlighter-rouge">POST</code> to the <code class="highlighter-rouge">/dwarf</code> endpoint as expected.</p>
+
+<p>In the <code class="highlighter-rouge">POST /dwarf</code> documentation go ahead and post a new Dwarf to your server. In the payload box paste:</p>
+
+<figure class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="p">{</span>
+  <span class="s2">"name"</span><span class="err">:</span> <span class="s2">"Gimli"</span><span class="p">,</span>
+  <span class="s2">"age"</span><span class="err">:</span> <span class="s2">"100"</span><span class="p">,</span>
+  <span class="s2">"id"</span><span class="err">:</span> <span class="s2">"1"</span>
+<span class="p">}</span></code></pre></figure>
+
+<p>Hit the “Try it out!” button and your new Dwarf should be posted to the server!</p>
+
+<p>That’s it! Now we have a working backend that can both save dwarves we post to it and return a list of all of our dwarves!</p>
+
+<h2 id="finishing-up">Finishing Up</h2>
+
+<p>Now it’s pretty simple to finish up the app from here. There are plenty of tutorials that show you how to display things in a UITableView so I won’t go into detail here.</p>
+
+<p>But here is an example of the (extremely simple!) finished app:</p>
+
+<p><img src="/blog/assets/Screen Shot 2016-11-26 at 5.24.10 PM.png" alt="My helpful screenshot" /></p>
+
+<p>Also, you can download a finished project with the full source code here: https://github.com/normand1/DwarfTracker</p>
 
 
   </div>
