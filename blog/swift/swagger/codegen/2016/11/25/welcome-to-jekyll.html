@@ -68,11 +68,12 @@
   <div class="post-content" itemprop="articleBody">
     <p>If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) <a href="https://github.com/swagger-api/swagger-ui">Swagger UI</a> documentation.</p>
 
-<p><img src="/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png" alt="My helpful screenshot" /></p>
+<p>(Here’s a quick look at what Swagger UI Looks like with a defined API)
+<img src="/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png" alt="My helpful screenshot" /></p>
 
-<p>Swagger’s UI tool makes it easy to learn about the features of a backend service you’d like to interact with without needing to dig through interminable and abstruse documentation. Swagger’s documentation is easy to read, understand and allows you to test calls directly from your browser!</p>
+<p>Swagger’s UI tool makes it easy to learn about the features of a backend service you’d like to interact with without needing to dig through interminable and abstruse documentation. Swagger’s documentation is easy to read and understand. It also allows you to test calls directly from your browser.</p>
 
-<p>One of Swagger’s lesser known features is the capability to generate server AND client code (yes even Swift!).</p>
+<p>One of Swagger’s lesser known features is the capability to generate server AND client code (yes even Swift code!).</p>
 
 <p>All this is made possible with Swagger’s Open API Specification which defines a standard by which a REST API’s functionality can be defined. In other words once you create a swagger spec document (in either json or yml) that defines the expected behavior of an API you can just generate the code to interact with that endpoint because the expectations on both sides of the agreement have already been defined. You’ll see how this works in a minute when we start writing code.</p>
 
@@ -85,47 +86,47 @@
 
 <p>Then open that file in your favorite text editor and paste in the following code.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">swagger: </span><span class="s2">"2.0"</span>
-<span class="ss">info:
-description: </span><span class="s2">"Dwarf Tracker endpoints"</span>
-<span class="ss">version: </span><span class="s2">"0.0.1"</span>
-<span class="ss">title: </span><span class="s2">"Dwarf Tracker Service API"</span>
-<span class="ss">host: </span><span class="s2">"localhost:3000"</span>
-<span class="ss">schemes:
-</span><span class="o">-</span> <span class="s2">"http"</span>
-<span class="ss">produces:
-</span><span class="o">-</span> <span class="s2">"application/json"</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">swagger</span><span class="pi">:</span> <span class="s2">"</span><span class="s">2.0"</span>
+<span class="s">info</span><span class="pi">:</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Dwarf</span><span class="nv"> </span><span class="s">Tracker</span><span class="nv"> </span><span class="s">endpoints"</span>
+<span class="s">version</span><span class="pi">:</span> <span class="s2">"</span><span class="s">0.0.1"</span>
+<span class="s">title</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Dwarf</span><span class="nv"> </span><span class="s">Tracker</span><span class="nv"> </span><span class="s">Service</span><span class="nv"> </span><span class="s">API"</span>
+<span class="s">host</span><span class="pi">:</span> <span class="s2">"</span><span class="s">localhost:3000"</span>
+<span class="s">schemes</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="s2">"</span><span class="s">http"</span>
+<span class="s">produces</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="s2">"</span><span class="s">application/json"</span></code></pre></figure>
 
 <p>The above block of code is laying down some baseline information about our API. It’s specifying the version of the Open API specification we’re using (currently the latest 2.0) as well as some other basic information about our API like a description and title. The <code class="highlighter-rouge">host</code> is very important information here, because it specifies the hostname and port we’ll be making network requests against (we’re using localhost for this demo, I’ll cover how to set that up later).</p>
 
 <p>Next we’ll set up the different <code class="highlighter-rouge">paths</code> for our API. Paste the next block of code directly beneath the previous block to continue creating our Swagger API specification.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="sr">/dwarf:
-post:
-summary: "Post a new Dwarf"
-description: "endpoint for posting a newly created dwarf to the server"
-operationId: "postDwarf"
-parameters:
-- name: payload
-in: body
-required: true
-description: A single JSON object containing the dwarf definition
-schema:
-$ref: '#/</span><span class="n">definitions</span><span class="o">/</span><span class="no">Dwarf</span><span class="s1">'
-responses: 
-200:
-description: indicates a successful update
-get:
-summary: "All dwarves"
-description: "Gets all dwarves"
-operationId: getDwarves
-responses:
-200:
-description: "An array of dwarf objects"
-schema:
-type: array
-items:
-$ref: '</span><span class="c1">#/definitions/Dwarf'</span></code></pre></figure>
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">/dwarf</span><span class="pi">:</span>
+<span class="s">post</span><span class="pi">:</span>
+<span class="s">summary</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Post</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">Dwarf"</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">endpoint</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">posting</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">newly</span><span class="nv"> </span><span class="s">created</span><span class="nv"> </span><span class="s">dwarf</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">server"</span>
+<span class="s">operationId</span><span class="pi">:</span> <span class="s2">"</span><span class="s">postDwarf"</span>
+<span class="s">parameters</span><span class="pi">:</span>
+<span class="pi">-</span> <span class="s">name</span><span class="pi">:</span> <span class="s">payload</span>
+<span class="s">in</span><span class="pi">:</span> <span class="s">body</span>
+<span class="s">required</span><span class="pi">:</span> <span class="s">true</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s">A single JSON object containing the dwarf definition</span>
+<span class="s">schema</span><span class="pi">:</span>
+<span class="s">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/definitions/Dwarf'</span>
+<span class="s">responses</span><span class="pi">:</span> 
+<span class="s">200</span><span class="pi">:</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s">indicates a successful update</span>
+<span class="s">get</span><span class="pi">:</span>
+<span class="s">summary</span><span class="pi">:</span> <span class="s2">"</span><span class="s">All</span><span class="nv"> </span><span class="s">dwarves"</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Gets</span><span class="nv"> </span><span class="s">all</span><span class="nv"> </span><span class="s">dwarves"</span>
+<span class="s">operationId</span><span class="pi">:</span> <span class="s">getDwarves</span>
+<span class="s">responses</span><span class="pi">:</span>
+<span class="s">200</span><span class="pi">:</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">An</span><span class="nv"> </span><span class="s">array</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">dwarf</span><span class="nv"> </span><span class="s">objects"</span>
+<span class="s">schema</span><span class="pi">:</span>
+<span class="s">type</span><span class="pi">:</span> <span class="s">array</span>
+<span class="s">items</span><span class="pi">:</span>
+<span class="s">$ref</span><span class="pi">:</span> <span class="s1">'</span><span class="s">#/definitions/Dwarf'</span></code></pre></figure>
 
 <p>Now our API has a single route: /dwarf
 When we call this endpoint we would use the url: http://localhost:3000/dwarf</p>
@@ -137,18 +138,18 @@ When we call this endpoint we would use the url: http://localhost:3000/dwarf</p
 
 <p>Take the following code snippet and post it below your last in the same file to finish the swagger.yml file.</p>
 
-<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="ss">definitions:
+<figure class="highlight"><pre><code class="language-yaml" data-lang="yaml"><span class="s">definitions</span><span class="pi">:</span>
 
-</span><span class="no">Dwarf</span><span class="p">:</span>
-<span class="ss">type: </span><span class="n">object</span>
-<span class="ss">description: </span><span class="n">a</span> <span class="n">short</span> <span class="n">sturdy</span> <span class="n">creature</span> <span class="n">fond</span> <span class="n">of</span> <span class="n">drink</span> <span class="n">and</span> <span class="n">industry!</span>
-<span class="ss">properties:
-name:
-type: </span><span class="n">string</span>
-<span class="ss">age: 
-type: </span><span class="n">string</span>
-<span class="ss">id:
-type: </span><span class="n">string</span></code></pre></figure>
+<span class="s">Dwarf</span><span class="pi">:</span>
+<span class="s">type</span><span class="pi">:</span> <span class="s">object</span>
+<span class="s">description</span><span class="pi">:</span> <span class="s">a short sturdy creature fond of drink and industry!</span>
+<span class="s">properties</span><span class="pi">:</span>
+<span class="s">name</span><span class="pi">:</span>
+<span class="s">type</span><span class="pi">:</span> <span class="s">string</span>
+<span class="s">age</span><span class="pi">:</span> 
+<span class="s">type</span><span class="pi">:</span> <span class="s">string</span>
+<span class="s">id</span><span class="pi">:</span>
+<span class="s">type</span><span class="pi">:</span> <span class="s">string</span></code></pre></figure>
 
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Now that we have the swagger specification that defines our interaction between our server-side code and our client-side code we’re ready to start generating them both! But first we’ll need to download a few tools to help us out, so make sure you have these installed before you proceed any farther:</p>
@@ -397,13 +398,11 @@ If you look at the <code class="highlighter-rouge">DefaultService.js</code> file
 
 <h2 id="finishing-up">Finishing Up</h2>
 
-<p>Now it’s pretty simple to finish up the app from here. There are plenty of tutorials that show you how to display things in a UITableView so I won’t go into detail here.</p>
-
-<p>But here is an example of the (extremely simple!) finished app:</p>
+<p>Now it’s pretty simple to finish up the app from here. There are plenty of tutorials that show you how to display things in a UITableView so I won’t go into detail here.
+But, you can download a finished project with the full source code here: https://github.com/normand1/DwarfTracker
+Also, here is an example of the (extremely simple!) finished app</p>
 
 <p><img src="/blog/assets/Screen Shot 2016-11-26 at 5.24.10 PM.png" alt="My helpful screenshot" /></p>
-
-<p>Also, you can download a finished project with the full source code here: https://github.com/normand1/DwarfTracker</p>
 
 
   </div>
