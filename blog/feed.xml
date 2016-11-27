@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2016-11-26T17:59:42-08:00</updated><id>/blog//</id><title type="html">Dave’s Code Blog</title><subtitle>My blog for all things I'm coding. I'll post tutorials about things I'm working on and things I'm interested in. That will mostly include Swift, NodeJS, AWS and Unity VR development.
-</subtitle><entry><title type="html">Automating Swift Middleware With Swagger Codegen</title><link href="/blog/swift/swagger/codegen/2016/11/25/welcome-to-jekyll.html" rel="alternate" type="text/html" title="Automating Swift Middleware With Swagger Codegen" /><published>2016-11-25T21:43:59-08:00</published><updated>2016-11-25T21:43:59-08:00</updated><id>/blog/swift/swagger/codegen/2016/11/25/welcome-to-jekyll</id><content type="html" xml:base="/blog/swift/swagger/codegen/2016/11/25/welcome-to-jekyll.html">&lt;p&gt;If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) &lt;a href=&quot;https://github.com/swagger-api/swagger-ui&quot;&gt;Swagger UI&lt;/a&gt; documentation.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2016-11-26T19:32:30-08:00</updated><id>/blog//</id><title type="html">Dave’s Code Blog</title><subtitle>My blog for all things I'm coding. I'll post tutorials about things I'm working on and things I'm interested in. That will mostly include Swift, NodeJS, AWS and Unity VR development.
+</subtitle><entry><title type="html">Swagger Codegen for Swift3 and NodeJS</title><link href="/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS.html" rel="alternate" type="text/html" title="Swagger Codegen for Swift3 and NodeJS" /><published>2016-11-25T21:43:59-08:00</published><updated>2016-11-25T21:43:59-08:00</updated><id>/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS</id><content type="html" xml:base="/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS.html">&lt;p&gt;In this tutorial I’ll walk you through building a working Swift 3 App and a working NodeJS Service. Huge portions of the code on both the front and backend will be automatically generated.
+This tutorial will introduce you to how Swagger Codegen can save you tons of time on both the front and backend when building an integrated app.&lt;/p&gt;
+
+&lt;p&gt;If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) &lt;a href=&quot;https://github.com/swagger-api/swagger-ui&quot;&gt;Swagger UI&lt;/a&gt; documentation.&lt;/p&gt;
 
 &lt;p&gt;(Here’s a quick look at what Swagger UI Looks like with a defined API)
 &lt;img src=&quot;/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
@@ -11,6 +14,8 @@
 &lt;p&gt;All this is made possible with Swagger’s Open API Specification which defines a standard by which a REST API’s functionality can be defined. In other words once you create a swagger spec document (in either json or yml) that defines the expected behavior of an API you can just generate the code to interact with that endpoint because the expectations on both sides of the agreement have already been defined. You’ll see how this works in a minute when we start writing code.&lt;/p&gt;
 
 &lt;p&gt;To demonstrate how we can quickly write both the server-side and client-side code for an app we’re going to build an app for keeping track of Dwarfs we meet while playing &lt;a href=&quot;http://www.bay12games.com/dwarves/features.html&quot;&gt;Dwarf Fortress&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/dfbackground.jpg&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;First we’ll need to create a swagger specification that will define the entire backend API for our app. Our API will handle simple Create and Read operations for keeping track of Dwarf migrants we meet in Dwarf Fortress.&lt;/p&gt;
 
@@ -63,8 +68,9 @@
             &lt;span class=&quot;s&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
               &lt;span class=&quot;s&quot;&gt;$ref&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#/definitions/Dwarf'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;Now our API has a single route: /dwarf
-When we call this endpoint we would use the url: http://localhost:3000/dwarf&lt;/p&gt;
+&lt;p&gt;Now our API has a single route: /dwarf&lt;/p&gt;
+
+&lt;p&gt;When we call this endpoint we would use the url: http://localhost:3000/dwarf&lt;/p&gt;
 
 &lt;p&gt;Next we have defined two HTTP Methods in our API for interacting with this single endpoint. If we’d like to POST a new dwarf we can see we’ve specified that a &lt;code class=&quot;highlighter-rouge&quot;&gt;payload&lt;/code&gt; will be required in the &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt;. Additionally we’ve defined a &lt;code class=&quot;highlighter-rouge&quot;&gt;schema&lt;/code&gt; with this strange bit of syntax:
 &lt;code class=&quot;highlighter-rouge&quot;&gt;$ref: '#/definitions/Dwarf'&lt;/code&gt;&lt;/p&gt;
@@ -86,6 +92,8 @@ When we call this endpoint we would use the url: http://localhost:3000/dwarf&lt
       &lt;span class=&quot;s&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
         &lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;string&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
+&lt;p&gt;Here’s the finished .yml file for reference: https://github.com/normand1/DwarfTracker/blob/master/swagger.yml&lt;/p&gt;
+
 &lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
 &lt;p&gt;Now that we have the swagger specification that defines our interaction between our server-side code and our client-side code we’re ready to start generating them both! But first we’ll need to download a few tools to help us out, so make sure you have these installed before you proceed any farther:&lt;/p&gt;
 
@@ -93,7 +101,19 @@ When we call this endpoint we would use the url: http://localhost:3000/dwarf&lt
   &lt;li&gt;Xcode 8.*&lt;/li&gt;
   &lt;li&gt;NodeJS v 0.12.*&lt;/li&gt;
   &lt;li&gt;Apache Maven 3.*&lt;/li&gt;
+  &lt;li&gt;MongoDB 4.*&lt;/li&gt;
+  &lt;li&gt;Swagger CodeGen&lt;/li&gt;
 &lt;/ul&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;XCode: Mac AppStore&lt;/p&gt;
+
+&lt;p&gt;NodeJS: https://nodejs.org/en/&lt;/p&gt;
+
+&lt;p&gt;Maven: http://maven.apache.org/install.html&lt;/p&gt;
+
+&lt;p&gt;MongoDB: http://treehouse.github.io/installation-guides/mac/mongo-mac.html&lt;/p&gt;
 
 &lt;p&gt;Next you want to install Swagger Codegen. The easiest way to install Swagger Codegen on a mac is via Homebrew… HOWEVER, we cannot use this method for installation when creating generating code for Swift3.
 The .jar file that homebrew will install is built from the latest release branch of Swagger which at the time this tutorial was written does not support Swift3.&lt;/p&gt;
@@ -104,20 +124,23 @@ The .jar file that homebrew will install is built from the latest release branch
 
 &lt;p&gt;Once the repo has been cloned, checkout the swift-3 branch and build the .jar file.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git checkout swift-3&lt;/code&gt;
-&lt;code class=&quot;highlighter-rouge&quot;&gt;$ mvn clean install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git checkout swift-3&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ mvn clean install&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Now we’ve built the .jar file we’ll need to generate Swift3 code. You’ll find the .jar file we need at this path: &lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar&lt;/code&gt;
-Copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen-cli.jar&lt;/code&gt; file and paste into into your top level DwarfTracker project folder.&lt;/p&gt;
+Copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen-cli.jar&lt;/code&gt; file and paste it into your top level DwarfTracker project folder.&lt;/p&gt;
 
 &lt;h2 id=&quot;client-side-code-generation&quot;&gt;Client-side Code Generation&lt;/h2&gt;
-&lt;p&gt;Since you may need to run the next script often (anytime the swagger spec changes) you’re going to want to put the following script in it’s own shell script file. The following command will generate your front end swift code when run, but right now we’re just going to save it for easy future execution.
-&lt;code class=&quot;highlighter-rouge&quot;&gt;$ echo &quot;java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swift -o SwaggerClient&quot; &amp;gt; client_build.sh&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;Since you may need to run the next script often (anytime the swagger spec changes) you’re going to want to put the following script in it’s own shell script file. The following command will generate your front end swift code when run, but right now we’re just going to save it for easy future execution.&lt;/p&gt;
 
-&lt;p&gt;Open the client_build.sh file in your favorite text editor and you should see this:
-&lt;code class=&quot;highlighter-rouge&quot;&gt;java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swift -o SwaggerClient&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ echo &quot;java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swift -o SwaggerClient&quot; &amp;gt; client_build.sh&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;As you can see the above command will reference the .yml API specification we build a minute ago and it will out put an SDK based on whatever language we specify with the -l parameter (in this case swift). Finally -o specifies an output directory we haven’t yet created… so create an output directory.&lt;/p&gt;
+&lt;p&gt;Open the client_build.sh file in your favorite text editor and you should see this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swift -o SwaggerClient&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see the above command will reference the .yml API specification we build a minute ago and it will output an SDK based on whatever language we specify with the -l parameter (in this case swift). Finally -o specifies an output directory we haven’t yet created… so create an output directory.&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ mkdir SwaggerClient&lt;/code&gt;&lt;/p&gt;
 
@@ -148,15 +171,15 @@ Copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen-cli.jar
 &lt;p&gt;You should now have files in your SwaggerServer folder that resemble the files above.&lt;/p&gt;
 &lt;h2 id=&quot;starting-and-running-the-server&quot;&gt;Starting and Running the Server&lt;/h2&gt;
 
-&lt;p&gt;First we need to install the any packages our Swagger Server needs to run.&lt;/p&gt;
+&lt;p&gt;First we need to install the any packages our Swagger Server needs to run, so change directory into your SwaggerServer folder.&lt;/p&gt;
 
-&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm install&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm install&lt;/code&gt; to install any needed dependancies.&lt;/p&gt;
 
 &lt;p&gt;Now we can start the server.&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm run start&lt;/code&gt;&lt;/p&gt;
 
-&lt;p&gt;If everything worked you should see the following message:&lt;/p&gt;
+&lt;p&gt;If everything worked, you should see the following message:&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Your server is listening on port 3000 (http://localhost:3000)
 Swagger-ui is available on http://localhost:3000/docs&lt;/code&gt;&lt;/p&gt;
@@ -165,7 +188,7 @@ Swagger-ui is available on http://localhost:3000/docs&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-24 at 12.45.40 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
-&lt;p&gt;At this you can send POST and GET requests to the API. You will get hardcoded responses, but that’s good enough for now!&lt;/p&gt;
+&lt;p&gt;At this point you can send POST and GET requests to the API. You will get hardcoded responses, but that’s good enough for now!&lt;/p&gt;
 
 &lt;p&gt;Sending a GET request to http://localhost:3000/dwarf via SwaggerUI will result in this response:&lt;/p&gt;
 
@@ -193,7 +216,7 @@ Swagger-ui is available on http://localhost:3000/docs&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;If you used cocoapods to install cocoapods ensure that you’ve opened the .xcworkspace instead of the .xcodeproj after cocoapod installation.&lt;/p&gt;
 
 &lt;p&gt;Now we’re ready to use some of the code we’ve generated. In Xcode open the &lt;code class=&quot;highlighter-rouge&quot;&gt;AppDelegate.swift&lt;/code&gt; file and find the &lt;code class=&quot;highlighter-rouge&quot;&gt;didFinishLaunchingWithOptions&lt;/code&gt; method at the top of the file.
-We’re going to print out the array of Dwarves currently being returned by the backend service just to make sure everything is currently setup correctly.&lt;/p&gt;
+We’re going to print out the first object in the array of Dwarves currently being returned by the backend service just to make sure everything is setup correctly.&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UIApplication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;didFinishLaunchingWithOptions&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;launchOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;UIApplicationLaunchOptionsKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]?)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Bool&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
         &lt;span class=&quot;c1&quot;&gt;// Override point for customization after application launch.&lt;/span&gt;
@@ -212,7 +235,7 @@ We’re going to print out the array of Dwarves currently being returned by the 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;age&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
 &lt;p&gt;So there we are! Pretty cool. We didn’t have to parse any json, we got an actual Swift object back from the server and we didn’t even have to write a network call!
-So now in order to make Our DwarfTracker do something more than return data we’re going to need to do a bit more work, but we’ve come a long way already and the app is working pretty well already.&lt;/p&gt;
+So now in order to make Our DwarfTracker do something more than return data we’re going to need to do a bit more work.&lt;/p&gt;
 
 &lt;h2 id=&quot;setting-up-server-controllers&quot;&gt;Setting Up Server Controllers&lt;/h2&gt;
 
@@ -242,11 +265,9 @@ If you look at the &lt;code class=&quot;highlighter-rouge&quot;&gt;DefaultServic
 
 &lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
 
-&lt;p&gt;It’s time to update that code to actually return a Dwarf from our Database and for our Post Route to actually save a Dwarf to our DB.&lt;/p&gt;
+&lt;p&gt;It’s time to update that code to actually return a Dwarf from our Database from our &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; route and for our &lt;code class=&quot;highlighter-rouge&quot;&gt;Post&lt;/code&gt; route to actually save a Dwarf to our DB.&lt;/p&gt;
 
-&lt;p&gt;If you don’t have MongoDB installed already here is a great tutorial for installing MongoDB from Treehouse: http://treehouse.github.io/installation-guides/mac/mongo-mac.html&lt;/p&gt;
-
-&lt;p&gt;Once you’ve installed MongoDB start the Daemon by running:&lt;/p&gt;
+&lt;p&gt;Start the MongoDB Daemon by running:&lt;/p&gt;
 
 &lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ mongod&lt;/code&gt;&lt;/p&gt;
 
@@ -304,14 +325,12 @@ If you look at the &lt;code class=&quot;highlighter-rouge&quot;&gt;DefaultServic
         &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
     &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;}&lt;/p&gt;
 
 &lt;p&gt;Heading back to our top level index.js file we’ll now import mongoose and connect to our DB. Paste this code directlybelow the last import statement at the top of the file (which should be &lt;code class=&quot;highlighter-rouge&quot;&gt;var serverPort = 3000;&lt;/code&gt;)&lt;/p&gt;
 
 &lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mongoose'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
 
 &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mongodb://localhost:27017/DwarfGenerator'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
-&lt;p&gt;}&lt;/p&gt;
 
 &lt;p&gt;Now we can restart the server by running&lt;/p&gt;
 
@@ -337,4 +356,9 @@ If you look at the &lt;code class=&quot;highlighter-rouge&quot;&gt;DefaultServic
 But, you can download a finished project with the full source code here: https://github.com/normand1/DwarfTracker
 Also, here is an example of the (extremely simple!) finished app&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-26 at 5.24.10 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;</content><summary type="html">If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) Swagger UI documentation.</summary></entry></feed>
+&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-26 at 5.24.10 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for finishing the whole tutorial! As a reward please enjoy this description of beautiful dwarf poetry:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/blog/assets/dfbackground.jpg&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;</content><summary type="html">In this tutorial I’ll walk you through building a working Swift 3 App and a working NodeJS Service. Huge portions of the code on both the front and backend will be automatically generated.
+This tutorial will introduce you to how Swagger Codegen can save you tons of time on both the front and backend when building an integrated app.</summary></entry></feed>
