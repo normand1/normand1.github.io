@@ -7,7 +7,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <title>Google VR iOS Development with Unity</title>
-  <meta name="description" content="When it comes to VR development for the iPhone you’re going to have to look beyond Apple for tools. It’s possible this could be changing next year if Robert ...">
+  <meta name="description" content="When it comes to VR development for the iPhone, you can do some really cool stuff, but you’re going to have to look beyond Apple for tools. It’s possible thi...">
 
   <link rel="stylesheet" href="/blog/assets/main.css">
   <link rel="canonical" href="http://localhost:4000/blog/google/cardboard/ios/unity/2016/12/21/Google-Cardboard-iOS-Development-with-Unity.html">
@@ -66,8 +66,8 @@
   </header>
 
   <div class="post-content" itemprop="articleBody">
-    <p>When it comes to VR development for the iPhone you’re going to have to look beyond Apple for tools.
-It’s possible this could be changing next year if Robert Scoble’s predictions of an all glass, augmented-reality-glasses-ready 
+    <p>When it comes to VR development for the iPhone, you can do some really cool stuff, but you’re going to have to look beyond Apple for tools.
+It’s possible this could be changing next year if <a href="http://www.forbes.com/sites/gordonkelly/2016/10/26/apple-iphone-all-glass-new-design/#6ca205b9721b">Robert Scoble’s prediction</a> of an all glass, augmented-reality-glasses-ready 
 iPhone come true. But for now, if you’re an iOS developer and you want to dive into the new exciting world of VR development, 
 your best option is the Google VR SDK for Unity.</p>
 
@@ -81,15 +81,15 @@ of the VR SDK.</p>
 
 <h2 id="hardware">Hardware</h2>
 
-<p>Google Cardboard headsets are cheap and easy to find… almost too easy. Since Google Cardboard is an open source design from Google there is no shortage of 
-Google Cardboard headsets available on Amazon, but most are garbage. When looking for a good Google Cardboard headset you should keep a couple of things in mind.
-Since iPhone can’t take advantage of the fancy Google Day Dream motion tracking controller, we need headsets that either allow you to touch the screen of the device
+<p>Google Cardboard headsets are cheap and easy to find… almost too easy. Since Google Cardboard is an open standard design from Google there is no shortage of 
+Google Cardboard headsets available on Amazon, unfortunately most are garbage. When looking for a good Google Cardboard headset you should keep a couple of things in mind.
+Since iPhone can’t take advantage of the fancy Google Daydream motion tracking controller, we need headsets that either allow you to touch the screen of the device
  to trigger an action, or include a magnetic button on the headset (that will touch the screen for you). The main way to take actions in Google Cardboard for iOS is by looking 
  (or “Gaze”-ing at something) and touching the screen to trigger an action. You can also attach a bluetooth controller, but how many iPhone users regularly connect a bluetooth controller
-  to their device? At this point I’m afraid iPhone bluetooth controller owners who use Google Cardboard headsets is a pretty small user segment (even smaller than those who own Google Cardboard headsets).</p>
+  to their device? At this point I’m afraid iPhone bluetooth controller owners, who use Google Cardboard headsets, is a pretty small user segment (even smaller than those who own Google Cardboard headsets).</p>
 
 <p>The other major headset feature you’ll want is a strap to hold the headset to your head. You’d be amazed how many VR headsets require you to actually
-hold the headset up to your eyes to use it. Holding up a headset to your face gets old fast, so make sure you get a headset that will comfortably strap to your head.</p>
+hold the headset up to your face to use it. Holding up a headset to your face gets old fast, so make sure you get a headset that will comfortably strap to your head.</p>
 
 <p>Here are a couple of headsets that include buttons and confortable straps:</p>
 <ul>
@@ -101,32 +101,32 @@ hold the headset up to your eyes to use it. Holding up a headset to your face ge
   </li>
 </ul>
 
-<p>These headsets might be a bit more on the expensive side, but will be worth it if you plan to do any amount of serious VR mobile development.
-If you just want to dabble then just about any $15 - $25 headset will work ok, but probably won’t include an action button.</p>
+<p>These headsets might be a bit on the expensive side, but will be worth it if you plan to do any amount of VR mobile development.
+If you just want to dabble then just about any $15 - $25 headset will work ok, but probably won’t include an action button. so a bluetooth controller will be necessary anyway.</p>
 
 <h2 id="software">Software</h2>
 
 <p>I’ve developed a number of mobile games using the Apple SpriteKit framework. Looking back, I would never develop any game in anything other than the Unity engine ever again. The Unity IDE and Engine 
-just gives you so much more tooling to create great games easier and more quickly than anything you could develop in Xcode. So for this tutorial we’ll use Unity to develop our iOS GoogleVR Game.</p>
+just gives you so much more tooling to create great games easier and more quickly than anything you could develop in Xcode. So, for this tutorial I’ll demonstrate how to get up and running with an iOS App in Unity.</p>
 
 <p>The first thing to know is that iOS developers can not (at the time of this writing) make use of the Daydream VR platform. There is a build of Unity that includes a Daydream Technical Preview… DO NOT USE THE Technical Preview
 if you want your app to compile in Xcode. Simply download the latest version of Unity: <a href="https://store.unity.com/download?ref=personal">Unity Free Download</a></p>
 
 <p>Once you have the latest version of Unity downloaded and installed, you’ll want to download the <a href="https://developers.google.com/vr/unity/download#google-vr-sdk-for-unity">Google VR SDK</a>. The Google VR SDK contains the components (Or Prefabs) we’ll need to transform what would 
-normally be a 3d game into a stereoscopic VR experience. For example the Main Unity Camera functions the way traditional game cameras function:</p>
+normally be a 3D game into a stereoscopic VR experience. For example the Main Unity Camera functions the way traditional game cameras function:</p>
 
 <h2 id="main-camera-unity">Main Camera (Unity)</h2>
 <p><img src="http://localhost:4000/blog/assets/normal_camera_view.png" alt="Normal Camera" /></p>
 
-<p>However in order for the scene to be perceived as stereoscopic within a VR headset the normal camera needs to be adjusted significantly. This is what the Google VR SDK gives us for free.
+<p>However, in order for the scene to be perceived as VR within a headset the normal camera needs to be adjusted significantly. This is what the Google VR SDK allows us to do very easily.
 The <code class="highlighter-rouge">GvrViewMain</code> prefab actually uses a Unity Camera, but then splits out the image into two parts (one for each eye) and displays them together, but with slightly different viewing angles, in a viewport. <code class="highlighter-rouge">GvrViewMain</code> Also applies a distortion to the 
 two images (which you can see a bit in the image below) which is necessary for making the image look correct when looking through the lenses of a VR headset. One additional difference you’ll notice between these
 two views is the addition of a circular reticle below. This is the <code class="highlighter-rouge">GvrReticlePointer</code>, another Google VR SDK prefab, and it is your primary means of interaction with the VR world. The Google VR SDK uses ray casting
-to determine what object you’re looking at and tapping the screen triggers an interaction with the object that currently holds your “gaze”. (more detail on this later)</p>
+to determine what object you’re looking at and tapping the screen triggers an interaction with the object that currently holds your “gaze”.</p>
 
 <p><img src="http://localhost:4000/blog/assets/google_vr_camera_view.png" alt="VR Camera" /></p>
 
-<p>Now that you’ve downloaded both the latest version of Unity and the Google VR SDK we’re ready to create our new project. Open Unity and select “New”</p>
+<p>Now that you’ve downloaded both the latest version of Unity and the Google VR SDK we’re ready to create our new project. Open Unity and select “New”.</p>
 
 <h2 id="camera-with-gvrviewmain-google-vr-sdk">Camera With GvrViewMain (Google VR SDK)</h2>
 <p><img src="http://localhost:4000/blog/assets/unity_new_proj.png" alt="unity_new_proj" /></p>
@@ -141,11 +141,11 @@ In the Assets menu, import a custom package.</p>
 
 <p>Make sure all the assets are selected and click the <code class="highlighter-rouge">import</code> button.</p>
 
-<p>if you get the following warning simply select ‘I Made a Backup Go Ahead!’… we haven’t done anything yet anyway ;)</p>
+<p>if you get the following warning, simply select ‘I Made a Backup Go Ahead!’… we haven’t done anything yet anyway ;)</p>
 
 <p><img src="http://localhost:4000/blog/assets/updagrade_api_warning.png" alt="upgrade_api_warning" /></p>
 
-<p>Right now there seems to be a bug in the api upgrade process so if you see this error message in the Unity console double click it to open the script in your default editor.</p>
+<p>Right now there seems to be a bug in the api upgrade process so if you see this error message in the Unity console, double click it to open the script in your default editor.</p>
 
 <p><img src="http://localhost:4000/blog/assets/api_upgrade_error.png" alt="api_upgrade_error" /></p>
 
@@ -180,7 +180,7 @@ scene at Assets &gt; GoogleVR &gt; Demos &gt; Scenes. Double click the scene to 
 <p><img src="http://localhost:4000/blog/assets/demo_scene.png" alt="demo_scene" /></p>
 
 <p>Hold down the option button and move the mouse to simulate looking around in the scene. Notice that the reticle changes shape when you look at the floating cube and the cube reacts to your gaze as well. Click 
-the mouse while looking at the cube and you’ll notice the cube transports to another location in the scene. Look around. Can you find it again?</p>
+the mouse while the reticle is positioned over the cube and you’ll notice the cube transports to another location in the scene. Look around. Can you find it again?</p>
 
 <h2 id="building-to-xcode">Building To Xcode</h2>
 
@@ -190,7 +190,7 @@ the mouse while looking at the cube and you’ll notice the cube transports to a
 
 <p>Under <code class="highlighter-rouge">platform</code> select iOS, then click the <code class="highlighter-rouge">Player Settings...</code> button beneath.</p>
 
-<p>In the main Unity window, behind the build settings window, you’ll notice the inspector panel (probably rightmost panel) has changed to reveal some iOS platform specific settings. Under the phone tab, make sure 
+<p>In the main Unity window, behind the build settings window, you’ll notice the inspector panel (probably rightmost panel depending on your window arrangement) has changed to reveal some iOS platform specific settings. Under the phone tab, make sure 
 to deselect all orientations other than Landscape Left, as seen below.</p>
 
 <p><img src="http://localhost:4000/blog/assets/ios_settings_unity.png" alt="ios_settings_unity" /></p>
