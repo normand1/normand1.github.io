@@ -1,0 +1,549 @@
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2016-12-23T19:26:23-08:00</updated><id>http://localhost:4000/blog//</id><title type="html">Dave’s Code Blog</title><subtitle>My blog for all things I'm coding. I'll post tutorials about things I'm working on and things I'm interested in. That will mostly include Swift, NodeJS, AWS and Unity VR development.
+</subtitle><entry><title type="html">Google VR iOS Development with Unity</title><link href="http://localhost:4000/blog/google/cardboard/ios/unity/2016/12/21/Google-Cardboard-iOS-Development-with-Unity.html" rel="alternate" type="text/html" title="Google VR iOS Development with Unity" /><published>2016-12-21T21:43:59-08:00</published><updated>2016-12-21T21:43:59-08:00</updated><id>http://localhost:4000/blog/google/cardboard/ios/unity/2016/12/21/Google-Cardboard-iOS-Development-with-Unity</id><content type="html" xml:base="http://localhost:4000/blog/google/cardboard/ios/unity/2016/12/21/Google-Cardboard-iOS-Development-with-Unity.html">&lt;p&gt;When it comes to VR development for the iPhone you’re going to have to look beyond Apple for tools.
+It’s possible this could be changing next year if Robert Scoble’s predictions of an all glass, augmented-reality-glasses-ready 
+iPhone come true. But for now, if you’re an iOS developer and you want to dive into the new exciting world of VR development, 
+your best option is the Google VR SDK for Unity.&lt;/p&gt;
+
+&lt;p&gt;The good news is that the combination of Unity and the Google VR SDK for iOS gives you a pretty quick way to get up and running with 
+a simple VR app for iPhone. It’s simple but not entirely straightforward how to put all the pieces together to create VR experience for iPhone.
+In this tutorial I’ll walk you through everything you need to get up and running.&lt;/p&gt;
+
+&lt;p&gt;Just a quick note: You might see mentions of the Google Cardboard SDK in other tutorials or documentation on the web. Google VR was previously named Google Cardboard, but was
+rebranded with the announcement of Google’s VR Platform, Daydream, at Google I/O 2016. Google Cardboard is still the name of the open spec used for creating VR headsets, but no longer the name 
+of the VR SDK.&lt;/p&gt;
+
+&lt;h2 id=&quot;hardware&quot;&gt;Hardware&lt;/h2&gt;
+
+&lt;p&gt;Google Cardboard headsets are cheap and easy to find… almost too easy. Since Google Cardboard is an open source design from Google there is no shortage of 
+Google Cardboard headsets available on Amazon, but most are garbage. When looking for a good Google Cardboard headset you should keep a couple of things in mind.
+Since iPhone can’t take advantage of the fancy Google Day Dream motion tracking controller, we need headsets that either allow you to touch the screen of the device
+ to trigger an action, or include a magnetic button on the headset (that will touch the screen for you). The main way to take actions in Google Cardboard for iOS is by looking 
+ (or “Gaze”-ing at something) and touching the screen to trigger an action. You can also attach a bluetooth controller, but how many iPhone users regularly connect a bluetooth controller
+  to their device? At this point I’m afraid iPhone bluetooth controller owners who use Google Cardboard headsets is a pretty small user segment (even smaller than those who own Google Cardboard headsets).&lt;/p&gt;
+
+&lt;p&gt;The other major headset feature you’ll want is a strap to hold the headset to your head. You’d be amazed how many VR headsets require you to actually
+hold the headset up to your eyes to use it. Holding up a headset to your face gets old fast, so make sure you get a headset that will comfortably strap to your head.&lt;/p&gt;
+
+&lt;p&gt;Here are a couple of headsets that include buttons and confortable straps:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.amazon.com/CUDEVS-Glasses-Headset-Adjustable-Smartphone/dp/B01KC851DK/ref=as_li_ss_tl?ie=UTF8&amp;amp;linkCode=sl1&amp;amp;tag=igeek0f-20&amp;amp;linkId=3945e5e0ff510ddc6cbf0932eb5c1347&quot;&gt;CUDEVS Glasses On Amazon&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.amazon.com/Merge-VR-Virtual-Reality-Headset/dp/B015CD6NVE/ref=as_li_ss_tl?tag=shopomo-20&amp;amp;ie=UTF8&amp;amp;qid=1480435262&amp;amp;sr=8-1&amp;amp;keywords=merge+vr&amp;amp;linkCode=ll1&amp;amp;linkId=e9736241335a76e7d2193659b63973f6&quot;&gt;Merge VR Headset&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These headsets might be a bit more on the expensive side, but will be worth it if you plan to do any amount of serious VR mobile development.
+If you just want to dabble then just about any $15 - $25 headset will work ok, but probably won’t include an action button.&lt;/p&gt;
+
+&lt;h2 id=&quot;software&quot;&gt;Software&lt;/h2&gt;
+
+&lt;p&gt;I’ve developed a number of mobile games using the Apple SpriteKit framework. Looking back, I would never develop any game in anything other than the Unity engine ever again. The Unity IDE and Engine 
+just gives you so much more tooling to create great games easier and more quickly than anything you could develop in Xcode. So for this tutorial we’ll use Unity to develop our iOS GoogleVR Game.&lt;/p&gt;
+
+&lt;p&gt;The first thing to know is that iOS developers can not (at the time of this writing) make use of the Daydream VR platform. There is a build of Unity that includes a Daydream Technical Preview… DO NOT USE THE Technical Preview
+if you want your app to compile in Xcode. Simply download the latest version of Unity: &lt;a href=&quot;https://store.unity.com/download?ref=personal&quot;&gt;Unity Free Download&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have the latest version of Unity downloaded and installed, you’ll want to download the &lt;a href=&quot;https://developers.google.com/vr/unity/download#google-vr-sdk-for-unity&quot;&gt;Google VR SDK&lt;/a&gt;. The Google VR SDK contains the components (Or Prefabs) we’ll need to transform what would 
+normally be a 3d game into a stereoscopic VR experience. For example the Main Unity Camera functions the way traditional game cameras function:&lt;/p&gt;
+
+&lt;h2 id=&quot;main-camera-unity&quot;&gt;Main Camera (Unity)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/normal_camera_view.png&quot; alt=&quot;Normal Camera&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;However in order for the scene to be perceived as stereoscopic within a VR headset the normal camera needs to be adjusted significantly. This is what the Google VR SDK gives us for free.
+The &lt;code class=&quot;highlighter-rouge&quot;&gt;GvrViewMain&lt;/code&gt; prefab actually uses a Unity Camera, but then splits out the image into two parts (one for each eye) and displays them together, but with slightly different viewing angles, in a viewport. &lt;code class=&quot;highlighter-rouge&quot;&gt;GvrViewMain&lt;/code&gt; Also applies a distortion to the 
+two images (which you can see a bit in the image below) which is necessary for making the image look correct when looking through the lenses of a VR headset. One additional difference you’ll notice between these
+two views is the addition of a circular reticle below. This is the &lt;code class=&quot;highlighter-rouge&quot;&gt;GvrReticlePointer&lt;/code&gt;, another Google VR SDK prefab, and it is your primary means of interaction with the VR world. The Google VR SDK uses ray casting
+to determine what object you’re looking at and tapping the screen triggers an interaction with the object that currently holds your “gaze”. (more detail on this later)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/google_vr_camera_view.png&quot; alt=&quot;VR Camera&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that you’ve downloaded both the latest version of Unity and the Google VR SDK we’re ready to create our new project. Open Unity and select “New”&lt;/p&gt;
+
+&lt;h2 id=&quot;camera-with-gvrviewmain-google-vr-sdk&quot;&gt;Camera With GvrViewMain (Google VR SDK)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/unity_new_proj.png&quot; alt=&quot;unity_new_proj&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Make sure you select 3D, but other than that you’re free to change anything you’d like (Name, Location, Organization, etc). 
+Now you should see a blank Unity project with just a Camera and a Directional Light in your object hierarchy. Now it’s time to import the Google VR SDK you downloaded earlier.
+In the Assets menu, import a custom package.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/import_package.png&quot; alt=&quot;import_package&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;import the package &lt;code class=&quot;highlighter-rouge&quot;&gt;GoogleVRForUnity.unitypackage&lt;/code&gt; found in the &lt;code class=&quot;highlighter-rouge&quot;&gt;gvr-unity-sdk&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;p&gt;Make sure all the assets are selected and click the &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; button.&lt;/p&gt;
+
+&lt;p&gt;if you get the following warning simply select ‘I Made a Backup Go Ahead!’… we haven’t done anything yet anyway ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/updagrade_api_warning.png&quot; alt=&quot;upgrade_api_warning&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Right now there seems to be a bug in the api upgrade process so if you see this error message in the Unity console double click it to open the script in your default editor.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/api_upgrade_error.png&quot; alt=&quot;api_upgrade_error&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This should bring you to this method:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  private IEnumerator CallPluginAtEndOfFrames() {
+    if (processingRunning) {
+      Debug.LogError(&quot;CallPluginAtEndOfFrames invoked while already running.&quot;);
+      Debug.LogError(StackTraceUtility.ExtractStackTrace());
+      return false;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;simply change the return statement from &lt;code class=&quot;highlighter-rouge&quot;&gt;return false&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return false&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  private IEnumerator CallPluginAtEndOfFrames() {
+    if (processingRunning) {
+      Debug.LogError(&quot;CallPluginAtEndOfFrames invoked while already running.&quot;);
+      Debug.LogError(StackTraceUtility.ExtractStackTrace());
+      yield return false;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Switch back to Unity and select the console’s &lt;code class=&quot;highlighter-rouge&quot;&gt;clear&lt;/code&gt; button to recompile the script and clear the warning. At this point you may get a message that Unity needs to import additional libraries,
+just accept and import the new libraries it suggests.&lt;/p&gt;
+
+&lt;p&gt;Now you should have an error free console with the Google VR SDK successfully installed. The quickest way to test and make sure everything is working is to switch to the Unity &lt;code class=&quot;highlighter-rouge&quot;&gt;project&lt;/code&gt; tab and find the &lt;code class=&quot;highlighter-rouge&quot;&gt;GVRDemo&lt;/code&gt; 
+scene at Assets &amp;gt; GoogleVR &amp;gt; Demos &amp;gt; Scenes. Double click the scene to open it and hit the play button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/demo_scene.png&quot; alt=&quot;demo_scene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hold down the option button and move the mouse to simulate looking around in the scene. Notice that the reticle changes shape when you look at the floating cube and the cube reacts to your gaze as well. Click 
+the mouse while looking at the cube and you’ll notice the cube transports to another location in the scene. Look around. Can you find it again?&lt;/p&gt;
+
+&lt;h2 id=&quot;building-to-xcode&quot;&gt;Building To Xcode&lt;/h2&gt;
+
+&lt;p&gt;Open the menu for Unity build settings by selecting File &amp;gt; Build Settings.&lt;/p&gt;
+
+&lt;p&gt;Make sure you add the currently open Google VR Demo Scene to your “Scenes in Build” Queue by clicking the button “Add Open Scene”&lt;/p&gt;
+
+&lt;p&gt;Under &lt;code class=&quot;highlighter-rouge&quot;&gt;platform&lt;/code&gt; select iOS, then click the &lt;code class=&quot;highlighter-rouge&quot;&gt;Player Settings...&lt;/code&gt; button beneath.&lt;/p&gt;
+
+&lt;p&gt;In the main Unity window, behind the build settings window, you’ll notice the inspector panel (probably rightmost panel) has changed to reveal some iOS platform specific settings. Under the phone tab, make sure 
+to deselect all orientations other than Landscape Left, as seen below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/ios_settings_unity.png&quot; alt=&quot;ios_settings_unity&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once that’s done, go ahead and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;Build&lt;/code&gt;!&lt;/p&gt;
+
+&lt;p&gt;Save the new project anywhere you’d like (probably within a new “Builds” folder within your current project folder).
+This process may take a while to export all the assets for the Xcode Project.&lt;/p&gt;
+
+&lt;p&gt;Once that process is done you should have an Xcode Project file in the location you built your project.&lt;/p&gt;
+
+&lt;p&gt;Open that Xcode project file, run the app on an iOS device and insert into your Google Cardboard headset.&lt;/p&gt;
+
+&lt;p&gt;Enjoy!&lt;/p&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//davidwnorman.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">When it comes to VR development for the iPhone you’re going to have to look beyond Apple for tools.
+It’s possible this could be changing next year if Robert Scoble’s predictions of an all glass, augmented-reality-glasses-ready 
+iPhone come true. But for now, if you’re an iOS developer and you want to dive into the new exciting world of VR development, 
+your best option is the Google VR SDK for Unity.</summary></entry><entry><title type="html">Swagger Codegen for Swift3 and NodeJS</title><link href="http://localhost:4000/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS.html" rel="alternate" type="text/html" title="Swagger Codegen for Swift3 and NodeJS" /><published>2016-11-25T21:43:59-08:00</published><updated>2016-11-25T21:43:59-08:00</updated><id>http://localhost:4000/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS</id><content type="html" xml:base="http://localhost:4000/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS.html">&lt;p&gt;In this tutorial I’ll walk you through building a working Swift 3 App and a working NodeJS Service. Huge portions of the code on both the front and backend will be automatically generated.
+This tutorial will introduce you to how Swagger Codegen can save you tons of time on both the front and backend when building an integrated app.&lt;/p&gt;
+
+&lt;p&gt;If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) &lt;a href=&quot;https://github.com/swagger-api/swagger-ui&quot;&gt;Swagger UI&lt;/a&gt; documentation.&lt;/p&gt;
+
+&lt;p&gt;(Here’s a quick look at what Swagger UI Looks like with a defined API)
+&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Swagger’s UI tool makes it easy to learn about the features of a backend service you’d like to interact with without needing to dig through interminable and abstruse documentation. Swagger’s documentation is easy to read and understand. It also allows you to test calls directly from your browser.&lt;/p&gt;
+
+&lt;p&gt;One of Swagger’s lesser known features is the capability to generate server AND client code (yes even Swift!).&lt;/p&gt;
+
+&lt;p&gt;All this is made possible with Swagger’s Open API Specification which defines a standard by which a REST API’s functionality can be defined. In other words once you create a swagger spec document (in either json or yml) that defines the expected behavior of an API you can just generate the code to interact with that endpoint because the expectations on both sides of the agreement have already been defined. You’ll see how this works in a minute when we start writing code.&lt;/p&gt;
+
+&lt;p&gt;To demonstrate how we can quickly write both the server-side and client-side code for an app we’re going to build an app for keeping track of Dwarfs we meet while playing &lt;a href=&quot;http://www.bay12games.com/dwarves/features.html&quot;&gt;Dwarf Fortress&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/dfbackground.jpg&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;First we’ll need to create a swagger specification that will define the entire backend API for our app. Our API will handle simple Create and Read operations for keeping track of Dwarf migrants we meet in Dwarf Fortress.&lt;/p&gt;
+
+&lt;p&gt;To start off, we’ll just need to create a new swagger.yml specification file. So change directory to somewhere you’d like to create a new project. Once you’ve created a new folder / directory to store your project create a swagger.yml file.
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ touch swagger.yml&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then open that file in your favorite text editor and paste in the following code.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;nn&quot;&gt;---&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;swagger&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;2.0&quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;info&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Dwarf&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Tracker&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;endpoints&quot;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;version&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;0.0.1&quot;&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;title&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Dwarf&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Tracker&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Service&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;API&quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;host&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;localhost:3000&quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;schemes&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;http&quot;&lt;/span&gt;
+&lt;span class=&quot;s&quot;&gt;produces&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+&lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;application/json&quot;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;The above block of code is laying down some baseline information about our API. It’s specifying the version of the Open API specification we’re using (currently the latest 2.0) as well as some other basic information about our API like a description and title. The &lt;code class=&quot;highlighter-rouge&quot;&gt;host&lt;/code&gt; is very important information here, because it specifies the hostname and port we’ll be making network requests against (we’re using localhost for this demo, I’ll cover how to set that up later).&lt;/p&gt;
+
+&lt;p&gt;Next we’ll set up the different &lt;code class=&quot;highlighter-rouge&quot;&gt;paths&lt;/code&gt; for our API. Paste the next block of code directly beneath the previous block to continue creating our Swagger API specification.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;s&quot;&gt;paths&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+  &lt;span class=&quot;s&quot;&gt;/dwarf&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;post&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;summary&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Post&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;new&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Dwarf&quot;&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;endpoint&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;for&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;posting&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;a&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;newly&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;created&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;dwarf&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;to&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;the&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;server&quot;&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;operationId&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;postDwarf&quot;&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;parameters&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;pi&quot;&gt;-&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;payload&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;in&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;body&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;required&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;true&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;A single JSON object containing the dwarf definition&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;$ref&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#/definitions/Dwarf'&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;responses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+        &lt;span class=&quot;s&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;indicates a successful update&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;get&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;summary&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;All&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;dwarves&quot;&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;Gets&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;dwarves&quot;&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;operationId&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;getDwarves&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;responses&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;200&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;An&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;array&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;of&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;dwarf&lt;/span&gt;&lt;span class=&quot;nv&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s&quot;&gt;objects&quot;&lt;/span&gt;
+          &lt;span class=&quot;s&quot;&gt;schema&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;array&lt;/span&gt;
+            &lt;span class=&quot;s&quot;&gt;items&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+              &lt;span class=&quot;s&quot;&gt;$ref&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;#/definitions/Dwarf'&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now our API has a single route: /dwarf&lt;/p&gt;
+
+&lt;p&gt;When we call this endpoint we would use the url: http://localhost:3000/dwarf&lt;/p&gt;
+
+&lt;p&gt;Next we have defined two HTTP Methods in our API for interacting with this single endpoint. If we’d like to POST a new dwarf we can see we’ve specified that a &lt;code class=&quot;highlighter-rouge&quot;&gt;payload&lt;/code&gt; will be required in the &lt;code class=&quot;highlighter-rouge&quot;&gt;body&lt;/code&gt;. Additionally we’ve defined a &lt;code class=&quot;highlighter-rouge&quot;&gt;schema&lt;/code&gt; with this strange bit of syntax:
+&lt;code class=&quot;highlighter-rouge&quot;&gt;$ref: '#/definitions/Dwarf'&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;This is a reference to a definition of an object that holds data types that can be consumed and produced by operations. These data types can be primitives, arrays or models. We can define objects that we’re going to re-use in the specification so we don’t need to type them over and over again. This will be the final part of our specification.&lt;/p&gt;
+
+&lt;p&gt;Take the following code snippet and post it below your last in the same file to finish the swagger.yml file.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-yaml&quot; data-lang=&quot;yaml&quot;&gt;&lt;span class=&quot;s&quot;&gt;definitions&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+
+  &lt;span class=&quot;s&quot;&gt;Dwarf&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;object&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;description&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;a short sturdy creature fond of drink and industry!&lt;/span&gt;
+    &lt;span class=&quot;s&quot;&gt;properties&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;string&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; 
+        &lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;string&lt;/span&gt;
+      &lt;span class=&quot;s&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
+        &lt;span class=&quot;s&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;string&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Here’s the finished .yml file for reference: https://github.com/normand1/DwarfTracker/blob/master/swagger.yml&lt;/p&gt;
+
+&lt;h2 id=&quot;prerequisites&quot;&gt;Prerequisites&lt;/h2&gt;
+&lt;p&gt;Now that we have the swagger specification that defines our interaction between our server-side code and our client-side code we’re ready to start generating them both! But first we’ll need to download a few tools to help us out, so make sure you have these installed before you proceed any farther:&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Xcode 8.*&lt;/li&gt;
+  &lt;li&gt;NodeJS v 0.12.*&lt;/li&gt;
+  &lt;li&gt;Apache Maven 3.*&lt;/li&gt;
+  &lt;li&gt;MongoDB 4.*&lt;/li&gt;
+  &lt;li&gt;Swagger CodeGen&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&quot;installation&quot;&gt;Installation&lt;/h2&gt;
+
+&lt;p&gt;XCode: Mac AppStore&lt;/p&gt;
+
+&lt;p&gt;NodeJS: https://nodejs.org/en/&lt;/p&gt;
+
+&lt;p&gt;Maven: http://maven.apache.org/install.html&lt;/p&gt;
+
+&lt;p&gt;MongoDB: http://treehouse.github.io/installation-guides/mac/mongo-mac.html&lt;/p&gt;
+
+&lt;p&gt;Next you want to install Swagger Codegen. The easiest way to install Swagger Codegen on a mac is via Homebrew… HOWEVER, we cannot use this method for installation when creating generating code for Swift3.
+The .jar file that homebrew will install is built from the latest release branch of Swagger which at the time this tutorial was written does not support Swift3.&lt;/p&gt;
+
+&lt;p&gt;First we need to clone the git repository with the branch that supports Swift3 so clone this repo to a new directory (a different directory than your DwarfTracker project directory).&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git clone https://github.com/hexelon/swagger-codegen.git&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Once the repo has been cloned, checkout the swift-3 branch and build the .jar file.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ git checkout swift-3&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ mvn clean install&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now we’ve built the .jar file we’ll need to generate Swift3 code. You’ll find the .jar file we need at this path: &lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen/modules/swagger-codegen-cli/target/swagger-codegen-cli.jar&lt;/code&gt;
+Copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen-cli.jar&lt;/code&gt; file and paste it into your top level DwarfTracker project folder.&lt;/p&gt;
+
+&lt;h2 id=&quot;client-side-code-generation&quot;&gt;Client-side Code Generation&lt;/h2&gt;
+&lt;p&gt;Since you may need to run the next script often (anytime the swagger spec changes) you’re going to want to put the following script in it’s own shell script file. The following command will generate your front end swift code when run, but right now we’re just going to save it for easy future execution.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ echo &quot;java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swift -o SwaggerClient&quot; &amp;gt; client_build.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Open the client_build.sh file in your favorite text editor and you should see this:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;java -jar swagger-codegen-cli.jar generate -i swagger.yml -l swift -o SwaggerClient&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;As you can see the above command will reference the .yml API specification we build a minute ago and it will output an SDK based on whatever language we specify with the -l parameter (in this case swift). Finally -o specifies an output directory we haven’t yet created… so create an output directory.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ mkdir SwaggerClient&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Make sure you have permission to execute the script we just created by running:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ chmod a+x client_build.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Then, execute the script:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ ./client_build.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Assuming everything worked as expected you should see a number of new files in your SwaggerClient folder.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.05.49 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;If you’re SwaggerClient Folder looks like the one above you’re in good shape.&lt;/p&gt;
+
+&lt;h2 id=&quot;server-side-code-generation&quot;&gt;Server-side Code Generation&lt;/h2&gt;
+
+&lt;p&gt;Follow the same steps again, but for the server-side code this time. Create a new folder for the swagger server code named &lt;code class=&quot;highlighter-rouge&quot;&gt;SwaggerServer&lt;/code&gt; and replace &lt;code class=&quot;highlighter-rouge&quot;&gt;swift&lt;/code&gt; with &lt;code class=&quot;highlighter-rouge&quot;&gt;nodejs-server&lt;/code&gt; in the build script as so.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ echo &quot;java -jar swagger-codegen-cli.jar generate -i swagger.yml -l nodejs-server -o SwaggerServer&quot; &amp;gt; server_build.sh&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Make sure the script has the executable permission, and run the script.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.34.46 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;You should now have files in your SwaggerServer folder that resemble the files above.&lt;/p&gt;
+&lt;h2 id=&quot;starting-and-running-the-server&quot;&gt;Starting and Running the Server&lt;/h2&gt;
+
+&lt;p&gt;First we need to install the any packages our Swagger Server needs to run, so change directory into your SwaggerServer folder.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm install&lt;/code&gt; to install any needed dependancies.&lt;/p&gt;
+
+&lt;p&gt;Now we can start the server.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm run start&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;If everything worked, you should see the following message:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;Your server is listening on port 3000 (http://localhost:3000)
+Swagger-ui is available on http://localhost:3000/docs&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000/docs&lt;/code&gt; in your browser to view the documentation for our API.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.45.40 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;At this point you can send POST and GET requests to the API. You will get hardcoded responses, but that’s good enough for now!&lt;/p&gt;
+
+&lt;p&gt;Sending a GET request to http://localhost:3000/dwarf via SwaggerUI will result in this response:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.53.06 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;We are receiving a response with an array of Dwarf objects, just as we’d defined earlier in our swagger.yml file.&lt;/p&gt;
+
+&lt;h2 id=&quot;structuring-the-ios-app&quot;&gt;Structuring the iOS App&lt;/h2&gt;
+
+&lt;p&gt;Now that the server is running and accepting requests, we’re ready to start building the rest of the iOS app. So far we’ve auto-generated the middleware and networking code that we’ll be using to communicate with the our backend service, but we still need to create a new Xcode project and pull the networking code we generated earlier into the final app.&lt;/p&gt;
+
+&lt;p&gt;Open Xcode and create a new Xcode project. Create a “Single View Application” and make sure you save the project inside the same folder you’ve saved your SwaggerClient folder in. My folder structure looks like this after inserting my Xcode Project files.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-26 at 1.40.40 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you’ve created the Xcode project it’s time to drag the Swagger Client code into the project and make sure you de-select “copy items if needed”so we don’t create a second copy of the directory. Also, make sure you have ‘Create groups’ selected.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-26 at 1.45.51 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/blog/assets/Screen_Shot_2016-11-26_at_1_46_55_PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;alamofire-instalation&quot;&gt;Alamofire Instalation&lt;/h2&gt;
+
+&lt;p&gt;The code we generated from Swagger uses the AlamoFire library to make the network requests we’ll need to communicate with the server, so we’ll need to install that next. For further installation instructions follow the examples on the &lt;a href=&quot;https://github.com/Alamofire/Alamofire#installation&quot;&gt;AlamoFire Github page&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;If you used cocoapods to install cocoapods ensure that you’ve opened the .xcworkspace instead of the .xcodeproj after cocoapod installation.&lt;/p&gt;
+
+&lt;p&gt;Now we’re ready to use some of the code we’ve generated. In Xcode open the &lt;code class=&quot;highlighter-rouge&quot;&gt;AppDelegate.swift&lt;/code&gt; file and find the &lt;code class=&quot;highlighter-rouge&quot;&gt;didFinishLaunchingWithOptions&lt;/code&gt; method at the top of the file.
+We’re going to print out the first object in the array of Dwarves currently being returned by the backend service just to make sure everything is setup correctly.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;    &lt;span class=&quot;kd&quot;&gt;func&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;_&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;application&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;UIApplication&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;didFinishLaunchingWithOptions&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;launchOptions&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;kt&quot;&gt;UIApplicationLaunchOptionsKey&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Any&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]?)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;-&amp;gt;&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;Bool&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;c1&quot;&gt;// Override point for customization after application launch.&lt;/span&gt;
+        
+       &lt;span class=&quot;kt&quot;&gt;DefaultAPI&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;getDwarves&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dwarves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;in&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nv&quot;&gt;dwarves&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;dwarves&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+                &lt;span class=&quot;nf&quot;&gt;print&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dwarves&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;first&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;!.&lt;/span&gt;&lt;span class=&quot;nf&quot;&gt;encodeToJSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt;
+            &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        
+        &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Run the app and watch the log for results. You should see a similar print out to what you observed in swagger UI.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-swift&quot; data-lang=&quot;swift&quot;&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;age&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;So there we are! Pretty cool. We didn’t have to parse any json, we got an actual Swift object back from the server and we didn’t even have to write a network call!
+So now in order to make Our DwarfTracker do something more than return data we’re going to need to do a bit more work.&lt;/p&gt;
+
+&lt;h2 id=&quot;setting-up-server-controllers&quot;&gt;Setting Up Server Controllers&lt;/h2&gt;
+
+&lt;p&gt;So we haven’t actually posted any Dwarves to our service yet so how are we receiving that first Dwarf named “aeiou”? 
+Swagger code is great at generating code on the front end to do just about everything we need, but on the backend a bit more work is involved.
+If you look at the &lt;code class=&quot;highlighter-rouge&quot;&gt;DefaultService.js&lt;/code&gt; file you’ll see that our controller is currently returning a hardcoded example for our getDwarves route.&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;s1&quot;&gt;'use strict'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDwarves&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/**
+   * parameters expected in the args:
+  **/&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;examples&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{};&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;examples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'application/json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;age&quot;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;aeiou&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;];&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;examples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;length&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Content-Type'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application/json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;examples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;Object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;keys&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;examples&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]]&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;||&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{},&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;k&quot;&gt;else&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;();&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;p&quot;&gt;...&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;It’s time to update that code to actually return a Dwarf from our Database from our &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; route and for our &lt;code class=&quot;highlighter-rouge&quot;&gt;Post&lt;/code&gt; route to actually save a Dwarf to our DB.&lt;/p&gt;
+
+&lt;p&gt;Start the MongoDB Daemon by running:&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ mongod&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;We’re also going to install mongoose which will give a really simple and elegant way to interact with our Mongo database.&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm install mongoose --save&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that Mongoose is installed, create a &lt;code class=&quot;highlighter-rouge&quot;&gt;models&lt;/code&gt; folder and create a new file inside named &lt;code class=&quot;highlighter-rouge&quot;&gt;DwarfModel.js&lt;/code&gt;.&lt;/p&gt;
+
+&lt;p&gt;Paste this code inside &lt;code class=&quot;highlighter-rouge&quot;&gt;DwarfModel.js&lt;/code&gt; to define our DwarfModel to match the one we defined in our swagger spec. (Yes it would be nice to generate this via swagger and if you’ve done this let me know in the comments!)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mongoose'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dwarfschema&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Schema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;age&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+    &lt;span class=&quot;na&quot;&gt;id&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;String&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dwarf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;model&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'dwarf'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;dwarfschema&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;module&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dwarf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now heading back to our &lt;code class=&quot;highlighter-rouge&quot;&gt;DefaultController.js&lt;/code&gt; we can replace the entire file with the code below to make our backend dynamically create and read our dwarfs!&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;s1&quot;&gt;'use strict'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;mongoose&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;Dwarf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'../models/DwarfModel'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getDwarves&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/**
+   * parameters expected in the args:
+  **/&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Content-Type'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application/json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+      &lt;span class=&quot;nx&quot;&gt;Dwarf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;find&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;({},&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;docs&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;exports&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;postDwarf&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;next&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;cm&quot;&gt;/**
+   * parameters expected in the args:
+  * payload (Dwarf)
+  **/&lt;/span&gt;
+  &lt;span class=&quot;c1&quot;&gt;// no response value expected for this operation&lt;/span&gt;
+
+  &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setHeader&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'Content-Type'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;'application/json'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;Dwarf&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;args&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;payload&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;value&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;function&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;throw&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;err&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;res&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;end&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;JSON&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;stringify&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;results&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Heading back to our top level index.js file we’ll now import mongoose and connect to our DB. Paste this code directlybelow the last import statement at the top of the file (which should be &lt;code class=&quot;highlighter-rouge&quot;&gt;var serverPort = 3000;&lt;/code&gt;)&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;require&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mongoose'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+
+&lt;span class=&quot;nx&quot;&gt;mongoose&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;connect&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;'mongodb://localhost:27017/DwarfGenerator'&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Now we can restart the server by running&lt;/p&gt;
+
+&lt;p&gt;&lt;code class=&quot;highlighter-rouge&quot;&gt;$ npm run start&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Now when we open the documentation at &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000/docs&lt;/code&gt; we should be able to &lt;code class=&quot;highlighter-rouge&quot;&gt;GET&lt;/code&gt; and &lt;code class=&quot;highlighter-rouge&quot;&gt;POST&lt;/code&gt; to the &lt;code class=&quot;highlighter-rouge&quot;&gt;/dwarf&lt;/code&gt; endpoint as expected.&lt;/p&gt;
+
+&lt;p&gt;In the &lt;code class=&quot;highlighter-rouge&quot;&gt;POST /dwarf&lt;/code&gt; documentation go ahead and post a new Dwarf to your server. In the payload box paste:&lt;/p&gt;
+
+&lt;figure class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;code class=&quot;language-javascript&quot; data-lang=&quot;javascript&quot;&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;name&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;Gimli&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;age&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;100&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;s2&quot;&gt;&quot;id&quot;&lt;/span&gt;&lt;span class=&quot;err&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;1&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/figure&gt;
+
+&lt;p&gt;Hit the “Try it out!” button and your new Dwarf should be posted to the server!&lt;/p&gt;
+
+&lt;p&gt;That’s it! Now we have a working backend that can both save dwarves we post to it and return a list of all of our dwarves!&lt;/p&gt;
+
+&lt;h2 id=&quot;finishing-up&quot;&gt;Finishing Up&lt;/h2&gt;
+
+&lt;p&gt;Now it’s pretty simple to finish up the app from here. There are plenty of tutorials that show you how to display things in a UITableView so I won’t go into detail here.
+But, you can download a finished project with the full source code here: https://github.com/normand1/DwarfTracker
+Also, here is an example of the (extremely simple!) finished app&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-26 at 5.24.10 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Thanks for finishing the whole tutorial! As a reward please enjoy this description of beautiful dwarf poetry:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/poertry.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//davidwnorman.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">In this tutorial I’ll walk you through building a working Swift 3 App and a working NodeJS Service. Huge portions of the code on both the front and backend will be automatically generated.
+This tutorial will introduce you to how Swagger Codegen can save you tons of time on both the front and backend when building an integrated app.</summary></entry></feed>
