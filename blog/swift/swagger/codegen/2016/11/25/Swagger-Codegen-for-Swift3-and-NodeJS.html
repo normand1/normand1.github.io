@@ -10,7 +10,7 @@
   <meta name="description" content="In this tutorial I’ll walk you through building a working Swift 3 App and a working NodeJS Service. Huge portions of the code on both the front and backend w...">
 
   <link rel="stylesheet" href="/blog/assets/main.css">
-  <link rel="canonical" href="/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS.html">
+  <link rel="canonical" href="http://localhost:4000/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS.html">
   <link rel="alternate" type="application/rss+xml" title="Dave&#39;s Code Blog" href="/blog/feed.xml">
   
   
@@ -72,7 +72,7 @@ This tutorial will introduce you to how Swagger Codegen can save you tons of tim
 <p>If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) <a href="https://github.com/swagger-api/swagger-ui">Swagger UI</a> documentation.</p>
 
 <p>(Here’s a quick look at what Swagger UI Looks like with a defined API)
-<img src="/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png" alt="My helpful screenshot" /></p>
+<img src="http://localhost:4000/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png" alt="My helpful screenshot" /></p>
 
 <p>Swagger’s UI tool makes it easy to learn about the features of a backend service you’d like to interact with without needing to dig through interminable and abstruse documentation. Swagger’s documentation is easy to read and understand. It also allows you to test calls directly from your browser.</p>
 
@@ -82,7 +82,7 @@ This tutorial will introduce you to how Swagger Codegen can save you tons of tim
 
 <p>To demonstrate how we can quickly write both the server-side and client-side code for an app we’re going to build an app for keeping track of Dwarfs we meet while playing <a href="http://www.bay12games.com/dwarves/features.html">Dwarf Fortress</a>.</p>
 
-<p><img src="/blog/assets/dfbackground.jpg" alt="My helpful screenshot" /></p>
+<p><img src="http://localhost:4000/blog/assets/dfbackground.jpg" alt="My helpful screenshot" /></p>
 
 <p>First we’ll need to create a swagger specification that will define the entire backend API for our app. Our API will handle simple Create and Read operations for keeping track of Dwarf migrants we meet in Dwarf Fortress.</p>
 
@@ -221,7 +221,7 @@ Copy the <code class="highlighter-rouge">swagger-codegen-cli.jar</code> file and
 
 <p>Assuming everything worked as expected you should see a number of new files in your SwaggerClient folder.</p>
 
-<p><img src="/blog/assets/Screen Shot 2016-11-24 at 12.05.49 AM.png" alt="My helpful screenshot" /></p>
+<p><img src="http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.05.49 AM.png" alt="My helpful screenshot" /></p>
 
 <p>If you’re SwaggerClient Folder looks like the one above you’re in good shape.</p>
 
@@ -233,7 +233,7 @@ Copy the <code class="highlighter-rouge">swagger-codegen-cli.jar</code> file and
 
 <p>Make sure the script has the executable permission, and run the script.</p>
 
-<p><img src="/blog/assets/Screen Shot 2016-11-24 at 12.34.46 AM.png" alt="My helpful screenshot" /></p>
+<p><img src="http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.34.46 AM.png" alt="My helpful screenshot" /></p>
 
 <p>You should now have files in your SwaggerServer folder that resemble the files above.</p>
 <h2 id="starting-and-running-the-server">Starting and Running the Server</h2>
@@ -253,13 +253,13 @@ Swagger-ui is available on http://localhost:3000/docs</code></p>
 
 <p>Open <code class="highlighter-rouge">http://localhost:3000/docs</code> in your browser to view the documentation for our API.</p>
 
-<p><img src="/blog/assets/Screen Shot 2016-11-24 at 12.45.40 AM.png" alt="My helpful screenshot" /></p>
+<p><img src="http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.45.40 AM.png" alt="My helpful screenshot" /></p>
 
 <p>At this point you can send POST and GET requests to the API. You will get hardcoded responses, but that’s good enough for now!</p>
 
 <p>Sending a GET request to http://localhost:3000/dwarf via SwaggerUI will result in this response:</p>
 
-<p><img src="/blog/assets/Screen Shot 2016-11-24 at 12.53.06 AM.png" alt="My helpful screenshot" /></p>
+<p><img src="http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.53.06 AM.png" alt="My helpful screenshot" /></p>
 
 <p>We are receiving a response with an array of Dwarf objects, just as we’d defined earlier in our swagger.yml file.</p>
 
@@ -269,12 +269,12 @@ Swagger-ui is available on http://localhost:3000/docs</code></p>
 
 <p>Open Xcode and create a new Xcode project. Create a “Single View Application” and make sure you save the project inside the same folder you’ve saved your SwaggerClient folder in. My folder structure looks like this after inserting my Xcode Project files.</p>
 
-<p><img src="/blog/assets/Screen Shot 2016-11-26 at 1.40.40 PM.png" alt="My helpful screenshot" /></p>
+<p><img src="http://localhost:4000/blog/assets/Screen Shot 2016-11-26 at 1.40.40 PM.png" alt="My helpful screenshot" /></p>
 
 <p>Once you’ve created the Xcode project it’s time to drag the Swagger Client code into the project and make sure you de-select “copy items if needed”so we don’t create a second copy of the directory. Also, make sure you have ‘Create groups’ selected.</p>
 
-<p><img src="/blog/assets/Screen Shot 2016-11-26 at 1.45.51 PM.png" alt="My helpful screenshot" />
-<img src="/blog/assets/Screen_Shot_2016-11-26_at_1_46_55_PM.png" alt="My helpful screenshot" /></p>
+<p><img src="http://localhost:4000/blog/assets/Screen Shot 2016-11-26 at 1.45.51 PM.png" alt="My helpful screenshot" />
+<img src="http://localhost:4000/blog/assets/Screen_Shot_2016-11-26_at_1_46_55_PM.png" alt="My helpful screenshot" /></p>
 
 <h2 id="alamofire-instalation">Alamofire Instalation</h2>
 
@@ -423,11 +423,11 @@ If you look at the <code class="highlighter-rouge">DefaultService.js</code> file
 But, you can download a finished project with the full source code here: https://github.com/normand1/DwarfTracker
 Also, here is an example of the (extremely simple!) finished app</p>
 
-<p><img src="/blog/assets/Screen Shot 2016-11-26 at 5.24.10 PM.png" alt="My helpful screenshot" /></p>
+<p><img src="http://localhost:4000/blog/assets/Screen Shot 2016-11-26 at 5.24.10 PM.png" alt="My helpful screenshot" /></p>
 
 <p>Thanks for finishing the whole tutorial! As a reward please enjoy this description of beautiful dwarf poetry:</p>
 
-<p><img src="/blog/assets/poertry.png" alt="My helpful screenshot" /></p>
+<p><img src="http://localhost:4000/blog/assets/poertry.png" alt="My helpful screenshot" /></p>
 
 <div id="disqus_thread"></div>
 <script>

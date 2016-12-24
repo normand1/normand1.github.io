@@ -1,11 +1,337 @@
-<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="/blog/" rel="alternate" type="text/html" /><updated>2016-11-26T21:51:35-08:00</updated><id>/blog//</id><title type="html">Dave’s Code Blog</title><subtitle>My blog for all things I'm coding. I'll post tutorials about things I'm working on and things I'm interested in. That will mostly include Swift, NodeJS, AWS and Unity VR development.
-</subtitle><entry><title type="html">Swagger Codegen for Swift3 and NodeJS</title><link href="/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS.html" rel="alternate" type="text/html" title="Swagger Codegen for Swift3 and NodeJS" /><published>2016-11-25T21:43:59-08:00</published><updated>2016-11-25T21:43:59-08:00</updated><id>/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS</id><content type="html" xml:base="/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS.html">&lt;p&gt;In this tutorial I’ll walk you through building a working Swift 3 App and a working NodeJS Service. Huge portions of the code on both the front and backend will be automatically generated.
+<?xml version="1.0" encoding="utf-8"?><?xml-stylesheet type="text/xml" href="http://localhost:4000/blog/feed.xslt.xml"?><feed xmlns="http://www.w3.org/2005/Atom"><generator uri="http://jekyllrb.com" version="3.3.1">Jekyll</generator><link href="http://localhost:4000/blog/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/blog/" rel="alternate" type="text/html" /><updated>2016-12-23T19:22:37-08:00</updated><id>http://localhost:4000/blog//</id><title type="html">Dave’s Code Blog</title><subtitle>My blog for all things I'm coding. I'll post tutorials about things I'm working on and things I'm interested in. That will mostly include Swift, NodeJS, AWS and Unity VR development.
+</subtitle><entry><title type="html">Google VR iOS Development with Unity</title><link href="http://localhost:4000/blog/google/cardboard/ios/unity/2016/12/21/Google-VR-iOS-Development-with-Unity.html" rel="alternate" type="text/html" title="Google VR iOS Development with Unity" /><published>2016-12-21T21:43:59-08:00</published><updated>2016-12-21T21:43:59-08:00</updated><id>http://localhost:4000/blog/google/cardboard/ios/unity/2016/12/21/Google-VR-iOS-Development-with-Unity</id><content type="html" xml:base="http://localhost:4000/blog/google/cardboard/ios/unity/2016/12/21/Google-VR-iOS-Development-with-Unity.html">&lt;p&gt;When it comes to VR development for the iPhone you’re going to have to look beyond Apple for tools.
+It’s possible this could be changing next year if Robert Scoble’s predictions of an all glass, augmented-reality-glasses-ready 
+iPhone come true. But for now, if you’re an iOS developer and you want to dive into the new exciting world of VR development, 
+your best option is the Google VR SDK for Unity.&lt;/p&gt;
+
+&lt;p&gt;The good news is that the combination of Unity and the Google VR SDK for iOS gives you a pretty quick way to get up and running with 
+a simple VR app for iPhone. It’s simple but not entirely straightforward how to put all the pieces together to create VR experience for iPhone.
+In this tutorial I’ll walk you through everything you need to get up and running.&lt;/p&gt;
+
+&lt;p&gt;Just a quick note: You might see mentions of the Google Cardboard SDK in other tutorials or documentation on the web. Google VR was previously named Google Cardboard, but was
+rebranded with the announcement of Google’s VR Platform, Daydream, at Google I/O 2016. Google Cardboard is still the name of the open spec used for creating VR headsets, but no longer the name 
+of the VR SDK.&lt;/p&gt;
+
+&lt;h2 id=&quot;hardware&quot;&gt;Hardware&lt;/h2&gt;
+
+&lt;p&gt;Google Cardboard headsets are cheap and easy to find… almost too easy. Since Google Cardboard is an open source design from Google there is no shortage of 
+Google Cardboard headsets available on Amazon, but most are garbage. When looking for a good Google Cardboard headset you should keep a couple of things in mind.
+Since iPhone can’t take advantage of the fancy Google Day Dream motion tracking controller, we need headsets that either allow you to touch the screen of the device
+ to trigger an action, or include a magnetic button on the headset (that will touch the screen for you). The main way to take actions in Google Cardboard for iOS is by looking 
+ (or “Gaze”-ing at something) and touching the screen to trigger an action. You can also attach a bluetooth controller, but how many iPhone users regularly connect a bluetooth controller
+  to their device? At this point I’m afraid iPhone bluetooth controller owners who use Google Cardboard headsets is a pretty small user segment (even smaller than those who own Google Cardboard headsets).&lt;/p&gt;
+
+&lt;p&gt;The other major headset feature you’ll want is a strap to hold the headset to your head. You’d be amazed how many VR headsets require you to actually
+hold the headset up to your eyes to use it. Holding up a headset to your face gets old fast, so make sure you get a headset that will comfortably strap to your head.&lt;/p&gt;
+
+&lt;p&gt;Here are a couple of headsets that include buttons and confortable straps:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.amazon.com/CUDEVS-Glasses-Headset-Adjustable-Smartphone/dp/B01KC851DK/ref=as_li_ss_tl?ie=UTF8&amp;amp;linkCode=sl1&amp;amp;tag=igeek0f-20&amp;amp;linkId=3945e5e0ff510ddc6cbf0932eb5c1347&quot;&gt;CUDEVS Glasses On Amazon&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.amazon.com/Merge-VR-Virtual-Reality-Headset/dp/B015CD6NVE/ref=as_li_ss_tl?tag=shopomo-20&amp;amp;ie=UTF8&amp;amp;qid=1480435262&amp;amp;sr=8-1&amp;amp;keywords=merge+vr&amp;amp;linkCode=ll1&amp;amp;linkId=e9736241335a76e7d2193659b63973f6&quot;&gt;Merge VR Headset&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These headsets might be a bit more on the expensive side, but will be worth it if you plan to do any amount of serious VR mobile development.
+If you just want to dabble then just about any $15 - $25 headset will work ok, but probably won’t include an action button.&lt;/p&gt;
+
+&lt;h2 id=&quot;software&quot;&gt;Software&lt;/h2&gt;
+
+&lt;p&gt;I’ve developed a number of mobile games using the Apple SpriteKit framework. Looking back, I would never develop any game in anything other than the Unity engine ever again. The Unity IDE and Engine 
+just gives you so much more tooling to create great games easier and more quickly than anything you could develop in Xcode. So for this tutorial we’ll use Unity to develop our iOS GoogleVR Game.&lt;/p&gt;
+
+&lt;p&gt;The first thing to know is that iOS developers can not (at the time of this writing) make use of the Daydream VR platform. There is a build of Unity that includes a Daydream Technical Preview… DO NOT USE THE Technical Preview
+if you want your app to compile in Xcode. Simply download the latest version of Unity: &lt;a href=&quot;https://store.unity.com/download?ref=personal&quot;&gt;Unity Free Download&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have the latest version of Unity downloaded and installed, you’ll want to download the &lt;a href=&quot;https://developers.google.com/vr/unity/download#google-vr-sdk-for-unity&quot;&gt;Google VR SDK&lt;/a&gt;. The Google VR SDK contains the components (Or Prefabs) we’ll need to transform what would 
+normally be a 3d game into a stereoscopic VR experience. For example the Main Unity Camera functions the way traditional game cameras function:&lt;/p&gt;
+
+&lt;h2 id=&quot;main-camera-unity&quot;&gt;Main Camera (Unity)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/normal_camera_view.png&quot; alt=&quot;Normal Camera&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;However in order for the scene to be perceived as stereoscopic within a VR headset the normal camera needs to be adjusted significantly. This is what the Google VR SDK gives us for free.
+The &lt;code class=&quot;highlighter-rouge&quot;&gt;GvrViewMain&lt;/code&gt; prefab actually uses a Unity Camera, but then splits out the image into two parts (one for each eye) and displays them together, but with slightly different viewing angles, in a viewport. &lt;code class=&quot;highlighter-rouge&quot;&gt;GvrViewMain&lt;/code&gt; Also applies a distortion to the 
+two images (which you can see a bit in the image below) which is necessary for making the image look correct when looking through the lenses of a VR headset. One additional difference you’ll notice between these
+two views is the addition of a circular reticle below. This is the &lt;code class=&quot;highlighter-rouge&quot;&gt;GvrReticlePointer&lt;/code&gt;, another Google VR SDK prefab, and it is your primary means of interaction with the VR world. The Google VR SDK uses ray casting
+to determine what object you’re looking at and tapping the screen triggers an interaction with the object that currently holds your “gaze”. (more detail on this later)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/google_vr_camera_view.png&quot; alt=&quot;VR Camera&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that you’ve downloaded both the latest version of Unity and the Google VR SDK we’re ready to create our new project. Open Unity and select “New”&lt;/p&gt;
+
+&lt;h2 id=&quot;camera-with-gvrviewmain-google-vr-sdk&quot;&gt;Camera With GvrViewMain (Google VR SDK)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/unity_new_proj.png&quot; alt=&quot;unity_new_proj&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Make sure you select 3D, but other than that you’re free to change anything you’d like (Name, Location, Organization, etc). 
+Now you should see a blank Unity project with just a Camera and a Directional Light in your object hierarchy. Now it’s time to import the Google VR SDK you downloaded earlier.
+In the Assets menu, import a custom package.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/import_package.png&quot; alt=&quot;import_package&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;import the package &lt;code class=&quot;highlighter-rouge&quot;&gt;GoogleVRForUnity.unitypackage&lt;/code&gt; found in the &lt;code class=&quot;highlighter-rouge&quot;&gt;gvr-unity-sdk&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;p&gt;Make sure all the assets are selected and click the &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; button.&lt;/p&gt;
+
+&lt;p&gt;if you get the following warning simply select ‘I Made a Backup Go Ahead!’… we haven’t done anything yet anyway ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/updagrade_api_warning.png&quot; alt=&quot;upgrade_api_warning&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Right now there seems to be a bug in the api upgrade process so if you see this error message in the Unity console double click it to open the script in your default editor.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/api_upgrade_error.png&quot; alt=&quot;api_upgrade_error&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This should bring you to this method:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  private IEnumerator CallPluginAtEndOfFrames() {
+    if (processingRunning) {
+      Debug.LogError(&quot;CallPluginAtEndOfFrames invoked while already running.&quot;);
+      Debug.LogError(StackTraceUtility.ExtractStackTrace());
+      return false;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;simply change the return statement from &lt;code class=&quot;highlighter-rouge&quot;&gt;return false&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return false&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  private IEnumerator CallPluginAtEndOfFrames() {
+    if (processingRunning) {
+      Debug.LogError(&quot;CallPluginAtEndOfFrames invoked while already running.&quot;);
+      Debug.LogError(StackTraceUtility.ExtractStackTrace());
+      yield return false;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Switch back to Unity and select the console’s &lt;code class=&quot;highlighter-rouge&quot;&gt;clear&lt;/code&gt; button to recompile the script and clear the warning. At this point you may get a message that Unity needs to import additional libraries,
+just accept and import the new libraries it suggests.&lt;/p&gt;
+
+&lt;p&gt;Now you should have an error free console with the Google VR SDK successfully installed. The quickest way to test and make sure everything is working is to switch to the Unity &lt;code class=&quot;highlighter-rouge&quot;&gt;project&lt;/code&gt; tab and find the &lt;code class=&quot;highlighter-rouge&quot;&gt;GVRDemo&lt;/code&gt; 
+scene at Assets &amp;gt; GoogleVR &amp;gt; Demos &amp;gt; Scenes. Double click the scene to open it and hit the play button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/demo_scene.png&quot; alt=&quot;demo_scene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hold down the option button and move the mouse to simulate looking around in the scene. Notice that the reticle changes shape when you look at the floating cube and the cube reacts to your gaze as well. Click 
+the mouse while looking at the cube and you’ll notice the cube transports to another location in the scene. Look around. Can you find it again?&lt;/p&gt;
+
+&lt;h2 id=&quot;building-to-xcode&quot;&gt;Building To Xcode&lt;/h2&gt;
+
+&lt;p&gt;Open the menu for Unity build settings by selecting File &amp;gt; Build Settings.&lt;/p&gt;
+
+&lt;p&gt;Make sure you add the currently open Google VR Demo Scene to your “Scenes in Build” Queue by clicking the button “Add Open Scene”&lt;/p&gt;
+
+&lt;p&gt;Under &lt;code class=&quot;highlighter-rouge&quot;&gt;platform&lt;/code&gt; select iOS, then click the &lt;code class=&quot;highlighter-rouge&quot;&gt;Player Settings...&lt;/code&gt; button beneath.&lt;/p&gt;
+
+&lt;p&gt;In the main Unity window, behind the build settings window, you’ll notice the inspector panel (probably rightmost panel) has changed to reveal some iOS platform specific settings. Under the phone tab, make sure 
+to deselect all orientations other than Landscape Left, as seen below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/ios_settings_unity.png&quot; alt=&quot;ios_settings_unity&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once that’s done, go ahead and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;Build&lt;/code&gt;!&lt;/p&gt;
+
+&lt;p&gt;Save the new project anywhere you’d like (probably within a new “Builds” folder within your current project folder).
+This process may take a while to export all the assets for the Xcode Project.&lt;/p&gt;
+
+&lt;p&gt;Once that process is done you should have an Xcode Project file in the location you built your project.&lt;/p&gt;
+
+&lt;p&gt;Open that Xcode project file and run the app from an iOS device.&lt;/p&gt;
+
+&lt;p&gt;Enjoy!&lt;/p&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//davidwnorman.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">When it comes to VR development for the iPhone you’re going to have to look beyond Apple for tools.
+It’s possible this could be changing next year if Robert Scoble’s predictions of an all glass, augmented-reality-glasses-ready 
+iPhone come true. But for now, if you’re an iOS developer and you want to dive into the new exciting world of VR development, 
+your best option is the Google VR SDK for Unity.</summary></entry><entry><title type="html">Google VR iOS Development with Unity</title><link href="http://localhost:4000/blog/google/cardboard/ios/unity/2016/12/21/Google-Cardboard-iOS-Development-with-Unity.html" rel="alternate" type="text/html" title="Google VR iOS Development with Unity" /><published>2016-12-21T21:43:59-08:00</published><updated>2016-12-21T21:43:59-08:00</updated><id>http://localhost:4000/blog/google/cardboard/ios/unity/2016/12/21/Google-Cardboard-iOS-Development-with-Unity</id><content type="html" xml:base="http://localhost:4000/blog/google/cardboard/ios/unity/2016/12/21/Google-Cardboard-iOS-Development-with-Unity.html">&lt;p&gt;When it comes to VR development for the iPhone you’re going to have to look beyond Apple for tools.
+It’s possible this could be changing next year if Robert Scoble’s predictions of an all glass, augmented-reality-glasses-ready 
+iPhone come true. But for now, if you’re an iOS developer and you want to dive into the new exciting world of VR development, 
+your best option is the Google VR SDK for Unity.&lt;/p&gt;
+
+&lt;p&gt;The good news is that the combination of Unity and the Google VR SDK for iOS gives you a pretty quick way to get up and running with 
+a simple VR app for iPhone. It’s simple but not entirely straightforward how to put all the pieces together to create VR experience for iPhone.
+In this tutorial I’ll walk you through everything you need to get up and running.&lt;/p&gt;
+
+&lt;p&gt;Just a quick note: You might see mentions of the Google Cardboard SDK in other tutorials or documentation on the web. Google VR was previously named Google Cardboard, but was
+rebranded with the announcement of Google’s VR Platform, Daydream, at Google I/O 2016. Google Cardboard is still the name of the open spec used for creating VR headsets, but no longer the name 
+of the VR SDK.&lt;/p&gt;
+
+&lt;h2 id=&quot;hardware&quot;&gt;Hardware&lt;/h2&gt;
+
+&lt;p&gt;Google Cardboard headsets are cheap and easy to find… almost too easy. Since Google Cardboard is an open source design from Google there is no shortage of 
+Google Cardboard headsets available on Amazon, but most are garbage. When looking for a good Google Cardboard headset you should keep a couple of things in mind.
+Since iPhone can’t take advantage of the fancy Google Day Dream motion tracking controller, we need headsets that either allow you to touch the screen of the device
+ to trigger an action, or include a magnetic button on the headset (that will touch the screen for you). The main way to take actions in Google Cardboard for iOS is by looking 
+ (or “Gaze”-ing at something) and touching the screen to trigger an action. You can also attach a bluetooth controller, but how many iPhone users regularly connect a bluetooth controller
+  to their device? At this point I’m afraid iPhone bluetooth controller owners who use Google Cardboard headsets is a pretty small user segment (even smaller than those who own Google Cardboard headsets).&lt;/p&gt;
+
+&lt;p&gt;The other major headset feature you’ll want is a strap to hold the headset to your head. You’d be amazed how many VR headsets require you to actually
+hold the headset up to your eyes to use it. Holding up a headset to your face gets old fast, so make sure you get a headset that will comfortably strap to your head.&lt;/p&gt;
+
+&lt;p&gt;Here are a couple of headsets that include buttons and confortable straps:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.amazon.com/CUDEVS-Glasses-Headset-Adjustable-Smartphone/dp/B01KC851DK/ref=as_li_ss_tl?ie=UTF8&amp;amp;linkCode=sl1&amp;amp;tag=igeek0f-20&amp;amp;linkId=3945e5e0ff510ddc6cbf0932eb5c1347&quot;&gt;CUDEVS Glasses On Amazon&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;&lt;a href=&quot;https://www.amazon.com/Merge-VR-Virtual-Reality-Headset/dp/B015CD6NVE/ref=as_li_ss_tl?tag=shopomo-20&amp;amp;ie=UTF8&amp;amp;qid=1480435262&amp;amp;sr=8-1&amp;amp;keywords=merge+vr&amp;amp;linkCode=ll1&amp;amp;linkId=e9736241335a76e7d2193659b63973f6&quot;&gt;Merge VR Headset&lt;/a&gt;&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;These headsets might be a bit more on the expensive side, but will be worth it if you plan to do any amount of serious VR mobile development.
+If you just want to dabble then just about any $15 - $25 headset will work ok, but probably won’t include an action button.&lt;/p&gt;
+
+&lt;h2 id=&quot;software&quot;&gt;Software&lt;/h2&gt;
+
+&lt;p&gt;I’ve developed a number of mobile games using the Apple SpriteKit framework. Looking back, I would never develop any game in anything other than the Unity engine ever again. The Unity IDE and Engine 
+just gives you so much more tooling to create great games easier and more quickly than anything you could develop in Xcode. So for this tutorial we’ll use Unity to develop our iOS GoogleVR Game.&lt;/p&gt;
+
+&lt;p&gt;The first thing to know is that iOS developers can not (at the time of this writing) make use of the Daydream VR platform. There is a build of Unity that includes a Daydream Technical Preview… DO NOT USE THE Technical Preview
+if you want your app to compile in Xcode. Simply download the latest version of Unity: &lt;a href=&quot;https://store.unity.com/download?ref=personal&quot;&gt;Unity Free Download&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Once you have the latest version of Unity downloaded and installed, you’ll want to download the &lt;a href=&quot;https://developers.google.com/vr/unity/download#google-vr-sdk-for-unity&quot;&gt;Google VR SDK&lt;/a&gt;. The Google VR SDK contains the components (Or Prefabs) we’ll need to transform what would 
+normally be a 3d game into a stereoscopic VR experience. For example the Main Unity Camera functions the way traditional game cameras function:&lt;/p&gt;
+
+&lt;h2 id=&quot;main-camera-unity&quot;&gt;Main Camera (Unity)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/normal_camera_view.png&quot; alt=&quot;Normal Camera&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;However in order for the scene to be perceived as stereoscopic within a VR headset the normal camera needs to be adjusted significantly. This is what the Google VR SDK gives us for free.
+The &lt;code class=&quot;highlighter-rouge&quot;&gt;GvrViewMain&lt;/code&gt; prefab actually uses a Unity Camera, but then splits out the image into two parts (one for each eye) and displays them together, but with slightly different viewing angles, in a viewport. &lt;code class=&quot;highlighter-rouge&quot;&gt;GvrViewMain&lt;/code&gt; Also applies a distortion to the 
+two images (which you can see a bit in the image below) which is necessary for making the image look correct when looking through the lenses of a VR headset. One additional difference you’ll notice between these
+two views is the addition of a circular reticle below. This is the &lt;code class=&quot;highlighter-rouge&quot;&gt;GvrReticlePointer&lt;/code&gt;, another Google VR SDK prefab, and it is your primary means of interaction with the VR world. The Google VR SDK uses ray casting
+to determine what object you’re looking at and tapping the screen triggers an interaction with the object that currently holds your “gaze”. (more detail on this later)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/google_vr_camera_view.png&quot; alt=&quot;VR Camera&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Now that you’ve downloaded both the latest version of Unity and the Google VR SDK we’re ready to create our new project. Open Unity and select “New”&lt;/p&gt;
+
+&lt;h2 id=&quot;camera-with-gvrviewmain-google-vr-sdk&quot;&gt;Camera With GvrViewMain (Google VR SDK)&lt;/h2&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/unity_new_proj.png&quot; alt=&quot;unity_new_proj&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Make sure you select 3D, but other than that you’re free to change anything you’d like (Name, Location, Organization, etc). 
+Now you should see a blank Unity project with just a Camera and a Directional Light in your object hierarchy. Now it’s time to import the Google VR SDK you downloaded earlier.
+In the Assets menu, import a custom package.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/import_package.png&quot; alt=&quot;import_package&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;import the package &lt;code class=&quot;highlighter-rouge&quot;&gt;GoogleVRForUnity.unitypackage&lt;/code&gt; found in the &lt;code class=&quot;highlighter-rouge&quot;&gt;gvr-unity-sdk&lt;/code&gt; folder.&lt;/p&gt;
+
+&lt;p&gt;Make sure all the assets are selected and click the &lt;code class=&quot;highlighter-rouge&quot;&gt;import&lt;/code&gt; button.&lt;/p&gt;
+
+&lt;p&gt;if you get the following warning simply select ‘I Made a Backup Go Ahead!’… we haven’t done anything yet anyway ;)&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/updagrade_api_warning.png&quot; alt=&quot;upgrade_api_warning&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Right now there seems to be a bug in the api upgrade process so if you see this error message in the Unity console double click it to open the script in your default editor.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/api_upgrade_error.png&quot; alt=&quot;api_upgrade_error&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;This should bring you to this method:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  private IEnumerator CallPluginAtEndOfFrames() {
+    if (processingRunning) {
+      Debug.LogError(&quot;CallPluginAtEndOfFrames invoked while already running.&quot;);
+      Debug.LogError(StackTraceUtility.ExtractStackTrace());
+      return false;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;simply change the return statement from &lt;code class=&quot;highlighter-rouge&quot;&gt;return false&lt;/code&gt; to &lt;code class=&quot;highlighter-rouge&quot;&gt;yield return false&lt;/code&gt;:&lt;/p&gt;
+
+&lt;div class=&quot;highlighter-rouge&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;  private IEnumerator CallPluginAtEndOfFrames() {
+    if (processingRunning) {
+      Debug.LogError(&quot;CallPluginAtEndOfFrames invoked while already running.&quot;);
+      Debug.LogError(StackTraceUtility.ExtractStackTrace());
+      yield return false;
+    }
+&lt;/code&gt;&lt;/pre&gt;
+&lt;/div&gt;
+
+&lt;p&gt;Switch back to Unity and select the console’s &lt;code class=&quot;highlighter-rouge&quot;&gt;clear&lt;/code&gt; button to recompile the script and clear the warning. At this point you may get a message that Unity needs to import additional libraries,
+just accept and import the new libraries it suggests.&lt;/p&gt;
+
+&lt;p&gt;Now you should have an error free console with the Google VR SDK successfully installed. The quickest way to test and make sure everything is working is to switch to the Unity &lt;code class=&quot;highlighter-rouge&quot;&gt;project&lt;/code&gt; tab and find the &lt;code class=&quot;highlighter-rouge&quot;&gt;GVRDemo&lt;/code&gt; 
+scene at Assets &amp;gt; GoogleVR &amp;gt; Demos &amp;gt; Scenes. Double click the scene to open it and hit the play button.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/demo_scene.png&quot; alt=&quot;demo_scene&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Hold down the option button and move the mouse to simulate looking around in the scene. Notice that the reticle changes shape when you look at the floating cube and the cube reacts to your gaze as well. Click 
+the mouse while looking at the cube and you’ll notice the cube transports to another location in the scene. Look around. Can you find it again?&lt;/p&gt;
+
+&lt;h2 id=&quot;building-to-xcode&quot;&gt;Building To Xcode&lt;/h2&gt;
+
+&lt;p&gt;Open the menu for Unity build settings by selecting File &amp;gt; Build Settings.&lt;/p&gt;
+
+&lt;p&gt;Make sure you add the currently open Google VR Demo Scene to your “Scenes in Build” Queue by clicking the button “Add Open Scene”&lt;/p&gt;
+
+&lt;p&gt;Under &lt;code class=&quot;highlighter-rouge&quot;&gt;platform&lt;/code&gt; select iOS, then click the &lt;code class=&quot;highlighter-rouge&quot;&gt;Player Settings...&lt;/code&gt; button beneath.&lt;/p&gt;
+
+&lt;p&gt;In the main Unity window, behind the build settings window, you’ll notice the inspector panel (probably rightmost panel) has changed to reveal some iOS platform specific settings. Under the phone tab, make sure 
+to deselect all orientations other than Landscape Left, as seen below.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/ios_settings_unity.png&quot; alt=&quot;ios_settings_unity&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;Once that’s done, go ahead and hit &lt;code class=&quot;highlighter-rouge&quot;&gt;Build&lt;/code&gt;!&lt;/p&gt;
+
+&lt;p&gt;Save the new project anywhere you’d like (probably within a new “Builds” folder within your current project folder).
+This process may take a while to export all the assets for the Xcode Project.&lt;/p&gt;
+
+&lt;p&gt;Once that process is done you should have an Xcode Project file in the location you built your project.&lt;/p&gt;
+
+&lt;p&gt;Open that Xcode project file, run the app on an iOS device and insert into your Google Cardboard headset.&lt;/p&gt;
+
+&lt;p&gt;Enjoy!&lt;/p&gt;
+
+&lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+
+/**
+*  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+*  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+/*
+var disqus_config = function () {
+this.page.url = PAGE_URL;  // Replace PAGE_URL with your page's canonical URL variable
+this.page.identifier = PAGE_IDENTIFIER; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+};
+*/
+(function() { // DON'T EDIT BELOW THIS LINE
+var d = document, s = d.createElement('script');
+s.src = '//davidwnorman.disqus.com/embed.js';
+s.setAttribute('data-timestamp', +new Date());
+(d.head || d.body).appendChild(s);
+})();
+&lt;/script&gt;
+
+&lt;noscript&gt;Please enable JavaScript to view the &lt;a href=&quot;https://disqus.com/?ref_noscript&quot;&gt;comments powered by Disqus.&lt;/a&gt;&lt;/noscript&gt;</content><summary type="html">When it comes to VR development for the iPhone you’re going to have to look beyond Apple for tools.
+It’s possible this could be changing next year if Robert Scoble’s predictions of an all glass, augmented-reality-glasses-ready 
+iPhone come true. But for now, if you’re an iOS developer and you want to dive into the new exciting world of VR development, 
+your best option is the Google VR SDK for Unity.</summary></entry><entry><title type="html">Swagger Codegen for Swift3 and NodeJS</title><link href="http://localhost:4000/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS.html" rel="alternate" type="text/html" title="Swagger Codegen for Swift3 and NodeJS" /><published>2016-11-25T21:43:59-08:00</published><updated>2016-11-25T21:43:59-08:00</updated><id>http://localhost:4000/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS</id><content type="html" xml:base="http://localhost:4000/blog/swift/swagger/codegen/2016/11/25/Swagger-Codegen-for-Swift3-and-NodeJS.html">&lt;p&gt;In this tutorial I’ll walk you through building a working Swift 3 App and a working NodeJS Service. Huge portions of the code on both the front and backend will be automatically generated.
 This tutorial will introduce you to how Swagger Codegen can save you tons of time on both the front and backend when building an integrated app.&lt;/p&gt;
 
 &lt;p&gt;If you’ve ever worked on an app with it’s own backend service before then you may have used swagger’s easy to use (and generate) &lt;a href=&quot;https://github.com/swagger-api/swagger-ui&quot;&gt;Swagger UI&lt;/a&gt; documentation.&lt;/p&gt;
 
 &lt;p&gt;(Here’s a quick look at what Swagger UI Looks like with a defined API)
-&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-23 at 7.01.48 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Swagger’s UI tool makes it easy to learn about the features of a backend service you’d like to interact with without needing to dig through interminable and abstruse documentation. Swagger’s documentation is easy to read and understand. It also allows you to test calls directly from your browser.&lt;/p&gt;
 
@@ -15,7 +341,7 @@ This tutorial will introduce you to how Swagger Codegen can save you tons of tim
 
 &lt;p&gt;To demonstrate how we can quickly write both the server-side and client-side code for an app we’re going to build an app for keeping track of Dwarfs we meet while playing &lt;a href=&quot;http://www.bay12games.com/dwarves/features.html&quot;&gt;Dwarf Fortress&lt;/a&gt;.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/dfbackground.jpg&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/dfbackground.jpg&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;First we’ll need to create a swagger specification that will define the entire backend API for our app. Our API will handle simple Create and Read operations for keeping track of Dwarf migrants we meet in Dwarf Fortress.&lt;/p&gt;
 
@@ -154,7 +480,7 @@ Copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen-cli.jar
 
 &lt;p&gt;Assuming everything worked as expected you should see a number of new files in your SwaggerClient folder.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-24 at 12.05.49 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.05.49 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;If you’re SwaggerClient Folder looks like the one above you’re in good shape.&lt;/p&gt;
 
@@ -166,7 +492,7 @@ Copy the &lt;code class=&quot;highlighter-rouge&quot;&gt;swagger-codegen-cli.jar
 
 &lt;p&gt;Make sure the script has the executable permission, and run the script.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-24 at 12.34.46 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.34.46 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;You should now have files in your SwaggerServer folder that resemble the files above.&lt;/p&gt;
 &lt;h2 id=&quot;starting-and-running-the-server&quot;&gt;Starting and Running the Server&lt;/h2&gt;
@@ -186,13 +512,13 @@ Swagger-ui is available on http://localhost:3000/docs&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Open &lt;code class=&quot;highlighter-rouge&quot;&gt;http://localhost:3000/docs&lt;/code&gt; in your browser to view the documentation for our API.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-24 at 12.45.40 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.45.40 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;At this point you can send POST and GET requests to the API. You will get hardcoded responses, but that’s good enough for now!&lt;/p&gt;
 
 &lt;p&gt;Sending a GET request to http://localhost:3000/dwarf via SwaggerUI will result in this response:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-24 at 12.53.06 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-24 at 12.53.06 AM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;We are receiving a response with an array of Dwarf objects, just as we’d defined earlier in our swagger.yml file.&lt;/p&gt;
 
@@ -202,12 +528,12 @@ Swagger-ui is available on http://localhost:3000/docs&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;Open Xcode and create a new Xcode project. Create a “Single View Application” and make sure you save the project inside the same folder you’ve saved your SwaggerClient folder in. My folder structure looks like this after inserting my Xcode Project files.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-26 at 1.40.40 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-26 at 1.40.40 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Once you’ve created the Xcode project it’s time to drag the Swagger Client code into the project and make sure you de-select “copy items if needed”so we don’t create a second copy of the directory. Also, make sure you have ‘Create groups’ selected.&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-26 at 1.45.51 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;
-&lt;img src=&quot;/blog/assets/Screen_Shot_2016-11-26_at_1_46_55_PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-26 at 1.45.51 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;
+&lt;img src=&quot;http://localhost:4000/blog/assets/Screen_Shot_2016-11-26_at_1_46_55_PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;h2 id=&quot;alamofire-instalation&quot;&gt;Alamofire Instalation&lt;/h2&gt;
 
@@ -356,11 +682,11 @@ If you look at the &lt;code class=&quot;highlighter-rouge&quot;&gt;DefaultServic
 But, you can download a finished project with the full source code here: https://github.com/normand1/DwarfTracker
 Also, here is an example of the (extremely simple!) finished app&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/Screen Shot 2016-11-26 at 5.24.10 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/Screen Shot 2016-11-26 at 5.24.10 PM.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;p&gt;Thanks for finishing the whole tutorial! As a reward please enjoy this description of beautiful dwarf poetry:&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&quot;/blog/assets/poertry.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
+&lt;p&gt;&lt;img src=&quot;http://localhost:4000/blog/assets/poertry.png&quot; alt=&quot;My helpful screenshot&quot; /&gt;&lt;/p&gt;
 
 &lt;div id=&quot;disqus_thread&quot;&gt;&lt;/div&gt;
 &lt;script&gt;
