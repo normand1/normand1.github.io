@@ -116,7 +116,8 @@ if you want your app to compile in Xcode. Simply download the latest version of 
 normally be a 3D game into a stereoscopic VR experience. For example the Main Unity Camera functions the way traditional game cameras function:</p>
 
 <h2 id="main-camera-unity">Main Camera (Unity)</h2>
-<!--p><img src="http://localhost:4000/blog/assets/normal_camera_view.png" alt="Normal Camera" /></p-->
+<p><img src="http://normand1.github.io/blog/
+  /normal_camera_view.png" alt="Normal Camera" /></p>
 
 <p>However, in order for the scene to be perceived as VR within a headset the normal camera needs to be adjusted significantly. This is what the Google VR SDK allows us to do very easily.
 The <code class="highlighter-rouge">GvrViewMain</code> prefab actually uses a Unity Camera, but then splits out the image into two parts (one for each eye) and displays them together, but with slightly different viewing angles, in a viewport. <code class="highlighter-rouge">GvrViewMain</code> Also applies a distortion to the 
@@ -124,7 +125,7 @@ two images (which you can see a bit in the image below) which is necessary for m
 two views is the addition of a circular reticle below. This is the <code class="highlighter-rouge">GvrReticlePointer</code>, another Google VR SDK prefab, and it is your primary means of interaction with the VR world. The Google VR SDK uses ray casting
 to determine what object you’re looking at and tapping the screen triggers an interaction with the object that currently holds your “gaze”.</p>
 
-<!--p><img src="http://localhost:4000/blog/assets/google_vr_camera_view.png" alt="VR Camera" /></p-->
+<p><img src="http://normand1.github.io/blog/assets/google_vr_camera_view.png" alt="VR Camera" /></p>
 
 <p>Now that you’ve downloaded both the latest version of Unity and the Google VR SDK we’re ready to create our new project. Open Unity and select “New”.</p>
 
@@ -135,7 +136,7 @@ to determine what object you’re looking at and tapping the screen triggers an 
 Now you should see a blank Unity project with just a Camera and a Directional Light in your object hierarchy. Now it’s time to import the Google VR SDK you downloaded earlier.
 In the Assets menu, import a custom package.</p>
 
-<p><img src="http://localhost:4000/blog/assets/import_package.png" alt="import_package" /></p>
+<p><img src="http://normand1.github.io/blog/assets/import_package.png" alt="import_package" /></p>
 
 <p>import the package <code class="highlighter-rouge">GoogleVRForUnity.unitypackage</code> found in the <code class="highlighter-rouge">gvr-unity-sdk</code> folder.</p>
 
@@ -143,11 +144,11 @@ In the Assets menu, import a custom package.</p>
 
 <p>if you get the following warning, simply select ‘I Made a Backup Go Ahead!’… we haven’t done anything yet anyway ;)</p>
 
-<p><img src="http://localhost:4000/blog/assets/updagrade_api_warning.png" alt="upgrade_api_warning" /></p>
+<p><img src="http://normand1.github.io/blog/assets/updagrade_api_warning.png" alt="upgrade_api_warning" /></p>
 
 <p>Right now there seems to be a bug in the api upgrade process so if you see this error message in the Unity console, double click it to open the script in your default editor.</p>
 
-<p><img src="http://localhost:4000/blog/assets/api_upgrade_error.png" alt="api_upgrade_error" /></p>
+<p><img src="http://normand1.github.io/blog/assets/api_upgrade_error.png" alt="api_upgrade_error" /></p>
 
 <p>This should bring you to this method:</p>
 
@@ -177,7 +178,7 @@ just accept and import the new libraries it suggests.</p>
 <p>Now you should have an error free console with the Google VR SDK successfully installed. The quickest way to test and make sure everything is working is to switch to the Unity <code class="highlighter-rouge">project</code> tab and find the <code class="highlighter-rouge">GVRDemo</code> 
 scene at Assets &gt; GoogleVR &gt; Demos &gt; Scenes. Double click the scene to open it and hit the play button.</p>
 
-<p><img src="http://localhost:4000/blog/assets/demo_scene.png" alt="demo_scene" /></p>
+<p><img src="http://normand1.github.io/blog/assets/demo_scene.png" alt="demo_scene" /></p>
 
 <p>Hold down the option button and move the mouse to simulate looking around in the scene. Notice that the reticle changes shape when you look at the floating cube and the cube reacts to your gaze as well. Click 
 the mouse while the reticle is positioned over the cube and you’ll notice the cube transports to another location in the scene. Look around. Can you find it again?</p>
@@ -193,7 +194,7 @@ the mouse while the reticle is positioned over the cube and you’ll notice the 
 <p>In the main Unity window, behind the build settings window, you’ll notice the inspector panel (probably rightmost panel depending on your window arrangement) has changed to reveal some iOS platform specific settings. Under the phone tab, make sure 
 to deselect all orientations other than Landscape Left, as seen below.</p>
 
-<p><img src="http://localhost:4000/blog/assets/ios_settings_unity.png" alt="ios_settings_unity" /></p>
+<p><img src="http://normand1.github.io/blog/assets/ios_settings_unity.png" alt="ios_settings_unity" /></p>
 
 <p>Once that’s done, go ahead and hit <code class="highlighter-rouge">Build</code>!</p>
 
