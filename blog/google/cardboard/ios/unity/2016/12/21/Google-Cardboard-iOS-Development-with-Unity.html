@@ -116,8 +116,7 @@ if you want your app to compile in Xcode. Simply download the latest version of 
 normally be a 3D game into a stereoscopic VR experience. For example the Main Unity Camera functions the way traditional game cameras function:</p>
 
 <h2 id="main-camera-unity">Main Camera (Unity)</h2>
-<p><img src="http://normand1.github.io/blog/
-  /normal_camera_view.png" alt="Normal Camera" /></p>
+<p><img src="http://normand1.github.io/blog/assets/normal_camera_view.png" alt="Normal Camera" /></p>
 
 <p>However, in order for the scene to be perceived as VR within a headset the normal camera needs to be adjusted significantly. This is what the Google VR SDK allows us to do very easily.
 The <code class="highlighter-rouge">GvrViewMain</code> prefab actually uses a Unity Camera, but then splits out the image into two parts (one for each eye) and displays them together, but with slightly different viewing angles, in a viewport. <code class="highlighter-rouge">GvrViewMain</code> Also applies a distortion to the 
