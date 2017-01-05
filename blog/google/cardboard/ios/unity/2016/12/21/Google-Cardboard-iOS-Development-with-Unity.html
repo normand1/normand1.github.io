@@ -116,7 +116,7 @@ if you want your app to compile in Xcode. Simply download the latest version of 
 normally be a 3D game into a stereoscopic VR experience. For example the Main Unity Camera functions the way traditional game cameras function:</p>
 
 <h2 id="main-camera-unity">Main Camera (Unity)</h2>
-<p><img src="http://localhost:4000/blog/assets/normal_camera_view.png" alt="Normal Camera" /></p>
+<!--p><img src="http://localhost:4000/blog/assets/normal_camera_view.png" alt="Normal Camera" /></p-->
 
 <p>However, in order for the scene to be perceived as VR within a headset the normal camera needs to be adjusted significantly. This is what the Google VR SDK allows us to do very easily.
 The <code class="highlighter-rouge">GvrViewMain</code> prefab actually uses a Unity Camera, but then splits out the image into two parts (one for each eye) and displays them together, but with slightly different viewing angles, in a viewport. <code class="highlighter-rouge">GvrViewMain</code> Also applies a distortion to the 
@@ -124,7 +124,7 @@ two images (which you can see a bit in the image below) which is necessary for m
 two views is the addition of a circular reticle below. This is the <code class="highlighter-rouge">GvrReticlePointer</code>, another Google VR SDK prefab, and it is your primary means of interaction with the VR world. The Google VR SDK uses ray casting
 to determine what object you’re looking at and tapping the screen triggers an interaction with the object that currently holds your “gaze”.</p>
 
-<p><img src="http://localhost:4000/blog/assets/google_vr_camera_view.png" alt="VR Camera" /></p>
+<!--p><img src="http://localhost:4000/blog/assets/google_vr_camera_view.png" alt="VR Camera" /></p-->
 
 <p>Now that you’ve downloaded both the latest version of Unity and the Google VR SDK we’re ready to create our new project. Open Unity and select “New”.</p>
 
